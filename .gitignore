@@ -1,0 +1,15 @@
+target/
+.docx_read/
+.DS_Store
+*.log
+node_modules/
+.env
+.env.*
+!.env.example
+docs/
+tmp/
+output/
+deliverables/
+coverage/
+test-results/
+*.zip
