@@ -1,0 +1,37 @@
+@baseUrl = http://127.0.0.1:3088
+
+### Database connectivity
+GET {{baseUrl}}/api/health
+
+### Current and upcoming events (past and suspended excluded)
+GET {{baseUrl}}/api/events
+
+### Category dropdown
+GET {{baseUrl}}/api/categories
+
+### Combined filters; use a starts_at date from the current dataset
+GET {{baseUrl}}/api/events?location=Southport&category=1
+
+### Specific event
+GET {{baseUrl}}/api/events/1
+
+### Free event
+GET {{baseUrl}}/api/events/2
+
+### Past detail remains readable
+GET {{baseUrl}}/api/events/11
+
+### Suspended event: expected 404
+GET {{baseUrl}}/api/events/12
+
+### Invalid calendar date: expected 400
+GET {{baseUrl}}/api/events?date=2026-02-30
+
+### No matches: expected 200, data: []
+GET {{baseUrl}}/api/events?location=NoSuchSuburb
+
+### A literal percent sign does not match all locations
+GET {{baseUrl}}/api/events?location=%25
+
+### Writes are unavailable: expected 405
+POST {{baseUrl}}/api/events

@@ -3,7 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "description": "Charity event discovery for the Gold Coast",
-  "engines": { "node": ">=20" },
-  "scripts": { "db:check": "node scripts/check-db.js" },
-  "dependencies": { "dotenv": "^17.2.0", "express": "^5.1.0", "mysql2": "^3.14.3" }
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:check": "node scripts/check-db.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
 }
