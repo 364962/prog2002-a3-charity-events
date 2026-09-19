@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Discover charity events on the Gold Coast. Find a fun run, shared meal or creative workshop and make a difference with Good Together."
+    />
+    <title>Event details | Good Together</title>
+    <link rel="icon" href="/assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="module" src="/js/event.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Good Together home"
+          ><img src="/assets/mark.svg" alt="" width="35" height="35" /><span
+            >good<span class="brand-light">together</span
+            ><span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="/">Home</a><a href="/search.html">Find an event</a
+          ><a class="about-link" href="/#our-story">Our story</a>
+        </nav>
+        <a class="header-cta" href="/search.html"
+          >Be part of something <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main" class="container detail-page">
+      <a class="back-link" href="/search.html"
+        ><span aria-hidden="true">←</span> Back to all events</a
+      >
+      <p id="detail-status" role="status" class="result-status">
+        Finding the details…
+      </p>
+      <div id="detail-error" class="notice error" role="alert" hidden></div>
+      <button id="retry-detail" class="button secondary" type="button" hidden>
+        Try again
+      </button>
+      <article id="event-detail" hidden>
+        <div class="detail-heading">
+          <p class="eyebrow">
+            <span id="detail-category"></span><span aria-hidden="true"> / </span
+            ><span id="detail-status-label"></span>
+          </p>
+          <h1 id="detail-title"></h1>
+          <p id="detail-summary"></p>
+          <p class="host-line">
+            Brought to you by <strong id="detail-organisation"></strong>
+          </p>
+        </div>
+        <div class="detail-layout">
+          <div class="detail-content">
+            <img
+              id="detail-image"
+              class="detail-image"
+              src="/assets/coast.jpg"
+              alt=""
+              width="1200"
+              height="780"
+            />
+            <div class="detail-facts">
+              <div>
+                <span class="eyebrow">WHEN</span>
+                <p id="detail-date"></p>
+                <span id="detail-time"></span
+                ><small>Australia/Brisbane (UTC+10)</small>
+              </div>
+              <div>
+                <span class="eyebrow">WHERE</span>
+                <p id="detail-venue"></p>
+                <span id="detail-address"></span>
+              </div>
+            </div>
+            <section class="detail-section">
+              <h2>A good time. A good cause.</h2>
+              <div id="detail-description"></div>
+            </section>
+            <section class="detail-section cause-panel">
+              <span class="eyebrow">THE DIFFERENCE YOU MAKE</span>
+              <h2>Here is what we are working towards.</h2>
+              <p id="detail-purpose"></p>
+            </section>
+            <section class="detail-section">
+              <h2>Everyone belongs.</h2>
+              <p id="detail-accessibility"></p>
+              <p>
+                Have a question or need support to take part? Contact the
+                organiser before the event.
+              </p>
+              <a id="detail-contact" class="text-link" href="#"></a>
+              <p id="detail-phone"></p>
+            </section>
+          </div>
+          <aside class="event-sidebar" aria-label="Tickets and fundraising">
+            <div class="ticket-panel">
+              <p class="eyebrow">MAKE IT A DATE</p>
+              <h2>Be part of the good.</h2>
+              <p class="ticket-price" id="detail-price"></p>
+              <p id="ticket-description" class="muted"></p>
+              <form id="registration-form">
+                <label for="ticket-quantity">Number of tickets</label
+                ><select id="ticket-quantity" name="quantity">
+                  <option value="1">1 ticket</option>
+                  <option value="2">2 tickets</option>
+                  <option value="3">3 tickets</option>
+                  <option value="4">4 tickets</option>
+                  <option value="5">5 tickets</option>
+                  <option value="6">6 tickets</option>
+                </select>
+                <div class="ticket-total">
+                  <span>Total</span><strong id="ticket-total"></strong>
+                </div>
+                <button id="register-button" class="button" type="submit">
+                  Register <span aria-hidden="true">↗</span>
+                </button>
+                <p class="ticket-note" id="registration-note">
+                  Registration is coming soon. No payment is taken.
+                </p>
+              </form>
+              <p id="past-note" class="notice" hidden>
+                This event has ended. Thank you for supporting the cause.
+              </p>
+            </div>
+            <div class="fundraising-panel">
+              <span class="eyebrow">SMALL ACTS ADD UP</span>
+              <p><strong id="detail-raised"></strong> raised</p>
+              <progress
+                id="detail-progress"
+                max="100"
+                value="0"
+                aria-label="Fundraising progress"
+              ></progress>
+              <div class="progress-labels">
+                <span id="detail-goal"></span
+                ><strong id="detail-percent"></strong>
+              </div>
+              <p class="muted">
+                Every contribution brings this local cause a little closer to
+                its goal.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+    <dialog
+      id="registration-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-description"
+    >
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close registration message">
+          ×</button
+        ><span class="dialog-icon" aria-hidden="true">✳</span>
+        <p class="eyebrow">GOOD THINGS TAKE A LITTLE TIME</p>
+        <h2 id="dialog-title">Registration is on its way.</h2>
+        <p id="dialog-description">
+          This feature is currently under construction.
+        </p>
+        <p class="muted">
+          No tickets have been booked and no payment has been taken.
+        </p>
+        <button class="button" autofocus>
+          Got it <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+    </dialog>
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <div>
+          <a class="brand" href="/"
+            ><img src="/assets/mark.svg" alt="" width="32" height="32" /><span
+              >good<span class="brand-light">together</span>.</span
+            ></a
+          >
+          <p>Small acts. Stronger communities.<br />Made for the Gold Coast.</p>
+        </div>
+        <div>
+          <h2>Come say hello</h2>
+          <a href="mailto:hello@goodtogether.example"
+            >hello@goodtogether.example</a
+          >
+          <p>18 Community Lane, Southport<br />Gold Coast, Queensland</p>
+        </div>
+        <div>
+          <h2>Find your next good thing</h2>
+          <a href="/search.html"
+            >Explore all events <span aria-hidden="true">↗</span></a
+          ><a href="/#our-story">About Good Together</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Good Together</span
+        ><span>A fictional community project · All prices in AUD</span
+        ><span>Gold Coast, Australia <span class="small-dot">●</span></span>
+      </div>
+    </footer>
+    <noscript
+      ><p class="noscript">
+        Please enable JavaScript to load event information and use the search
+        form.
+      </p></noscript
+    >
+  </body>
+</html>
