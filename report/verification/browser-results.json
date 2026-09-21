@@ -1,0 +1,162 @@
+[
+  {
+    "browser": "chromium",
+    "check": "Home matches API events and current status, with category shortcuts; past/suspended excluded",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Home category link restores the filter on Search",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Date + suburb + category returns one matching event and a shareable URL",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Clear Filters resets all DOM controls and reloads all events",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Browser Back restores prior filters and results",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Empty result and its recovery action",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Invalid URL date displays API validation feedback in the DOM",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Service error shown and Retry recovers",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Correct detail, fundraising, ticket total, exact modal text and Escape focus restoration",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Zero-priced tickets are explicitly free",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Past event cannot register; raised amount above goal stays accurate",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Suspended, missing and invalid event IDs show helpful errors",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "390px, 768px and 1440px: no horizontal overflow or broken images; navigation visible",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Mobile ticket controls and modal close action",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "Custom 404 preserves the navigation",
+    "result": "passed"
+  },
+  {
+    "browser": "chromium",
+    "check": "No uncaught JavaScript errors",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Home matches API events and current status, with category shortcuts; past/suspended excluded",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Home category link restores the filter on Search",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Date + suburb + category returns one matching event and a shareable URL",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Clear Filters resets all DOM controls and reloads all events",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Browser Back restores prior filters and results",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Empty result and its recovery action",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Invalid URL date displays API validation feedback in the DOM",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Service error shown and Retry recovers",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Correct detail, fundraising, ticket total, exact modal text and Escape focus restoration",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Zero-priced tickets are explicitly free",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Past event cannot register; raised amount above goal stays accurate",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Suspended, missing and invalid event IDs show helpful errors",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "390px, 768px and 1440px: no horizontal overflow or broken images; navigation visible",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Mobile ticket controls and modal close action",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "Custom 404 preserves the navigation",
+    "result": "passed"
+  },
+  {
+    "browser": "webkit",
+    "check": "No uncaught JavaScript errors",
+    "result": "passed"
+  }
+]

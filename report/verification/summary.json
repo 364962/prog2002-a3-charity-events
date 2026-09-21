@@ -1,0 +1,28 @@
+{
+  "verified_at": "2026-09-21T22:46:10.877983+08:00",
+  "node": "20.20.0",
+  "mysql": "5.7.28",
+  "backend_tests": {
+    "passed": 32,
+    "failed": 0
+  },
+  "browser_checks": {
+    "passed": 32,
+    "failed": 0,
+    "engines": [
+      "Chromium",
+      "WebKit"
+    ],
+    "viewport_widths": [
+      390,
+      768,
+      1440
+    ]
+  },
+  "demo_database_modified": false,
+  "source_archives": {
+    "installation": "npm ci passed on extracted API package",
+    "smoke_checks_passed": 8,
+    "mysql_version": "5.7.28-log"
+  }
+}
