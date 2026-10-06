@@ -1,8 +1,6 @@
 -- Good Together: a fictional Gold Coast charity events dataset.
--- Import into a fresh MySQL 5.7+ database. No existing tables are removed.
-CREATE DATABASE IF NOT EXISTS charityevents_db
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE charityevents_db;
+-- A3: Import into an empty database selected by the caller (also works in cPanel).
+-- No database is created, selected or dropped by this portable export.
 SET NAMES utf8mb4;
 SET time_zone = '+10:00';
 SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -41,6 +39,8 @@ CREATE TABLE events (
   image_path VARCHAR(255) NOT NULL,
   image_alt VARCHAR(255) NOT NULL,
   accessibility VARCHAR(500) NOT NULL,
+  latitude DECIMAL(9,6) NULL,
+  longitude DECIMAL(9,6) NULL,
   publication_status ENUM('active','suspended') NOT NULL DEFAULT 'active',
   CONSTRAINT fk_event_organisation FOREIGN KEY (organisation_id)
     REFERENCES organisations(id) ON UPDATE CASCADE ON DELETE RESTRICT,
@@ -50,6 +50,21 @@ CREATE TABLE events (
   INDEX idx_event_category_start (category_id, starts_at),
   INDEX idx_event_start (starts_at)
 ) ENGINE=InnoDB;
+
+CREATE TABLE registrations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  event_id INT UNSIGNED NOT NULL,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(254) NOT NULL,
+  phone VARCHAR(40) NOT NULL,
+  ticket_quantity SMALLINT UNSIGNED NOT NULL,
+  unit_price DECIMAL(10,2) NOT NULL,
+  registered_at DATETIME NOT NULL,
+  CONSTRAINT fk_registration_event FOREIGN KEY (event_id)
+    REFERENCES events(id) ON UPDATE CASCADE ON DELETE RESTRICT,
+  UNIQUE KEY uq_registration_event_email (event_id, email),
+  INDEX idx_registration_date (event_id, registered_at, id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- MySQL 5.7 ignores CHECK clauses. Enforce the invariants on both write paths.
 DELIMITER $$
@@ -66,6 +81,24 @@ BEGIN
     OR NEW.fundraising_goal <= 0 OR NEW.amount_raised < 0 THEN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid event dates or monetary values';
   END IF;
+END$$
+CREATE TRIGGER registrations_before_insert BEFORE INSERT ON registrations FOR EACH ROW
+BEGIN
+  IF NEW.ticket_quantity < 1 OR NEW.ticket_quantity > 10 OR NEW.unit_price < 0
+    OR CHAR_LENGTH(TRIM(NEW.full_name)) = 0 OR CHAR_LENGTH(TRIM(NEW.phone)) = 0
+    OR CHAR_LENGTH(TRIM(NEW.email)) = 0 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid registration values';
+  END IF;
+  SET NEW.email = LOWER(TRIM(NEW.email));
+END$$
+CREATE TRIGGER registrations_before_update BEFORE UPDATE ON registrations FOR EACH ROW
+BEGIN
+  IF NEW.ticket_quantity < 1 OR NEW.ticket_quantity > 10 OR NEW.unit_price < 0
+    OR CHAR_LENGTH(TRIM(NEW.full_name)) = 0 OR CHAR_LENGTH(TRIM(NEW.phone)) = 0
+    OR CHAR_LENGTH(TRIM(NEW.email)) = 0 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid registration values';
+  END IF;
+  SET NEW.email = LOWER(TRIM(NEW.email));
 END$$
 DELIMITER ;
 
@@ -98,4 +131,25 @@ INSERT INTO events (id, organisation_id, category_id, name, summary, purpose, de
 (10, 1, 5, 'Sunday sounds for good', 'A relaxed afternoon of music supporting local youth spaces.', 'Provide art materials and equipment for a youth drop-in centre.', 'Enjoy small acoustic performances and a community afternoon in the park. Local performers are donating their time to support a youth drop-in centre where young people can connect, create and find support.\n\nBring a blanket or use the available chairs. Refreshments can be purchased on site. The ticket includes all performances and children are welcome with a supervising adult.', TIMESTAMP(DATE_ADD(@today, INTERVAL 51 DAY), '14:00:00'), TIMESTAMP(DATE_ADD(@today, INTERVAL 51 DAY), '17:30:00'), 'Riverside Green', 'Surfers Paradise', '20 Riverside Walk, Surfers Paradise QLD', 18, 7000, 3900, '/assets/concert.jpg', 'An audience enjoying live music', 'Step-free entry, accessible seating and nearby public transport.', 'active'),
 (11, 1, 1, 'Winter warmth walk', 'A completed community walk supporting winter essentials.', 'Provide warm bedding and clothing to households in need.', 'Neighbours came together for a waterfront walk supporting the winter essentials appeal. Funds from this completed event helped provide warm bedding and clothing.\n\nThis event has ended. Browse upcoming events to find another way to take part.', TIMESTAMP(DATE_ADD(@today, INTERVAL -14 DAY), '08:00:00'), TIMESTAMP(DATE_ADD(@today, INTERVAL -14 DAY), '11:00:00'), 'Broadwater Parklands', 'Southport', 'Marine Parade, Southport QLD', 20, 5000, 5500, '/assets/run.jpg', 'Runners taking part in an outdoor community run', 'Step-free waterfront route.', 'active'),
 (12, 1, 3, 'Community gala review', 'An event withheld from public listings pending review.', 'Support local food relief after the event has passed review.', 'This sample event is suspended to demonstrate that unpublished events cannot be discovered through public endpoints.', TIMESTAMP(DATE_ADD(@today, INTERVAL 20 DAY), '18:00:00'), TIMESTAMP(DATE_ADD(@today, INTERVAL 20 DAY), '21:00:00'), 'Community Hall', 'Southport', '18 Community Lane, Southport QLD', 60, 10000, 0, '/assets/gala.jpg', 'A warmly lit table set for a shared meal', 'Step-free entry.', 'suspended');
+-- Approximate public venue coordinates, used only for optional weather forecasts.
+UPDATE events SET latitude=-27.9630, longitude=153.4140 WHERE location='Southport';
+UPDATE events SET latitude=-28.0290, longitude=153.4310 WHERE location='Broadbeach';
+UPDATE events SET latitude=-28.0890, longitude=153.4510 WHERE location='Burleigh Heads';
+UPDATE events SET latitude=-28.0020, longitude=153.4300 WHERE location='Surfers Paradise';
+UPDATE events SET latitude=-27.9780, longitude=153.4260 WHERE location='Main Beach';
+
+-- Fictional seed registrations. An email can occur at different events, but not twice at one.
+INSERT INTO registrations (event_id, full_name, email, phone, ticket_quantity, unit_price, registered_at) VALUES
+(1, 'Alex Morgan', 'alex.morgan@example.com', '+61 7 5550 0101', 2, 25, TIMESTAMP(DATE_SUB(@today, INTERVAL 3 DAY),'09:00:00')),
+(1, 'Taylor Chen', 'taylor.chen@example.com', '+61 7 5550 0102', 3, 25, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'14:20:00')),
+(1, 'Sam Patel', 'sam.patel@example.com', '+61 7 5550 0103', 1, 25, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'16:00:00')),
+(2, 'Alex Morgan', 'alex.morgan@example.com', '+61 7 5550 0101', 2, 0, TIMESTAMP(DATE_SUB(@today, INTERVAL 2 DAY),'10:00:00')),
+(2, 'Jordan Lee', 'jordan.lee@example.com', '+61 7 5550 0104', 4, 0, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'11:00:00')),
+(3, 'Casey Williams', 'casey.williams@example.com', '+61 7 5550 0105', 2, 85, TIMESTAMP(DATE_SUB(@today, INTERVAL 2 DAY),'12:00:00')),
+(4, 'Riley Singh', 'riley.singh@example.com', '+61 7 5550 0106', 2, 15, TIMESTAMP(DATE_SUB(@today, INTERVAL 2 DAY),'13:00:00')),
+(5, 'Morgan Davis', 'morgan.davis@example.com', '+61 7 5550 0107', 3, 30, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'15:00:00')),
+(6, 'Avery Wilson', 'avery.wilson@example.com', '+61 7 5550 0108', 1, 0, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'16:00:00')),
+(7, 'Jamie Brown', 'jamie.brown@example.com', '+61 7 5550 0109', 2, 0, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'17:00:00')),
+(11, 'Robin Clark', 'robin.clark@example.com', '+61 7 5550 0110', 2, 20, TIMESTAMP(DATE_SUB(@today, INTERVAL 20 DAY),'09:00:00')),
+(12, 'Drew Hall', 'drew.hall@example.com', '+61 7 5550 0111', 1, 60, TIMESTAMP(DATE_SUB(@today, INTERVAL 1 DAY),'09:00:00'));
 COMMIT;

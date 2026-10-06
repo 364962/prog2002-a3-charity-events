@@ -33,7 +33,7 @@ before(async () => {
     .replaceAll("charityevents_db", testName)
     .replace(/^DELIMITER.*$/gm, "")
     .replaceAll("END$$", "END;");
-  await admin.query(sql);
+  await admin.query(`CREATE DATABASE \`${testName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; USE \`${testName}\`;\n` + sql);
   process.env.DB_NAME = testName;
   db = require("../event_db");
   ({ createApp } = require("../app"));

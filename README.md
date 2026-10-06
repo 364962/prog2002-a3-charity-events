@@ -1,7 +1,10 @@
 # Good Together | Charity events
 
-PROG2002 Web Development II, Assessment 2  
-Student: 鲁彧 (Lu Yu) · 24832520
+PROG2002 Web Development II, Assessment 3 foundation (reuses Assessment 2)
+Team: Lu Yu · 24832520; Zhuolin Han · 24832119
+
+A3 milestone planning and actual contribution requirements are in [project/DELIVERY_PLAN.md](project/DELIVERY_PLAN.md).
+The first milestone adds a registration schema and 12 fictional registrations; application registration and admin workflows are later milestones.
 
 A charity event discovery website for the Gold Coast, built with Node.js, Express,
 MySQL and plain HTML, CSS and JavaScript. All organisations, events, contact details
@@ -15,10 +18,11 @@ folder, so `api` and `clientside` are siblings.
 1. Import the SQL file into a **fresh database**:
 
    ```sh
-   mysql -h 127.0.0.1 -u root -p < api/database/charityevents_db.sql
+   mysql -h 127.0.0.1 -u root -p -e "CREATE DATABASE charityevents_a3 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+   mysql -h 127.0.0.1 -u root -p charityevents_a3 < api/database/charityevents_db.sql
    ```
 
-   It creates `charityevents_db`, its tables and sample data. It does not drop
+   The SQL creates tables and sample data in the selected database. It does not create, select or drop a database, making it suitable for cPanel imports. It does not drop
    existing tables. Import it once; importing a second time deliberately fails
    instead of erasing data. On the supplied Mac, the MySQL executable is
    `/Applications/phpstudy/Extensions/MySQL5.7.28/bin/mysql`.
@@ -40,7 +44,7 @@ folder, so `api` and `clientside` are siblings.
    npm start
    ```
 
-4. Open **http://127.0.0.1:3088**. The same Express server serves the client and API.
+4. Open **http://127.0.0.1:3090**. The same Express server serves the client and API.
    Do not open the HTML files with `file://`. Change `PORT` in `.env` if needed.
 
 If MySQL is unavailable, start it before the Node server. If the schema already
@@ -207,7 +211,8 @@ The fourth milestone includes this README, the browser checks and the technical
 report with updated evidence. Commit dates reflect when the changes were actually
 committed.
 
-The private repository is https://github.com/364962/prog2002-a2-charity-events.
+The A2 repository is https://github.com/364962/prog2002-a2-charity-events.
+The A3 repository is https://github.com/364962/prog2002-a3-charity-events.
 Source documents, local credentials, generated media and temporary files are
 excluded from commits. Before assessment submission, grant the marker access.
 Registration, payments and admin features

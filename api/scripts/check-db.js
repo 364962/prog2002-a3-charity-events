@@ -5,9 +5,10 @@ async function checkDatabase() {
     const [rows] = await db.execute(`
       SELECT (SELECT COUNT(*) FROM organisations) AS organisations,
              (SELECT COUNT(*) FROM categories) AS categories,
-             (SELECT COUNT(*) FROM events) AS events
+             (SELECT COUNT(*) FROM events) AS events,
+             (SELECT COUNT(*) FROM registrations) AS registrations
     `);
-    if (rows[0].events < 8 || rows[0].categories < 3) {
+    if (rows[0].events < 8 || rows[0].categories < 3 || rows[0].registrations < 10) {
       throw new Error("Import the complete sample dataset before continuing.");
     }
     console.log("Database connection successful.");
