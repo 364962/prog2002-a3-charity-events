@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-07T10:23:47.709Z",
+  "source": "Exported stage-3 Git snapshot with fresh production dependencies",
+  "hosting": "Local startup only; cPanel deployment pending",
+  "passed": 8,
+  "checks": [
+    "Staged root app.js starts with installed production dependencies",
+    "Public, registration and all staff pages/scripts/styles are served",
+    "Credentials and SQL are not served as static files",
+    "Portable SQL provides seeded public registration data",
+    "Registration persists through staged API",
+    "Staged API blocks deletion of registered events",
+    "All-status staff listing works",
+    "Staged SQL matches the complete source SQL"
+  ]
+}

@@ -19,7 +19,7 @@ work, review decisions and individual explanation of the implementation.
 | --- | --- | --- |
 | 6 October 2026 | Reuse A2 foundation; registration schema, seed data and constraints | Import into an isolated database; duplicate and deletion constraints |
 | 7 October 2026 | Registration, event and category APIs; public registration flow and forecast | API integration tests, duplicate/deletion races and public browser workflows |
-| 10 October 2026 | Staff event and category pages; full staff browser verification | Create/edit/delete, deletion-dialog cancellation, responsive layouts and error states |
+| 7 October 2026 (second round) | Staff event/category pages; complete browser verification; deployment startup preparation | Staff CRUD, deletion-dialog cancellation, responsive layouts and root-startup checks |
 | 11 October 2026 | Deployment checks, documentation and delivery packaging | Both students' cPanel sites, archive smoke checks and live demonstration |
 
 These are target dates, not claims of completed work. Commits use their actual
@@ -89,7 +89,7 @@ materials remain for subsequent milestones; there is no automatic push schedule.
 - `364962`: commit `e1b27e3`, registration and staff CRUD APIs, write validation,
   ordered registration data, weather service, API examples and backend tests.
   All 71 backend tests passed on an export of the staged source.
-- `drilinghan-stack`: the accompanying public-interface commit adds registration,
+- `drilinghan-stack`: commit `c4368f8` adds registration,
   confirmation, newest-first attendee lists, shared form styles and public browser
   checks. All 38 public browser checks passed in Chromium and WebKit on the
   exported submission, without the local staff pages.
@@ -97,3 +97,21 @@ materials remain for subsequent milestones; there is no automatic push schedule.
   Commit identities and actual times identify the account used for each operation.
 - cPanel access, cohort/Team ID, marker access and personal submission evidence
   remain pending as described above.
+
+## Third milestone - 7 October 2026, second submission round
+
+The user requested another round later on 7 October. The staff milestone therefore
+uses its real submission date instead of the earlier 10 October target. Final
+reporting/packaging remains a separate stage, and both SCU deployments still await
+account availability. This round does not assert a successful hosted deployment.
+
+- `drilinghan-stack`: commit `a086d5e`, staff event list, new/edit forms, registration/contact view,
+  category CRUD, protected deletion feedback and repeatable cancel/Escape handling.
+  All 46 checks passed in Chromium and WebKit on an isolated staged-source export,
+  covering the public flows, staff pages and mobile layouts.
+- `364962`: application-root `app.js`, cPanel preparation instructions, the current
+  runtime README and isolated startup verification. All 8 startup checks passed
+  on an exported source snapshot with fresh production dependencies. The application directory must
+  contain sibling `api`, `clientside` and `adminside` folders.
+- Both submissions use the authorised account operation arrangement and actual
+  timestamps. The remote commit history records the exact account and changes.
