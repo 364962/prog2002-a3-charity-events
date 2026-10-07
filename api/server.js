@@ -1,7 +1,7 @@
 const pool = require("./event_db");
 const { createApp } = require("./app");
 
-const port = Number(process.env.PORT || 3088);
+const port = Number(process.env.PORT || 3090);
 const host = process.env.HOST || "127.0.0.1";
 let server;
 

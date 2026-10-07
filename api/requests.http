@@ -1,37 +1,75 @@
-@baseUrl = http://127.0.0.1:3088
+@base = http://127.0.0.1:3090
 
-### Database connectivity
-GET {{baseUrl}}/api/health
+### Health
+GET {{base}}/api/health
 
-### Current and upcoming events (past and suspended excluded)
-GET {{baseUrl}}/api/events
+### Search current/upcoming events; combine filters as needed
+GET {{base}}/api/events?location=Southport&category=1
 
-### Category dropdown
-GET {{baseUrl}}/api/categories
+### Public event with newest-first registrations
+GET {{base}}/api/events/1
 
-### Combined filters; use a starts_at date from the current dataset
-GET {{baseUrl}}/api/events?location=Southport&category=1
+### Registration; repeating this request intentionally returns 409
+POST {{base}}/api/events/1/registrations
+Content-Type: application/json
 
-### Specific event
-GET {{baseUrl}}/api/events/1
+{
+  "full_name": "Example Attendee",
+  "email": "example.attendee@example.com",
+  "phone": "0400000000",
+  "ticket_quantity": 2
+}
 
-### Free event
-GET {{baseUrl}}/api/events/2
+### Optional forecast or explicit fallback
+GET {{base}}/api/events/1/weather
 
-### Past detail remains readable
-GET {{baseUrl}}/api/events/11
+### Staff sees every publication/date status
+GET {{base}}/api/admin/events
 
-### Suspended event: expected 404
-GET {{baseUrl}}/api/events/12
+### Staff event includes contact details
+GET {{base}}/api/admin/events/1
 
-### Invalid calendar date: expected 400
-GET {{baseUrl}}/api/events?date=2026-02-30
+### Protected deletion example: event 1 has registrations, expect 409
+DELETE {{base}}/api/admin/events/1
 
-### No matches: expected 200, data: []
-GET {{baseUrl}}/api/events?location=NoSuchSuburb
+### Create a fictional event; copy the returned ID for later PUT/DELETE
+POST {{base}}/api/admin/events
+Content-Type: application/json
 
-### A literal percent sign does not match all locations
-GET {{baseUrl}}/api/events?location=%25
+{
+  "name": "Community picnic",
+  "summary": "A shared afternoon for a local cause.",
+  "purpose": "Support the community pantry.",
+  "description": "Bring a picnic and meet local volunteers. All welcome.",
+  "starts_at": "2026-12-01T12:00:00",
+  "ends_at": "2026-12-01T15:00:00",
+  "venue": "Community Park",
+  "location": "Southport",
+  "address": "Marine Parade, Southport QLD",
+  "ticket_price": 10,
+  "fundraising_goal": 2500,
+  "amount_raised": 0,
+  "image_path": "/assets/coast.jpg",
+  "image_alt": "Gold Coast shoreline",
+  "accessibility": "Step-free paths and accessible toilets.",
+  "publication_status": "active",
+  "category_id": 2,
+  "organisation_id": 1,
+  "latitude": -27.967,
+  "longitude": 153.414
+}
 
-### Writes are unavailable: expected 405
-POST {{baseUrl}}/api/events
+### To update, PUT the complete event body above to /api/admin/events/RETURNED_ID.
+### To delete an unused test event, DELETE /api/admin/events/RETURNED_ID.
+### Do not delete unrelated records during verification.
+
+GET {{base}}/api/admin/categories
+
+### Create category
+POST {{base}}/api/admin/categories
+Content-Type: application/json
+
+{"name":"Example category","description":"A temporary fictional category for an API check."}
+
+### Update using PUT /api/admin/categories/RETURNED_ID with both fields.
+### Delete using DELETE /api/admin/categories/RETURNED_ID; in-use returns 409.

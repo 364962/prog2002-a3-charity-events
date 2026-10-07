@@ -1,0 +1,373 @@
+API milestone verification: 2026-10-07T08:58:53.332222+08:00
+Tested an export of the staged Git snapshot.
+
+
+> good-together-charity-events-api@1.0.0 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: SQL creates the required sample records and relational keys
+ok 1 - SQL creates the required sample records and relational keys
+  ---
+  duration_ms: 494.729041
+  ...
+# Subtest: home lists all ten active current/upcoming events in date order
+ok 2 - home lists all ten active current/upcoming events in date order
+  ---
+  duration_ms: 7.728166
+  ...
+# Subtest: one filter and three combined filters return only matching events
+ok 3 - one filter and three combined filters return only matching events
+  ---
+  duration_ms: 21.133375
+  ...
+# Subtest: no matches returns a successful empty collection
+ok 4 - no matches returns a successful empty collection
+  ---
+  duration_ms: 2.855791
+  ...
+# Subtest: empty filters are optional and surrounding whitespace is trimmed
+ok 5 - empty filters are optional and surrounding whitespace is trimmed
+  ---
+  duration_ms: 5.521
+  ...
+# Subtest: invalid filter rejected: date=2026-02-30
+ok 6 - invalid filter rejected: date=2026-02-30
+  ---
+  duration_ms: 2.313834
+  ...
+# Subtest: invalid filter rejected: date=2025-02-29
+ok 7 - invalid filter rejected: date=2025-02-29
+  ---
+  duration_ms: 1.154125
+  ...
+# Subtest: invalid filter rejected: date=not-a-date
+ok 8 - invalid filter rejected: date=not-a-date
+  ---
+  duration_ms: 1.103833
+  ...
+# Subtest: invalid filter rejected: date=0000-01-01
+ok 9 - invalid filter rejected: date=0000-01-01
+  ---
+  duration_ms: 1.049125
+  ...
+# Subtest: invalid filter rejected: date=2026-13-01
+ok 10 - invalid filter rejected: date=2026-13-01
+  ---
+  duration_ms: 1.246917
+  ...
+# Subtest: invalid filter rejected: date=2026-09-17&date=2026-09-18
+ok 11 - invalid filter rejected: date=2026-09-17&date=2026-09-18
+  ---
+  duration_ms: 0.73
+  ...
+# Subtest: invalid filter rejected: category=1.5
+ok 12 - invalid filter rejected: category=1.5
+  ---
+  duration_ms: 0.612833
+  ...
+# Subtest: invalid filter rejected: category=0
+ok 13 - invalid filter rejected: category=0
+  ---
+  duration_ms: 0.678791
+  ...
+# Subtest: invalid filter rejected: category=-1
+ok 14 - invalid filter rejected: category=-1
+  ---
+  duration_ms: 0.539792
+  ...
+# Subtest: invalid filter rejected: category=4294967296
+ok 15 - invalid filter rejected: category=4294967296
+  ---
+  duration_ms: 0.63525
+  ...
+# Subtest: invalid filter rejected: category=1&category=2
+ok 16 - invalid filter rejected: category=1&category=2
+  ---
+  duration_ms: 0.579334
+  ...
+# Subtest: invalid filter rejected: location=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ok 17 - invalid filter rejected: location=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  ---
+  duration_ms: 0.52325
+  ...
+# Subtest: invalid filter rejected: location=%00
+ok 18 - invalid filter rejected: location=%00
+  ---
+  duration_ms: 0.477208
+  ...
+# Subtest: invalid filter rejected: unknown=1
+ok 19 - invalid filter rejected: unknown=1
+  ---
+  duration_ms: 0.90875
+  ...
+# Subtest: valid leap day and unknown category are valid empty searches
+ok 20 - valid leap day and unknown category are valid empty searches
+  ---
+  duration_ms: 2.912125
+  ...
+# Subtest: location SQL injection and LIKE wildcards are treated as literal text
+ok 21 - location SQL injection and LIKE wildcards are treated as literal text
+  ---
+  duration_ms: 5.825125
+  ...
+# Subtest: detail fields, prices and fundraising figures preserve their types
+ok 22 - detail fields, prices and fundraising figures preserve their types
+  ---
+  duration_ms: 2.165167
+  ...
+# Subtest: suspended and nonexistent details return 404; past details are marked past
+ok 23 - suspended and nonexistent details return 404; past details are marked past
+  ---
+  duration_ms: 2.074791
+  ...
+# Subtest: invalid event ID rejected: 0
+ok 24 - invalid event ID rejected: 0
+  ---
+  duration_ms: 0.480667
+  ...
+# Subtest: invalid event ID rejected: -1
+ok 25 - invalid event ID rejected: -1
+  ---
+  duration_ms: 0.430917
+  ...
+# Subtest: invalid event ID rejected: 1.2
+ok 26 - invalid event ID rejected: 1.2
+  ---
+  duration_ms: 0.440167
+  ...
+# Subtest: invalid event ID rejected: abc
+ok 27 - invalid event ID rejected: abc
+  ---
+  duration_ms: 0.700625
+  ...
+# Subtest: invalid event ID rejected: 4294967296
+ok 28 - invalid event ID rejected: 4294967296
+  ---
+  duration_ms: 0.611125
+  ...
+# Subtest: GET-only routes reject mutations and unknown endpoints return JSON
+ok 29 - GET-only routes reject mutations and unknown endpoints return JSON
+  ---
+  duration_ms: 1.793625
+  ...
+# Subtest: database foreign keys and both validation triggers reject invalid writes
+ok 30 - database foreign keys and both validation triggers reject invalid writes
+  ---
+  duration_ms: 9.970292
+  ...
+# Subtest: date boundaries include current and exclude ended events
+ok 31 - date boundaries include current and exclude ended events
+  ---
+  duration_ms: 23.975667
+  ...
+# Request failed: TEST_UNAVAILABLE
+# Subtest: database failure becomes a helpful 503 without SQL or credentials
+ok 32 - database failure becomes a helpful 503 without SQL or credentials
+  ---
+  duration_ms: 3.491375
+  ...
+# Subtest: A3 seed includes at least ten registrations connected to existing events
+ok 33 - A3 seed includes at least ten registrations connected to existing events
+  ---
+  duration_ms: 435.749792
+  ...
+# Subtest: duplicate email at one event is rejected after normalising case and whitespace
+ok 34 - duplicate email at one event is rejected after normalising case and whitespace
+  ---
+  duration_ms: 4.858083
+  ...
+# Subtest: the same attendee can have separate registrations at different events
+ok 35 - the same attendee can have separate registrations at different events
+  ---
+  duration_ms: 1.729459
+  ...
+# Subtest: event deletion is restricted when registrations reference it
+ok 36 - event deletion is restricted when registrations reference it
+  ---
+  duration_ms: 5.913375
+  ...
+# Subtest: registrations cannot reference an event that does not exist
+ok 37 - registrations cannot reference an event that does not exist
+  ---
+  duration_ms: 0.989917
+  ...
+# Subtest: registration constraints validate updates without damaging existing records
+ok 38 - registration constraints validate updates without damaging existing records
+  ---
+  duration_ms: 2.923125
+  ...
+# Subtest: staff sees every event, including past and suspended, while public queries remain filtered
+ok 39 - staff sees every event, including past and suspended, while public queries remain filtered
+  ---
+  duration_ms: 436.173083
+  ...
+# Subtest: public detail lists all registrations newest first without contact details
+ok 40 - public detail lists all registrations newest first without contact details
+  ---
+  duration_ms: 10.250542
+  ...
+# Subtest: new registration persists quantity, server price and server timestamp
+ok 41 - new registration persists quantity, server price and server timestamp
+  ---
+  duration_ms: 27.378125
+  ...
+# Subtest: duplicate registration is rejected, including simultaneous requests
+ok 42 - duplicate registration is rejected, including simultaneous requests
+  ---
+  duration_ms: 17.537708
+  ...
+# Subtest: one attendee can book multiple events and a free event keeps a zero total
+ok 43 - one attendee can book multiple events and a free event keeps a zero total
+  ---
+  duration_ms: 20.995792
+  ...
+# Subtest: past, suspended and missing events cannot receive registrations
+ok 44 - past, suspended and missing events cannot receive registrations
+  ---
+  duration_ms: 5.0645
+  ...
+# Subtest: registration rejects invalid or client-controlled full_name=
+ok 45 - registration rejects invalid or client-controlled full_name=
+  ---
+  duration_ms: 1.481042
+  ...
+# Subtest: registration rejects invalid or client-controlled email=bad-email
+ok 46 - registration rejects invalid or client-controlled email=bad-email
+  ---
+  duration_ms: 1.218625
+  ...
+# Subtest: registration rejects invalid or client-controlled phone=abc
+ok 47 - registration rejects invalid or client-controlled phone=abc
+  ---
+  duration_ms: 1.167334
+  ...
+# Subtest: registration rejects invalid or client-controlled ticket_quantity=0
+ok 48 - registration rejects invalid or client-controlled ticket_quantity=0
+  ---
+  duration_ms: 1.135959
+  ...
+# Subtest: registration rejects invalid or client-controlled ticket_quantity=11
+ok 49 - registration rejects invalid or client-controlled ticket_quantity=11
+  ---
+  duration_ms: 1.046417
+  ...
+# Subtest: registration rejects invalid or client-controlled ticket_quantity=1.5
+ok 50 - registration rejects invalid or client-controlled ticket_quantity=1.5
+  ---
+  duration_ms: 1.111042
+  ...
+# Subtest: registration rejects invalid or client-controlled ticket_quantity=2
+ok 51 - registration rejects invalid or client-controlled ticket_quantity=2
+  ---
+  duration_ms: 0.95425
+  ...
+# Subtest: registration rejects invalid or client-controlled unit_price=0
+ok 52 - registration rejects invalid or client-controlled unit_price=0
+  ---
+  duration_ms: 0.718375
+  ...
+# Subtest: registration rejects invalid or client-controlled registered_at=2000-01-01
+ok 53 - registration rejects invalid or client-controlled registered_at=2000-01-01
+  ---
+  duration_ms: 0.828625
+  ...
+# Subtest: mutation endpoints require valid, bounded JSON
+ok 54 - mutation endpoints require valid, bounded JSON
+  ---
+  duration_ms: 2.483834
+  ...
+# Subtest: event CRUD creates, updates, suspends and deletes an unregistered event
+ok 55 - event CRUD creates, updates, suspends and deletes an unregistered event
+  ---
+  duration_ms: 36.356541
+  ...
+# Subtest: deletion protection remains enforced when called directly through the API
+ok 56 - deletion protection remains enforced when called directly through the API
+  ---
+  duration_ms: 2.415291
+  ...
+# Subtest: concurrent registration and deletion cannot create an orphan
+ok 57 - concurrent registration and deletion cannot create an orphan
+  ---
+  duration_ms: 21.655333
+  ...
+# Subtest: event validation rejects name=
+ok 58 - event validation rejects name=
+  ---
+  duration_ms: 1.801459
+  ...
+# Subtest: event validation rejects ticket_price=-1
+ok 59 - event validation rejects ticket_price=-1
+  ---
+  duration_ms: 1.268209
+  ...
+# Subtest: event validation rejects ticket_price=2.345
+ok 60 - event validation rejects ticket_price=2.345
+  ---
+  duration_ms: 1.323375
+  ...
+# Subtest: event validation rejects fundraising_goal=0
+ok 61 - event validation rejects fundraising_goal=0
+  ---
+  duration_ms: 1.105291
+  ...
+# Subtest: event validation rejects category_id=99999
+ok 62 - event validation rejects category_id=99999
+  ---
+  duration_ms: 1.947583
+  ...
+# Subtest: event validation rejects starts_at=2026-02-30T09:00
+ok 63 - event validation rejects starts_at=2026-02-30T09:00
+  ---
+  duration_ms: 1.3305
+  ...
+# Subtest: event validation rejects ends_at=2000-01-01T09:00
+ok 64 - event validation rejects ends_at=2000-01-01T09:00
+  ---
+  duration_ms: 1.204333
+  ...
+# Subtest: event validation rejects publication_status=past
+ok 65 - event validation rejects publication_status=past
+  ---
+  duration_ms: 1.280917
+  ...
+# Subtest: event validation rejects latitude=91
+ok 66 - event validation rejects latitude=91
+  ---
+  duration_ms: 1.11625
+  ...
+# Subtest: event validation rejects image_path=https://example.com/image.jpg
+ok 67 - event validation rejects image_path=https://example.com/image.jpg
+  ---
+  duration_ms: 1.319709
+  ...
+# Subtest: event validation rejects image_path=/assets/missing.jpg
+ok 68 - event validation rejects image_path=/assets/missing.jpg
+  ---
+  duration_ms: 2.198917
+  ...
+# Subtest: category CRUD and foreign-key deletion protection
+ok 69 - category CRUD and foreign-key deletion protection
+  ---
+  duration_ms: 20.119666
+  ...
+# Subtest: weather service maps codes, caches results and does not invent distant forecasts
+ok 70 - weather service maps codes, caches results and does not invent distant forecasts
+  ---
+  duration_ms: 0.489209
+  ...
+# Subtest: weather failure is non-blocking and suspended events do not expose weather
+ok 71 - weather failure is non-blocking and suspended events do not expose weather
+  ---
+  duration_ms: 1.375708
+  ...
+1..71
+# tests 71
+# suites 0
+# pass 71
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 783.796083
