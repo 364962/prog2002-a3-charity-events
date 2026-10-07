@@ -1,0 +1,377 @@
+1
+00:00:00,000 --> 00:00:04,734
+Good Together is a charity event website for the Gold Coast.
+
+2
+00:00:04,734 --> 00:00:09,898
+This local demonstration covers event discovery, registration,
+and the staff management workflow.
+
+3
+00:00:09,898 --> 00:00:15,923
+The home page retrieves events from a Node and Express API
+connected to MySQL.
+
+4
+00:00:15,923 --> 00:00:19,365
+The cards show current and upcoming public events.
+
+5
+00:00:19,365 --> 00:00:23,239
+Past and suspended events are excluded from this listing.
+
+6
+00:00:23,239 --> 00:00:27,112
+Category shortcuts take visitors directly to a filtered search.
+
+7
+00:00:27,112 --> 00:00:32,706
+The existing Assessment Two design has been extended with
+persistent registration and administration.
+
+8
+00:00:32,706 --> 00:00:37,010
+All people and contact information in this demonstration are
+fictional.
+
+9
+00:00:37,010 --> 00:00:43,034
+The final hosting checks will be carried out separately on each
+student's SCU account.
+
+10
+00:00:45,640 --> 00:00:49,533
+The search page combines a start date, suburb and category.
+
+11
+00:00:49,533 --> 00:00:54,204
+Here the suburb Southport and the Fun run category narrow the
+results.
+
+12
+00:00:54,204 --> 00:00:59,654
+The browser sends these choices in the query string, so the URL
+can be
+
+13
+00:00:59,654 --> 00:01:02,768
+shared and browser history can restore the filters.
+
+14
+00:01:02,768 --> 00:01:08,218
+On the server, the conditions are joined together and their
+values are bound as
+
+15
+00:01:08,218 --> 00:01:09,386
+prepared statement parameters.
+
+16
+00:01:09,386 --> 00:01:12,890
+Clearing filters resets both the form and the results.
+
+17
+00:01:12,890 --> 00:01:16,783
+A suburb with no matches produces a useful empty state.
+
+18
+00:01:16,783 --> 00:01:21,454
+Invalid dates and identifiers receive validation messages
+instead of a failed page.
+
+19
+00:01:21,454 --> 00:01:25,347
+Loading, retry and error states are handled through DOM updates.
+
+20
+00:01:28,280 --> 00:01:34,611
+The event page loads its details and all associated public
+registrations through the API.
+
+21
+00:01:34,611 --> 00:01:40,490
+Registrations are ordered by registration time, newest first,
+with the identifier breaking ties.
+
+22
+00:01:40,490 --> 00:01:46,821
+Names, ticket quantities and dates appear publicly; contact
+details are omitted from this list.
+
+23
+00:01:46,821 --> 00:01:53,153
+Selecting three tickets updates the displayed total, and
+Register opens a dedicated page for
+
+24
+00:01:53,153 --> 00:01:54,057
+this event.
+
+25
+00:01:54,057 --> 00:01:58,579
+The page shows the event date, venue, organiser and price.
+
+26
+00:01:58,579 --> 00:02:03,102
+The visitor enters a name, email address and contact phone.
+
+27
+00:02:03,102 --> 00:02:07,172
+Required fields and contact formats are checked before
+submission.
+
+28
+00:02:07,172 --> 00:02:13,503
+The server checks them again, obtains the ticket price and
+current time itself, and
+
+29
+00:02:13,503 --> 00:02:14,859
+saves the registration.
+
+30
+00:02:17,640 --> 00:02:21,508
+The confirmation identifies the saved registration and the
+ticket total.
+
+31
+00:02:21,508 --> 00:02:24,602
+No online payment is processed by this application.
+
+32
+00:02:24,602 --> 00:02:30,017
+Returning to the event shows the new attendee at the top of the
+list.
+
+33
+00:02:30,017 --> 00:02:34,271
+Refreshing still shows the registration because it is stored in
+MySQL.
+
+34
+00:02:34,271 --> 00:02:39,686
+The same email address cannot register for this event a second
+time, even if
+
+35
+00:02:39,686 --> 00:02:41,233
+the letter case changes.
+
+36
+00:02:41,233 --> 00:02:44,328
+The same person may register for another event.
+
+37
+00:02:44,328 --> 00:02:49,743
+An email and event pair is protected by a unique database index,
+rather than
+
+38
+00:02:49,743 --> 00:02:51,676
+relying only on the browser.
+
+39
+00:02:51,676 --> 00:02:57,091
+Events that have ended cannot receive new registrations, and
+suspended events are unavailable publicly.
+
+40
+00:02:59,800 --> 00:03:05,985
+The staff website has consistent navigation to Events, New
+event, Categories and the public
+
+41
+00:03:05,985 --> 00:03:06,427
+site.
+
+42
+00:03:06,427 --> 00:03:11,286
+Its list includes every event, including active, past and
+suspended records.
+
+43
+00:03:11,286 --> 00:03:16,146
+Staff can use the status filter to focus on one group.
+
+44
+00:03:16,146 --> 00:03:22,331
+Editing an event retrieves its existing values, together with
+the full registration list and
+
+45
+00:03:22,331 --> 00:03:23,215
+contact details.
+
+46
+00:03:23,215 --> 00:03:28,958
+Past is calculated from the end time, while suspended is a
+publication choice.
+
+47
+00:03:28,958 --> 00:03:35,143
+The brief allows this teaching version to omit authentication,
+so it should use fictional
+
+48
+00:03:35,143 --> 00:03:36,026
+data only.
+
+49
+00:03:36,026 --> 00:03:42,211
+A production service would need staff authentication and access
+controls before collecting real personal
+
+50
+00:03:42,211 --> 00:03:42,653
+information.
+
+51
+00:03:45,120 --> 00:03:50,022
+The new event form validates required descriptions, dates,
+amounts and category choices.
+
+52
+00:03:50,022 --> 00:03:55,740
+Save sends a JSON request to the creation endpoint and returns
+the stored identifier.
+
+53
+00:03:55,740 --> 00:04:00,642
+The same form then edits that record with a full update request.
+
+54
+00:04:00,642 --> 00:04:05,544
+Suspending the event removes it from public discovery while
+retaining its records.
+
+55
+00:04:05,544 --> 00:04:09,629
+Deleting an event asks for confirmation and calls the API.
+
+56
+00:04:09,629 --> 00:04:15,347
+An event with registrations is refused with a clear explanation,
+so it can be
+
+57
+00:04:15,347 --> 00:04:16,164
+suspended instead.
+
+58
+00:04:16,164 --> 00:04:18,615
+An unused event can be deleted.
+
+59
+00:04:18,615 --> 00:04:24,334
+The category screen also supports creation, editing and
+deletion, and prevents deletion of a
+
+60
+00:04:24,334 --> 00:04:27,602
+category that is still used by an event.
+
+61
+00:04:30,640 --> 00:04:34,632
+The database contains organisations, categories, events and
+registrations.
+
+62
+00:04:34,632 --> 00:04:41,618
+Registrations reference events through a foreign key and store
+attendee details, ticket quantity, a
+
+63
+00:04:41,618 --> 00:04:44,612
+unit price snapshot and registration time.
+
+64
+00:04:44,612 --> 00:04:49,103
+Twelve fictional registrations are included in the initial SQL.
+
+65
+00:04:49,103 --> 00:04:53,095
+The unique event and email index prevents duplicates.
+
+66
+00:04:53,095 --> 00:04:56,588
+The restricted foreign key prevents orphaned registrations.
+
+67
+00:04:56,588 --> 00:05:03,574
+The registration API starts a transaction and locks the event
+row before checking availability
+
+68
+00:05:03,574 --> 00:05:05,570
+and inserting the record.
+
+69
+00:05:05,570 --> 00:05:09,063
+Updates and deletion take the same lock.
+
+70
+00:05:09,063 --> 00:05:11,059
+This coordinates concurrent changes.
+
+71
+00:05:11,059 --> 00:05:18,045
+The integration tests exercise both duplicate submissions and
+registration against deletion, using a real
+
+72
+00:05:18,045 --> 00:05:19,542
+isolated MySQL database.
+
+73
+00:05:22,000 --> 00:05:26,751
+The client uses plain JavaScript modules, fetch and async
+functions.
+
+74
+00:05:26,751 --> 00:05:31,502
+API responses are rendered using text content and DOM elements.
+
+75
+00:05:31,502 --> 00:05:36,253
+The staff forms send JSON and show server validation errors.
+
+76
+00:05:36,253 --> 00:05:41,954
+Weather is an optional server-side call to Open Meteo using
+event coordinates.
+
+77
+00:05:41,954 --> 00:05:46,230
+The interface shows conditions and daily temperatures when
+available.
+
+78
+00:05:46,230 --> 00:05:52,882
+Dates beyond the sixteen day forecast window, missing
+coordinates and network failures produce an
+
+79
+00:05:52,882 --> 00:05:54,782
+explanation without blocking registration.
+
+80
+00:05:54,782 --> 00:06:01,434
+Seventy-one backend tests and forty-six browser checks passed
+locally, including Chromium and WebKit at
+
+81
+00:06:01,434 --> 00:06:03,809
+mobile, tablet and desktop widths.
+
+82
+00:06:03,809 --> 00:06:07,610
+The source packages and deployment guide are prepared.
+
+83
+00:06:07,610 --> 00:06:14,262
+Both SCU deployments, the final OneDrive share link and
+individual contribution explanations remain to
+
+84
+00:06:14,262 --> 00:06:16,637
+be completed before assessment submission.

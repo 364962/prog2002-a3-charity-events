@@ -12,7 +12,7 @@ teaching application's scope; do not use it to collect real customer data.
 ## Start locally
 
 Use the repository checkout, or extract the three source archives into one
-directory when the final packages are available. Keep `api`, `clientside` and
+directory. Keep `api`, `clientside` and
 `adminside` as siblings. `app.js` is the application-root startup file.
 
 1. Create a **new empty database** and import the supplied SQL once:
@@ -129,14 +129,36 @@ results are in `project/evidence/milestone-3-browser-results.json`. Root startup
 checks are recorded in `project/evidence/milestone-3-startup-smoke.json`: all
 8 passed on an exported source snapshot with freshly installed production
 dependencies. These are local startup checks, not hosted deployment results.
+The fourth milestone also passed 7 delivery-content checks and 8 startup checks
+from the extracted source archives with fresh production dependencies. See
+`project/evidence/milestone-4-package-checks.json` and
+`project/evidence/milestone-4-archive-smoke.json`. The former records the tested
+runtime files' SHA-256 values so subsequent document-only packaging can be compared.
 
 ## Delivery
 
 See `project/DEPLOYMENT.md` for hosting preparation and
 `project/DELIVERY_PLAN.md` for milestone records. The current source includes
 the public website, staff website, API and application-root startup entry.
-Final project documentation, packaging and demonstration materials remain
-local for the final delivery milestone.
+`project/PROJECT_DOCUMENTATION.md` describes the architecture and verification;
+`project/SUBMISSION_CHECKLIST.md` lists deliverables and outstanding external steps.
+The report builder and captured interface figures are versioned. From a checkout:
+
+```sh
+python3 -m pip install -r project/requirements.txt
+python3 project/build_documentation.py
+python3 project/package_delivery.py
+```
+
+This creates a PDF, three source ZIPs per student, a separate SQL file and a
+SHA-256 manifest under `deliverables/A3`, plus `deliverables/A3-Local-Delivery.zip`.
+The source archives include only tracked/staged application, test and project
+files. `project/demo` contains the English transcript, captions and recording
+metadata. To include the existing local MP4, add `--include-video` when packaging.
+The MP4 and generated deliverables are local artifacts, not files stored in Git.
+The seven-page report and six-minute local walkthrough still require the final
+hosting and individual submission evidence described in the checklist.
+
 Each student must deploy to their own cPanel destination. cPanel, cohort/Team ID,
 marker repository access, SCU OneDrive sharing and confidential peer evaluations
 remain pending external inputs. Local completion is not a claim of deployment.

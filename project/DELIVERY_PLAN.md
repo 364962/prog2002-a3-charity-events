@@ -13,14 +13,15 @@ These identify the intended team. They are not evidence that either member has
 completed or reviewed a particular feature. Both members must record their actual
 work, review decisions and individual explanation of the implementation.
 
-## Proposed milestones
+## Milestones and remaining hosting work
 
 | Target date | Scope | Verification before submission |
 | --- | --- | --- |
 | 6 October 2026 | Reuse A2 foundation; registration schema, seed data and constraints | Import into an isolated database; duplicate and deletion constraints |
 | 7 October 2026 | Registration, event and category APIs; public registration flow and forecast | API integration tests, duplicate/deletion races and public browser workflows |
 | 7 October 2026 (second round) | Staff event/category pages; complete browser verification; deployment startup preparation | Staff CRUD, deletion-dialog cancellation, responsive layouts and root-startup checks |
-| 11 October 2026 | Deployment checks, documentation and delivery packaging | Both students' cPanel sites, archive smoke checks and live demonstration |
+| 7 October 2026 (third round) | Technical report, local evidence, demonstration text and delivery packaging | PDF page review, archive contents, clean dependency install and extracted application smoke checks |
+| Pending SCU account availability | Both students' live deployments and final submission evidence | Each cPanel site, marker access, OneDrive link and personal peer evaluation |
 
 These are target dates, not claims of completed work. Commits use their actual
 timestamps. Later milestones may be prepared locally before they are reviewed
@@ -60,7 +61,7 @@ explanation of contributions, SCU OneDrive video sharing, and confidential peer
 evaluation forms completed by each member. No peer scores or claimed student work
 will be invented. The repository invitation has been accepted by `drilinghan-stack`.
 
-## Current checkpoint - 6 October 2026
+## First checkpoint - 6 October 2026 (historical)
 
 - First milestone pushed: `6a0a39d` under `364962` (schema, seed data and integrity checks), followed by `99e73dc` under `drilinghan-stack` (visitor/staff workflow and acceptance plan).
 - Local later-stage implementation: registration API/page, staff CRUD, categories
@@ -109,9 +110,32 @@ account availability. This round does not assert a successful hosted deployment.
   category CRUD, protected deletion feedback and repeatable cancel/Escape handling.
   All 46 checks passed in Chromium and WebKit on an isolated staged-source export,
   covering the public flows, staff pages and mobile layouts.
-- `364962`: application-root `app.js`, cPanel preparation instructions, the current
+- `364962`: commit `f523a36`, application-root `app.js`, cPanel preparation instructions, the current
   runtime README and isolated startup verification. All 8 startup checks passed
   on an exported source snapshot with fresh production dependencies. The application directory must
   contain sibling `api`, `clientside` and `adminside` folders.
 - Both submissions use the authorised account operation arrangement and actual
   timestamps. The remote commit history records the exact account and changes.
+
+## Fourth milestone - 7 October 2026, third submission round
+
+The user requested the next round on 7 October. Local documentation and packaging
+therefore moved from the earlier 11 October target to this date. Live deployment
+is a separate outstanding task because neither SCU account is available yet.
+
+- `364962`: commit `cb59dd0`, technical documentation, the report builder and its
+  dependency, six captured interface views and dated verification evidence.
+  The updated seven-page PDF was rendered and visually checked page by page.
+- `drilinghan-stack`: submission checklist, tracked-source packaging with checksums,
+  English demo transcript/captions/metadata and final source handover instructions.
+  The exact hash and timestamp of this submission are recorded in Git history.
+- Local release verification: 7 archive-content/checksum checks and 8 extracted
+  application startup checks passed with fresh production dependencies. The two
+  student sets contain identical source; each separate SQL matches the API copy.
+  The 379.148-second MP4 has 84 ordered subtitle cues and eight transcript chapters.
+  The dated records and tested runtime checksums are under `project/evidence`.
+- The source and local delivery materials are prepared. Git account attribution
+  describes the authorised delegated operations; individual assessed explanations
+  and peer evaluations still need to reflect each student's actual work.
+- Both cPanel deployments, cohort/Team ID, marker repository access, final OneDrive
+  sharing and personal submission evidence remain pending. No automatic push is scheduled.

@@ -34,6 +34,22 @@
       "failed": 0,
       "source": "milestone-3-startup-smoke.json",
       "scope": "Exported source with fresh production dependencies"
+    },
+    {
+      "date": "2026-10-07",
+      "kind": "delivery archive contents and checksums",
+      "passed": 7,
+      "failed": 0,
+      "source": "milestone-4-package-checks.json",
+      "scope": "Two equivalent sets of three source ZIPs, report, SQL, local video and manifest"
+    },
+    {
+      "date": "2026-10-07",
+      "kind": "extracted archive startup",
+      "passed": 8,
+      "failed": 0,
+      "source": "milestone-4-archive-smoke.json",
+      "scope": "Extracted final source archives with fresh production dependencies and disposable MySQL database"
     }
   ],
   "baseline_checks": [

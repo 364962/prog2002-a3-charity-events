@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-07T14:21:26.967Z",
+  "source": "Extracted final delivery source archives with fresh production dependencies",
+  "hosting": "Local startup only; cPanel deployment pending",
+  "passed": 8,
+  "checks": [
+    "Extracted root app.js starts with installed production dependencies",
+    "Public, registration and all staff pages/scripts/styles are served",
+    "Credentials and SQL are not served as static files",
+    "Portable SQL provides seeded public registration data",
+    "Registration persists through extracted API",
+    "Extracted API blocks deletion of registered events",
+    "All-status staff listing works",
+    "Extracted SQL matches the complete source SQL"
+  ]
+}
