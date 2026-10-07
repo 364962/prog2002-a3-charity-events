@@ -1,0 +1,71 @@
+{
+  "updated": "2026-10-07",
+  "scope": "Local verification only; each record retains its actual execution date.",
+  "current_checks": [
+    {
+      "date": "2026-10-07",
+      "kind": "backend integration",
+      "passed": 71,
+      "failed": 0,
+      "source": "milestone-2-api-tests.txt",
+      "scope": "Isolated staged milestone-2 source"
+    },
+    {
+      "date": "2026-10-07",
+      "kind": "public and staff browser",
+      "passed": 46,
+      "failed": 0,
+      "source": "milestone-3-browser-results.json",
+      "scope": "Isolated staged milestone-3 source",
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "viewport_widths": [
+        390,
+        768,
+        1440
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "kind": "production startup",
+      "passed": 8,
+      "failed": 0,
+      "source": "milestone-3-startup-smoke.json",
+      "scope": "Exported source with fresh production dependencies"
+    }
+  ],
+  "baseline_checks": [
+    {
+      "date": "2026-10-06",
+      "kind": "backend integration",
+      "passed": 71,
+      "source": "api-tests.txt"
+    },
+    {
+      "date": "2026-10-06",
+      "kind": "public and staff browser",
+      "passed": 46,
+      "source": "browser-results.json"
+    },
+    {
+      "date": "2026-10-06",
+      "kind": "extracted source archive",
+      "passed": 8,
+      "source": "package-smoke.json"
+    },
+    {
+      "date": "2026-10-06",
+      "kind": "live forecast",
+      "result": "Event 1 forecast available at recorded retrieval time",
+      "source": "live-weather.json"
+    }
+  ],
+  "screenshots": {
+    "captured": "2026-10-06",
+    "directory": "../figures",
+    "scope": "Running local application; no SCU hosting claim"
+  },
+  "hosting": "Both SCU cPanel accounts pending; no hosted verification completed"
+}
