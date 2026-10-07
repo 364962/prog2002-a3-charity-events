@@ -18,8 +18,8 @@ work, review decisions and individual explanation of the implementation.
 | Target date | Scope | Verification before submission |
 | --- | --- | --- |
 | 6 October 2026 | Reuse A2 foundation; registration schema, seed data and constraints | Import into an isolated database; duplicate and deletion constraints |
-| 8 October 2026 | Registration, event and category APIs; validation | API integration tests, duplicate submissions and deletion races |
-| 10 October 2026 | Registration flow; admin events and categories; optional weather | Browser workflows, responsive layouts and error states |
+| 7 October 2026 | Registration, event and category APIs; public registration flow and forecast | API integration tests, duplicate/deletion races and public browser workflows |
+| 10 October 2026 | Staff event and category pages; full staff browser verification | Create/edit/delete, deletion-dialog cancellation, responsive layouts and error states |
 | 11 October 2026 | Deployment checks, documentation and delivery packaging | Both students' cPanel sites, archive smoke checks and live demonstration |
 
 These are target dates, not claims of completed work. Commits use their actual
@@ -59,3 +59,41 @@ individual deployment validation, tutor access to the repository, an individual
 explanation of contributions, SCU OneDrive video sharing, and confidential peer
 evaluation forms completed by each member. No peer scores or claimed student work
 will be invented. The repository invitation has been accepted by `drilinghan-stack`.
+
+## Current checkpoint - 6 October 2026
+
+- First milestone pushed: `6a0a39d` under `364962` (schema, seed data and integrity checks), followed by `99e73dc` under `drilinghan-stack` (visitor/staff workflow and acceptance plan).
+- Local later-stage implementation: registration API/page, staff CRUD, categories
+  and optional forecast; 71 backend tests and 46 browser checks passed.
+- Owner `364962` and collaborator `drilinghan-stack` have authorised CLI access.
+  Active CLI and repository-local Git identity: `drilinghan-stack` / Zhuolin Han.
+  This records the delegated test account in use, not independent human authorship.
+- User reports teacher authorisation for the test scenario. The exact assessed
+  declaration should reflect the applicable authorisation and actual assistance.
+- Planned later commits have not been backdated or pushed early. Later-stage
+  files remain local until their respective real milestone submissions.
+
+Before each future commit, verify the active GitHub login and the commit's Git
+identity, review only the intended module diff and run the relevant tests.
+For owner API work use `gh auth switch --user 364962`; for the collaborator UI
+stage use `gh auth switch --user drilinghan-stack`. Authentication and commit
+identity are separate settings and both must match the intended operation.
+
+## Second milestone - 7 October 2026
+
+The user requested the next submissions on 7 October, so this milestone moved
+from its earlier 8 October target to the actual submission date. It includes
+the public registration flow as well as the APIs. Staff pages and final delivery
+materials remain for subsequent milestones; there is no automatic push schedule.
+
+- `364962`: commit `e1b27e3`, registration and staff CRUD APIs, write validation,
+  ordered registration data, weather service, API examples and backend tests.
+  All 71 backend tests passed on an export of the staged source.
+- `drilinghan-stack`: the accompanying public-interface commit adds registration,
+  confirmation, newest-first attendee lists, shared form styles and public browser
+  checks. All 38 public browser checks passed in Chromium and WebKit on the
+  exported submission, without the local staff pages.
+- These account operations continue the authorised delegated test workflow.
+  Commit identities and actual times identify the account used for each operation.
+- cPanel access, cohort/Team ID, marker access and personal submission evidence
+  remain pending as described above.

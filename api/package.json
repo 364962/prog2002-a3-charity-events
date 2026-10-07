@@ -1,8 +1,8 @@
 {
   "name": "good-together-charity-events-api",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Charity event discovery for the Gold Coast",
+  "description": "Charity event registration and administration for the Gold Coast",
   "engines": {
     "node": ">=20"
   },
@@ -10,7 +10,8 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "db:check": "node scripts/check-db.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "test:browser": "node scripts/browser-check.js"
   },
   "dependencies": {
     "dotenv": "^17.2.0",

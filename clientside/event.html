@@ -96,6 +96,32 @@
               <a id="detail-contact" class="text-link" href="#"></a>
               <p id="detail-phone"></p>
             </section>
+            <section
+              class="detail-section"
+              aria-labelledby="registrations-title"
+            >
+              <p class="eyebrow">OUR COMMUNITY</p>
+              <h2 id="registrations-title">Who's joining us.</h2>
+              <p id="registration-count" class="muted"></p>
+              <p id="registrations-empty" class="notice" hidden>
+                Be the first to register for this event.
+              </p>
+              <div class="table-scroll">
+                <table id="registrations-table">
+                  <caption>
+                    Registrations · newest first · Brisbane time
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Tickets</th>
+                      <th scope="col">Registered</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
           </div>
           <aside class="event-sidebar" aria-label="Tickets and fundraising">
             <div class="ticket-panel">
@@ -112,6 +138,10 @@
                   <option value="4">4 tickets</option>
                   <option value="5">5 tickets</option>
                   <option value="6">6 tickets</option>
+                  <option value="7">7 tickets</option>
+                  <option value="8">8 tickets</option>
+                  <option value="9">9 tickets</option>
+                  <option value="10">10 tickets</option>
                 </select>
                 <div class="ticket-total">
                   <span>Total</span><strong id="ticket-total"></strong>
@@ -120,7 +150,8 @@
                   Register <span aria-hidden="true">↗</span>
                 </button>
                 <p class="ticket-note" id="registration-note">
-                  Registration is coming soon. No payment is taken.
+                  Reserve your place in the next step. No online payment is
+                  taken.
                 </p>
               </form>
               <p id="past-note" class="notice" hidden>
@@ -145,32 +176,30 @@
                 its goal.
               </p>
             </div>
+            <section class="weather-panel" aria-labelledby="weather-title">
+              <p class="eyebrow">PLAN YOUR DAY</p>
+              <h2 id="weather-title">The forecast.</h2>
+              <p id="weather-status" role="status">Checking the weather…</p>
+              <p
+                id="weather-temperature"
+                class="weather-temperature"
+                hidden
+              ></p>
+              <a
+                class="text-link"
+                href="https://open-meteo.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Weather by Open-Meteo ↗</a
+              >
+              <p class="muted">
+                Forecasts can change. Check again before you head out.
+              </p>
+            </section>
           </aside>
         </div>
       </article>
     </main>
-    <dialog
-      id="registration-dialog"
-      aria-labelledby="dialog-title"
-      aria-describedby="dialog-description"
-    >
-      <form method="dialog">
-        <button class="dialog-close" aria-label="Close registration message">
-          ×</button
-        ><span class="dialog-icon" aria-hidden="true">✳</span>
-        <p class="eyebrow">GOOD THINGS TAKE A LITTLE TIME</p>
-        <h2 id="dialog-title">Registration is on its way.</h2>
-        <p id="dialog-description">
-          This feature is currently under construction.
-        </p>
-        <p class="muted">
-          No tickets have been booked and no payment has been taken.
-        </p>
-        <button class="button" autofocus>
-          Got it <span aria-hidden="true">↗</span>
-        </button>
-      </form>
-    </dialog>
     <footer class="site-footer">
       <div class="container footer-main">
         <div>

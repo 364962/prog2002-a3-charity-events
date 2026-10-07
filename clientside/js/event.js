@@ -1,13 +1,14 @@
-import { getJSON, money, formatDate, showError } from "./common.js";
+import {
+  getJSON,
+  money,
+  formatDate,
+  showError,
+  renderRegistrations,
+} from "./common.js";
 const article = document.querySelector("#event-detail");
 const status = document.querySelector("#detail-status");
 const error = document.querySelector("#detail-error");
 const retry = document.querySelector("#retry-detail");
-const dialog = document.querySelector("#registration-dialog");
-// WebKit does not always focus a clicked button before opening a dialog.
-dialog.addEventListener("close", () => {
-  document.querySelector("#register-button").focus();
-});
 const quantity = document.querySelector("#ticket-quantity");
 const put = (id, value) => {
   document.getElementById(id).textContent = value;
@@ -24,19 +25,8 @@ function updateTotal() {
 quantity.addEventListener("change", updateTotal);
 document.querySelector("#registration-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  if (currentEvent?.event_status !== "past") dialog.showModal();
-});
-dialog.addEventListener("click", (e) => {
-  if (e.target === dialog) {
-    const rect = dialog.getBoundingClientRect();
-    if (
-      e.clientX < rect.left ||
-      e.clientX > rect.right ||
-      e.clientY < rect.top ||
-      e.clientY > rect.bottom
-    )
-      dialog.close();
-  }
+  if (currentEvent?.event_status !== "past")
+    location.href = `/registration.html?id=${currentEvent.id}&quantity=${quantity.value}`;
 });
 async function loadEvent() {
   showError(error, "");
@@ -122,6 +112,17 @@ async function loadEvent() {
     document.querySelector("#registration-form").hidden =
       event.event_status === "past";
     document.querySelector("#past-note").hidden = event.event_status !== "past";
+    renderRegistrations(
+      event.registrations,
+      document.querySelector("#registrations-table"),
+    );
+    document.querySelector("#registrations-empty").hidden =
+      event.registrations.length > 0;
+    put(
+      "registration-count",
+      `${event.registration_count} registrations · ${event.tickets_reserved} tickets reserved`,
+    );
+    loadWeather(event.id);
     updateTotal();
     article.hidden = false;
     status.hidden = true;
@@ -133,3 +134,24 @@ async function loadEvent() {
 }
 retry.addEventListener("click", loadEvent);
 loadEvent();
+
+async function loadWeather(id) {
+  try {
+    const { data } = await getJSON(`/api/events/${id}/weather`);
+    put(
+      "weather-status",
+      data.available
+        ? `${data.description} · ${formatDate(data.date + " 12:00:00", { day: "numeric", month: "long" })}`
+        : data.message,
+    );
+    if (data.available) {
+      put("weather-temperature", `${data.min}–${data.max} °C`);
+      document.querySelector("#weather-temperature").hidden = false;
+    }
+  } catch {
+    put(
+      "weather-status",
+      "The forecast is temporarily unavailable. You can still register.",
+    );
+  }
+}

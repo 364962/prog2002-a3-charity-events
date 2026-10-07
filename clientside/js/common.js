@@ -52,6 +52,66 @@ export function showError(element, message) {
   element.textContent = message || "";
   element.hidden = !message;
 }
+export async function sendJSON(path, method, body) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(path, {
+      method,
+      signal: controller.signal,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    if (response.status === 204) return null;
+    const result = await response.json();
+    if (!response.ok)
+      throw new Error(result.error || "The change could not be saved.");
+    return result;
+  } catch (error) {
+    if (error instanceof TypeError || controller.signal.aborted)
+      throw new Error(
+        "The service did not respond. Check the event before retrying; your change may have been saved.",
+      );
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export function renderRegistrations(rows, table, staff = false) {
+  const body = table.querySelector("tbody");
+  body.replaceChildren();
+  for (const record of rows) {
+    const row = document.createElement("tr");
+    const values = [
+      record.full_name,
+      record.ticket_quantity,
+      formatDate(record.registered_at, {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    ];
+    if (staff)
+      values.push(
+        record.email,
+        record.phone,
+        money(record.unit_price * record.ticket_quantity),
+      );
+    for (const value of values) {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.append(cell);
+    }
+    body.append(row);
+  }
+  table.hidden = rows.length === 0;
+}
 export function renderEvents(events, grid) {
   const template = document.querySelector("#event-card-template");
   const fragment = document.createDocumentFragment();
