@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Categories | Good Together staff</title>
+    <link rel="icon" href="/assets/mark.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="module" src="/admin/js/categories.js"></script>
+  </head>
+  <body class="admin-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/admin/"
+          ><img src="/assets/mark.svg" alt="" width="35" height="35" /><span
+            >good<span class="brand-light">together</span>.</span
+          ></a
+        ><span class="staff-label">STAFF DESK</span>
+        <nav aria-label="Staff navigation">
+          <a href="/admin/">Events</a><a href="/admin/event.html">New event</a
+          ><a href="/admin/categories.html" aria-current="page">Categories</a
+          ><a href="/">Public site ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container workspace-page">
+      <div class="page-heading">
+        <p class="eyebrow">HELP PEOPLE FIND THEIR THING</p>
+        <h1>A place for every cause.</h1>
+        <p>Keep event categories clear, useful and easy to explore.</p>
+      </div>
+      <div id="admin-error" class="notice error" role="alert" hidden></div>
+      <p id="admin-notice" class="notice" role="status" hidden></p>
+      <div class="category-layout">
+        <section class="surface-card">
+          <h2>Categories.</h2>
+          <div class="table-scroll">
+            <table id="category-table">
+              <caption>
+                Categories and the events using them
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Category</th>
+                  <th scope="col">Events</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="surface-card">
+          <h2 id="category-form-title">Add a category.</h2>
+          <form id="category-form" novalidate>
+            <div class="field">
+              <label for="category-name">Name</label
+              ><input id="category-name" required maxlength="60" />
+            </div>
+            <div class="field">
+              <label for="category-description">Description</label
+              ><textarea
+                id="category-description"
+                required
+                maxlength="255"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="action-row">
+              <button class="button" type="submit" id="save-category">
+                Save category</button
+              ><button
+                class="button secondary"
+                type="button"
+                id="reset-category"
+              >
+                Clear
+              </button>
+            </div>
+            <p class="form-help">
+              A category used by an event cannot be deleted.
+            </p>
+          </form>
+        </section>
+      </div>
+      <dialog
+        id="category-delete-dialog"
+        aria-labelledby="category-delete-title"
+      >
+        <form method="dialog">
+          <h2 id="category-delete-title">Delete category?</h2>
+          <p id="category-delete-name"></p>
+          <div class="action-row">
+            <button class="button secondary" value="cancel" autofocus>
+              Keep category</button
+            ><button class="button danger" value="delete">
+              Delete category
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer class="container admin-footer">
+      Good Together · Fictional community project · All dates use Brisbane time
+      (UTC+10).
+    </footer>
+    <noscript
+      ><p class="noscript">
+        Enable JavaScript to use the staff desk.
+      </p></noscript
+    >
+  </body>
+</html>

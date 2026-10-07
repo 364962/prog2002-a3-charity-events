@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit event | Good Together staff</title>
+    <link rel="icon" href="/assets/mark.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="module" src="/admin/js/event.js"></script>
+  </head>
+  <body class="admin-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/admin/"
+          ><img src="/assets/mark.svg" alt="" width="35" height="35" /><span
+            >good<span class="brand-light">together</span>.</span
+          ></a
+        ><span class="staff-label">STAFF DESK</span>
+        <nav aria-label="Staff navigation">
+          <a href="/admin/">Events</a
+          ><a href="/admin/event.html" aria-current="page">New event</a
+          ><a href="/admin/categories.html">Categories</a
+          ><a href="/">Public site ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container workspace-page">
+      <a class="back-link" href="/admin/">← All events</a>
+      <div class="page-heading">
+        <p class="eyebrow">MAKE SOMETHING GOOD HAPPEN</p>
+        <h1 id="editor-title">Create an event.</h1>
+        <p>Tell the story. Set the details. Bring people together.</p>
+      </div>
+      <div id="admin-error" class="notice error" role="alert" hidden></div>
+      <p id="admin-notice" class="notice" role="status" hidden></p>
+      <p id="editor-loading" role="status">Loading the editor…</p>
+      <section id="editor-section" class="surface-card" hidden>
+        <form id="event-editor" novalidate>
+          <p class="muted">
+            All fields are required except coordinates. Use both coordinates for
+            weather, or leave both empty. Past status is calculated from the end
+            time.
+          </p>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Event name</label
+              ><input
+                id="name"
+                name="name"
+                type="text"
+                required
+                maxlength="150"
+              />
+            </div>
+            <div class="field">
+              <label for="category_id">Category</label
+              ><select id="category_id" name="category_id" required></select>
+            </div>
+            <div class="field">
+              <label for="organisation_id">Organisation</label
+              ><select
+                id="organisation_id"
+                name="organisation_id"
+                required
+              ></select>
+            </div>
+            <div class="field">
+              <label for="publication_status">Publication</label
+              ><select
+                id="publication_status"
+                name="publication_status"
+                required
+              ></select>
+            </div>
+            <div class="field full-width">
+              <label for="summary">Short summary</label
+              ><textarea
+                id="summary"
+                name="summary"
+                required
+                maxlength="255"
+                rows="2"
+              ></textarea>
+            </div>
+            <div class="field full-width">
+              <label for="description">About this event</label
+              ><textarea
+                id="description"
+                name="description"
+                required
+                maxlength="12000"
+                rows="6"
+              ></textarea>
+            </div>
+            <div class="field full-width">
+              <label for="purpose">Fundraising purpose</label
+              ><textarea
+                id="purpose"
+                name="purpose"
+                required
+                maxlength="500"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="field">
+              <label for="starts_at">Starts · Brisbane time</label
+              ><input
+                id="starts_at"
+                name="starts_at"
+                type="datetime-local"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="ends_at">Ends · Brisbane time</label
+              ><input
+                id="ends_at"
+                name="ends_at"
+                type="datetime-local"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="venue">Venue</label
+              ><input
+                id="venue"
+                name="venue"
+                type="text"
+                required
+                maxlength="150"
+              />
+            </div>
+            <div class="field">
+              <label for="location">Suburb</label
+              ><input
+                id="location"
+                name="location"
+                type="text"
+                required
+                maxlength="100"
+              />
+            </div>
+            <div class="field">
+              <label for="address">Street address</label
+              ><input
+                id="address"
+                name="address"
+                type="text"
+                required
+                maxlength="255"
+              />
+            </div>
+            <div class="field full-width">
+              <label for="accessibility">Accessibility information</label
+              ><textarea
+                id="accessibility"
+                name="accessibility"
+                required
+                maxlength="500"
+                rows="2"
+              ></textarea>
+            </div>
+            <div class="field">
+              <label for="ticket_price">Ticket price (AUD)</label
+              ><input
+                id="ticket_price"
+                name="ticket_price"
+                type="number"
+                required
+                min="0"
+                max="99999999.99"
+                step="0.01"
+                value="0"
+              />
+            </div>
+            <div class="field">
+              <label for="fundraising_goal">Fundraising goal (AUD)</label
+              ><input
+                id="fundraising_goal"
+                name="fundraising_goal"
+                type="number"
+                required
+                min="0.01"
+                max="9999999999.99"
+                step="0.01"
+              />
+            </div>
+            <div class="field">
+              <label for="amount_raised">Amount raised (AUD)</label
+              ><input
+                id="amount_raised"
+                name="amount_raised"
+                type="number"
+                required
+                min="0"
+                max="9999999999.99"
+                step="0.01"
+                value="0"
+              />
+            </div>
+            <div class="field">
+              <label for="image_path">Event image</label
+              ><select id="image_path" name="image_path" required></select>
+            </div>
+            <div class="field">
+              <label for="image_alt">Image description</label
+              ><input
+                id="image_alt"
+                name="image_alt"
+                type="text"
+                required
+                maxlength="255"
+              />
+            </div>
+            <div class="field">
+              <label for="latitude">Latitude (optional)</label
+              ><input
+                id="latitude"
+                name="latitude"
+                type="number"
+                min="-90"
+                max="90"
+                step="0.000001"
+              />
+            </div>
+            <div class="field">
+              <label for="longitude">Longitude (optional)</label
+              ><input
+                id="longitude"
+                name="longitude"
+                type="number"
+                min="-180"
+                max="180"
+                step="0.000001"
+              />
+            </div>
+          </div>
+          <div class="action-row">
+            <button id="save-event" class="button" type="submit">
+              Save event ↗</button
+            ><a class="button secondary" href="/admin/">Back to events</a
+            ><a id="preview-event" class="text-link" href="/" hidden
+              >View public page ↗</a
+            >
+          </div>
+        </form>
+      </section>
+      <section
+        id="staff-registrations"
+        class="surface-card spaced-section"
+        hidden
+      >
+        <p class="eyebrow">THE PEOPLE BEHIND THE NUMBERS</p>
+        <h2>Event registrations.</h2>
+        <p id="staff-registration-count"></p>
+        <p id="staff-registrations-empty" hidden>No registrations yet.</p>
+        <div class="table-scroll">
+          <table id="staff-registration-table">
+            <caption>
+              Newest first · Brisbane time
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Tickets</th>
+                <th scope="col">Registered</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer class="container admin-footer">
+      Good Together · Fictional community project · All dates use Brisbane time
+      (UTC+10).
+    </footer>
+    <noscript
+      ><p class="noscript">
+        Enable JavaScript to use the staff desk.
+      </p></noscript
+    >
+  </body>
+</html>

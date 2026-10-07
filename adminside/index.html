@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events | Good Together staff</title>
+    <link rel="icon" href="/assets/mark.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="module" src="/admin/js/events.js"></script>
+  </head>
+  <body class="admin-body">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/admin/"
+          ><img src="/assets/mark.svg" alt="" width="35" height="35" /><span
+            >good<span class="brand-light">together</span>.</span
+          ></a
+        ><span class="staff-label">STAFF DESK</span>
+        <nav aria-label="Staff navigation">
+          <a href="/admin/" aria-current="page">Events</a
+          ><a href="/admin/event.html">New event</a
+          ><a href="/admin/categories.html">Categories</a
+          ><a href="/">Public site ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container workspace-page">
+      <div class="page-heading heading-actions">
+        <div>
+          <p class="eyebrow">GOOD THINGS START HERE</p>
+          <h1>The events desk.</h1>
+          <p>A little organising. A lot of community.</p>
+        </div>
+        <a class="button" href="/admin/event.html">Create an event +</a>
+      </div>
+      <div id="admin-error" class="notice error" role="alert" hidden></div>
+      <p id="admin-notice" class="notice" role="status" hidden></p>
+      <div class="stat-grid" aria-label="Event totals">
+        <div><span>All events</span><strong id="stat-total">—</strong></div>
+        <div><span>Active</span><strong id="stat-active">—</strong></div>
+        <div><span>Past</span><strong id="stat-past">—</strong></div>
+        <div><span>Suspended</span><strong id="stat-suspended">—</strong></div>
+      </div>
+      <section class="surface-card">
+        <div class="list-toolbar">
+          <h2>Every event.</h2>
+          <div class="field">
+            <label for="event-filter">Show</label
+            ><select id="event-filter">
+              <option value="all">All statuses</option>
+              <option value="active">Active</option>
+              <option value="past">Past</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+          <button type="button" id="refresh-events" class="button secondary">
+            Refresh
+          </button>
+        </div>
+        <p id="events-loading" role="status">Loading events…</p>
+        <p id="events-empty" hidden>No events match this status.</p>
+        <div class="table-scroll">
+          <table id="staff-events">
+            <caption>
+              Events · newest start date first
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Event / location</th>
+                <th scope="col">Starts</th>
+                <th scope="col">Status</th>
+                <th scope="col">Tickets</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <dialog id="delete-dialog" aria-labelledby="delete-title">
+        <form method="dialog">
+          <p class="eyebrow">CHECK BEFORE REMOVING</p>
+          <h2 id="delete-title">Delete this event?</h2>
+          <p id="delete-description"></p>
+          <p>
+            Events with registrations cannot be deleted. Suspend them instead.
+          </p>
+          <div class="action-row">
+            <button class="button secondary" value="cancel" autofocus>
+              Keep event</button
+            ><button class="button danger" value="delete">Delete event</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer class="container admin-footer">
+      Good Together · Fictional community project · All dates use Brisbane time
+      (UTC+10).
+    </footer>
+    <noscript
+      ><p class="noscript">
+        Enable JavaScript to use the staff desk.
+      </p></noscript
+    >
+  </body>
+</html>
