@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-11T07:22:22.381318+00:00",
+  "public_url": "https://24832520.it.scu.edu.au/",
+  "staff_url": "https://24832520.it.scu.edu.au/admin/",
+  "method": "External in-app browser, normal HTTPS navigation and form submission",
+  "passed": 9,
+  "checks": [
+    "HTTPS home loaded all 10 public current/upcoming events",
+    "Southport plus Fun run filter returned event 1",
+    "Event detail loaded existing registrations and live weather",
+    "Dedicated registration page carried two tickets and AUD 50 total",
+    "Fictional browser registration confirmed as number 13",
+    "New registration appeared first and persisted after a page reload",
+    "Staff table loaded 12 events including past and suspended entries",
+    "Staff editor prefilled the event and included the test contact details",
+    "Category management loaded the original six categories"
+  ],
+  "test_data": "Fictional registration 13 removed after verification; hosted-checks.json records cleanup",
+  "screenshots": [
+    "home.jpg",
+    "admin.jpg",
+    "registration-confirmation.jpg"
+  ]
+}

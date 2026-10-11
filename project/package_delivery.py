@@ -35,7 +35,7 @@ def source_files():
         result.append(path)
     required = {'app.js', 'clientside/index.html', 'adminside/index.html',
                 'api/package-lock.json', 'api/database/charityevents_db.sql',
-                'project/SUBMISSION_CHECKLIST.md', 'project/package_delivery.py',
+                'project/SUBMISSION_CHECKLIST.md', 'project/package_delivery.py', 'project/deployments.json',
                 'project/demo/VIDEO-INFO.json', 'project/demo/A3-English-Transcript.md',
                 'project/demo/A3-English-Captions.srt'}
     missing = required - {p.relative_to(ROOT).as_posix() for p in result}
@@ -55,6 +55,7 @@ def main():
                         help='Include the existing local MP4; fail if it is missing.')
     args = parser.parse_args()
     paths = source_files()
+    deployments = json.loads((ROOT / 'project/deployments.json').read_text())
     pdf = ROOT / 'output/pdf/Good-Together-A3-Documentation.pdf'
     if not pdf.is_file():
         raise FileNotFoundError('Build the report first: python3 project/build_documentation.py')
@@ -97,8 +98,8 @@ def main():
         copy(ROOT / 'project/SUBMISSION_CHECKLIST.md', target / 'SUBMISSION_CHECKLIST.md')
         write(target / 'LINKS.txt',
               'GitHub: https://github.com/364962/prog2002-a3-charity-events\n'
-              'SCU public URL: pending account availability\n'
-              'SCU admin URL: pending account availability\n'
+              f"SCU public URL: {deployments[student]['public_url'] or 'pending account availability'}\n"
+              f"SCU admin URL: {deployments[student]['staff_url'] or 'pending account availability'}\n"
               'SCU OneDrive video: pending upload\n')
     for name in ('A3-English-Transcript.md', 'A3-English-Captions.srt', 'VIDEO-INFO.json'):
         copy(ROOT / 'project/demo' / name, OUT / 'shared' / name)
@@ -120,8 +121,9 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
 具体提交及实际日期见源码 project/DELIVERY_PLAN.md 和 GitHub 历史。
 使用实际提交时间，没有设置自动推送或倒填日期。
 
-测试日期、范围和结果见源码 project/evidence/summary.json，均为本地验证。
-正式提交尚需：教学组和 Team ID、两人各自的 SCU cPanel 部署、
+测试日期、范围和结果见源码 project/evidence/summary.json，包含本地测试与鲁彧的线上验收。
+鲁彧的 SCU 网站已上线，地址见其 LINKS.txt 和源码 project/deployments.json。
+正式提交尚需：教学组和 Team ID、韩卓林的 SCU cPanel 部署、
 教师对私有仓库的访问权限、SCU OneDrive 视频分享链接，以及各自的保密互评表。
 现有视频为本地技术演示，最终还需补充个人实际贡献与线上部署说明。
 如果 username 指 SCU 登录名而非学号，请在提交前改源码 ZIP 的前缀。
@@ -129,7 +131,8 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
 """)
     manifest = {
         'prepared_at': datetime.now(timezone.utc).isoformat(),
-        'status': 'Local delivery only; SCU deployment and personal submission evidence pending',
+        'status': 'Lu Yu SCU deployment verified; Han hosting and personal submission evidence pending',
+        'deployments': deployments,
         'source_head': git('rev-parse', 'HEAD').decode().strip(),
         'source_changes': git('diff', '--name-only', 'HEAD', '--', *SCOPES).decode().splitlines(),
         'source_note': 'Bytes come from tracked/staged working files; hashes identify the exact content.',

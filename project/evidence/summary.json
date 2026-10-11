@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-07",
-  "scope": "Local verification only; each record retains its actual execution date.",
+  "updated": "2026-10-11",
+  "scope": "Dated local and hosted verification; each record retains its actual execution date.",
   "current_checks": [
     {
       "date": "2026-10-07",
@@ -83,5 +83,17 @@
     "directory": "../figures",
     "scope": "Running local application; no SCU hosting claim"
   },
-  "hosting": "Both SCU cPanel accounts pending; no hosted verification completed"
+  "hosting": "Lu Yu deployed and verified on 11 October; Han account pending",
+  "hosted_checks": {
+    "student": "24832520",
+    "passed": 14,
+    "source": "scu-ylu35/hosted-checks.json",
+    "browser_evidence": "scu-ylu35/browser-checks.json"
+  },
+  "runtime_compatibility": {
+    "node": "18.20.8",
+    "date": "2026-10-11",
+    "backend_passed": 71,
+    "source": "scu-ylu35/node18-backend-tests.txt"
+  }
 }

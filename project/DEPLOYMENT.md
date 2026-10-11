@@ -1,9 +1,9 @@
 # Deploy Good Together to each student's SCU cPanel
 
-Status: accounts not yet available. These are preparation instructions, not a
-record of deployment. Repeat the procedure separately for each student; each
-person signs into their own account. Use the unit's SCU hosting tutorial when
-its settings differ from this general cPanel/Passenger preparation.
+Status on 11 October 2026: Lu Yu's SCU deployment is live and verified at
+https://24832520.it.scu.edu.au/ (staff: https://24832520.it.scu.edu.au/admin/).
+Zhuolin Han's deployment still awaits account access. Repeat the procedure for
+that account separately; use the unit's tutorial if its environment differs.
 
 1. Upload the source checkout, or extract the three final archives into one
    application directory under your hosting home directory. It must contain `app.js`, `api/`, `clientside/`, `adminside/`.
@@ -15,7 +15,10 @@ its settings differ from this general cPanel/Passenger preparation.
    phpMyAdmin. Verify 2 organisations, 6 categories, 12 events, 12 registrations.
    The SQL includes triggers. If trigger creation is forbidden, contact the
    tutor/hosting administrator rather than silently omitting integrity rules.
-3. Configure Node.js 20 or newer through the available application manager.
+3. Use the available Node.js application manager. Lu Yu's SCU account offers
+   Node.js 18.20.8; all 71 backend tests also pass on that exact version.
+   The package accepts Node.js 18.20.8 or newer. Use a supported newer runtime
+   where available; the university controls the installed hosting versions.
    Set the application root to the directory containing root `app.js`; use
    `app.js` as the startup file. Do not use `api/app.js`, which exports a factory.
    Install dependencies with `npm ci --omit=dev --prefix api` in the host's
@@ -41,13 +44,34 @@ Do not run disposable-database tests on shared hosting unless the host explicitl
 provides a test account with database creation/deletion privileges. Run the
 full automated suite locally, then perform the live acceptance checks above.
 
-## Evidence to complete after hosting becomes available
+## Hosting evidence
 
 | Student | Public URL | Staff URL | Live check | Status |
 | --- | --- | --- | --- | --- |
-| Lu Yu / 24832520 | Pending | Pending | Pending | cPanel not yet available |
+| Lu Yu / 24832520 | https://24832520.it.scu.edu.au/ | https://24832520.it.scu.edu.au/admin/ | 11 October 2026, 07:18 UTC | 14 HTTPS checks passed; browser registration verified |
 | Zhuolin Han / 24832119 | Pending | Pending | Pending | cPanel not yet available |
 
 Official startup and restart guidance:
 https://docs.cpanel.net/knowledge-base/web-services/how-to-install-a-node.js-application/
-The exact SCU product/version and enabled features have not yet been inspected.
+Lu Yu's environment: cPanel 110.0.150, CloudLinux Node.js 18.20.8,
+MySQL 5.7.44-cll-lve, Passenger production mode, private application directory
+`/home/ylu35/good-together-a3`, root startup `app.js`. The dedicated database is
+`ylu35_good_a3`; its credentials are stored only in the server's `api/.env`
+with mode 600. Original course databases and the original public `.htaccess`
+were preserved; its backup is inside the private application directory.
+
+The hosted check record and browser evidence are in `project/evidence/scu-ylu35`.
+The API checks use the public HTTPS hostname with certificate validation from
+the hosting server. An external browser separately verified discovery, combined
+search, registration/confirmation, refresh persistence, staff details and categories.
+The hosting firewall can present a browser-verification page to external command
+line clients; a 200 HTML challenge is not a successful JSON health check.
+Sensitive paths return either the host's 403 or the application's 404.
+Temporary test records were removed; 2 organisations, 6 categories, 12 events,
+12 registrations and all 4 integrity triggers remain.
+
+To restart, use **Setup Node.js App > good-together-a3 > Restart**, or touch
+`/home/ylu35/good-together-a3/tmp/restart.txt`. The manager provides the command
+`source /home/ylu35/nodevenv/good-together-a3/18/bin/activate` for its Node environment.
+Install API dependencies with `npm ci --omit=dev --prefix api` from the app root.
+Do not re-import the seed SQL into the live database during an ordinary update.

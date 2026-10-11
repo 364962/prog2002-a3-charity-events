@@ -1,0 +1,16 @@
+{
+  "24832520": {
+    "name": "Lu Yu",
+    "status": "deployed and verified",
+    "public_url": "https://24832520.it.scu.edu.au/",
+    "staff_url": "https://24832520.it.scu.edu.au/admin/",
+    "checked_at": "2026-10-11T07:18:19.647Z",
+    "evidence": "project/evidence/scu-ylu35/hosted-checks.json"
+  },
+  "24832119": {
+    "name": "Zhuolin Han",
+    "status": "pending account availability",
+    "public_url": null,
+    "staff_url": null
+  }
+}

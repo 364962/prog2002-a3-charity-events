@@ -4,7 +4,7 @@ PROG2002 Assessment 3. Team: Lu Yu (24832520) and Zhuolin Han (24832119).
 A3 builds on the existing Good Together A2 design and Git history.
 Private repository: https://github.com/364962/prog2002-a3-charity-events
 
-The application uses Node.js 20+, Express 5, MySQL 5.7+, HTML, CSS and plain
+The application uses Node.js 18.20.8+, Express 5, MySQL 5.7+, HTML, CSS and plain
 JavaScript with DOM updates and Promise-based API calls. Seed organisations,
 events and attendees are fictional. Payments and authentication are outside this
 teaching application's scope; do not use it to collect real customer data.
@@ -156,12 +156,16 @@ The source archives include only tracked/staged application, test and project
 files. `project/demo` contains the English transcript, captions and recording
 metadata. To include the existing local MP4, add `--include-video` when packaging.
 The MP4 and generated deliverables are local artifacts, not files stored in Git.
-The seven-page report and six-minute local walkthrough still require the final
+The report and six-minute local walkthrough still require the remaining
 hosting and individual submission evidence described in the checklist.
 
-Each student must deploy to their own cPanel destination. cPanel, cohort/Team ID,
-marker repository access, SCU OneDrive sharing and confidential peer evaluations
-remain pending external inputs. Local completion is not a claim of deployment.
+Lu Yu's site was deployed on 11 October 2026: https://24832520.it.scu.edu.au/
+and https://24832520.it.scu.edu.au/admin/. Its 14 HTTPS checks passed, and browser
+registration/persistence was verified. The university provides Node.js 18.20.8;
+all 71 backend tests also pass on this version. Hosting evidence and source
+checksums are in `project/evidence/scu-ylu35`.
+Han's separate cPanel deployment, cohort/Team ID, marker repository access,
+SCU OneDrive sharing and confidential peer evaluations remain pending.
 No AngularJS bonus is claimed; this implementation follows the permitted DOM
 and JavaScript route. Marks remain subject to the assessor's rubric.
 

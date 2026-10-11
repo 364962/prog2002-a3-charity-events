@@ -1,9 +1,9 @@
 # Good Together - A3 project documentation
 
-Prepared 7 October 2026. Team: Lu Yu (24832520); Zhuolin Han (24832119).
+Prepared 11 October 2026. Team: Lu Yu (24832520); Zhuolin Han (24832119).
 Repository: https://github.com/364962/prog2002-a3-charity-events (private).
 Cohort and Team ID: awaiting confirmation. Hosting status: local verification
-complete; both individual SCU deployments pending account availability.
+complete; Lu Yu SCU hosting verified, Han deployment pending account availability.
 
 ## 1. Scope and architecture
 
@@ -127,33 +127,39 @@ milestone-3-browser-results.json under project/evidence. Eight startup checks
 also passed on 7 October with fresh production dependencies; see
 milestone-3-startup-smoke.json. The evidence index records the actual dates of
 each run, including the 6 October baseline archive checks and live forecast.
-Historical A2 results in report/ are separate. Local tests do not demonstrate
-cPanel success. Repeat archive smoke checks before each release.
+Historical A2 results in report/ are separate. On 11 October, all 71 backend
+tests also passed on Node.js 18.20.8, the runtime supplied by SCU. Fourteen
+HTTPS checks and nine external-browser checks passed on Lu Yu's deployed site;
+see project/evidence/scu-ylu35. Repeat archive smoke checks before each release.
 A synthetic local walkthrough may help rehearse; the assessed explanation must
 also cover each student's actual contribution and deployed destinations.
 
 ## 7. Deployment and submission status
 
-The local application is configured to run at port 3090 with a separate A3 database.
-The source package contains a root app.js for Passenger. Exact SCU server
-settings await the students' cPanel accounts; follow project/DEPLOYMENT.md and
-the unit's hosting tutorial after access is available. Both students must deploy
-separately, verify their own URLs and record that evidence.
+Lu Yu's public site is https://24832520.it.scu.edu.au/ and its staff site is
+https://24832520.it.scu.edu.au/admin/. Deployment was verified on 11 October
+2026 at 07:18 UTC. SCU supplies Node.js 18.20.8, MySQL 5.7.44 and Passenger;
+the application runs in production mode from a private directory using app.js.
+A dedicated database holds the complete schema and all four integrity triggers.
+Credentials are stored only on the server, with owner-only file permissions.
 
-The foundation milestone was pushed on 6 October (6a0a39d and 99e73dc).
-On 7 October, the API/public workflow milestone followed (e1b27e3 and c4368f8),
-then the staff/startup milestone (a086d5e and f523a36). All application source is
-in the repository. The fourth milestone prepares this report, verification
-evidence, demonstration text and source packaging. See project/DELIVERY_PLAN.md
-and the remote commit history for the completed submissions. The two accounts have
-repository access. An account used for a delegated test operation is not, by
-itself, evidence of independent authorship or an individual explanation.
-Individual contribution statements must match the work actually performed.
+HTTPS checks covered pages/assets, database health, search, contacts, event and
+category mutations, registration persistence, duplicate protection, protected
+and eligible deletion, forecast fallback and blocked private paths. An external
+browser also completed a registration and confirmed persistence after refresh.
+All 40 deployed source files matched the local checksums. Temporary test records
+were removed, leaving the original 2 organisations, 6 categories, 12 events and
+12 registrations. The existing course files and databases were preserved.
 
-Remaining submission items: cohort/Team ID; both public and admin deployment
-URLs; marker access to the private repository; final SCU OneDrive video link;
-and separate confidential peer evaluations using the official Blackboard form.
-No fabricated deployment result, review score or contribution is included.
+Zhuolin Han's separate SCU deployment still awaits account availability. Follow
+project/DEPLOYMENT.md for that procedure. Cohort/Team ID, marker access to the
+private repository, final SCU OneDrive sharing and individual confidential peer
+evaluations remain pending. The local demonstration recorded on 6 October
+predates hosting and needs a final hosted/individual explanation before submission.
+
+The four source milestones are recorded in project/DELIVERY_PLAN.md and the
+remote Git history. Account attribution records authorised delegated operations;
+individual contribution statements must match the work actually performed.
 
 This report is built from project/PROJECT_DOCUMENTATION.md and the supplied
 project/figures images. Install project/requirements.txt with Python's pip, then

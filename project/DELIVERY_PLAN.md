@@ -139,3 +139,19 @@ is a separate outstanding task because neither SCU account is available yet.
   and peer evaluations still need to reflect each student's actual work.
 - Both cPanel deployments, cohort/Team ID, marker repository access, final OneDrive
   sharing and personal submission evidence remain pending. No automatic push is scheduled.
+
+## SCU hosting milestone - 11 October 2026
+
+Lu Yu's supplied SCU account now hosts the public and staff websites at
+https://24832520.it.scu.edu.au/ and https://24832520.it.scu.edu.au/admin/.
+The available runtime is Node.js 18.20.8, so the compatibility declaration was
+updated and all 71 backend tests passed on that exact version. The server uses
+a dedicated application directory and database, preserving existing course data.
+Fourteen live HTTPS checks passed; an external browser also verified search,
+registration confirmation, refresh persistence, staff details and categories.
+Temporary check records were removed and all 40 deployed source files matched
+the local SHA-256 manifest. Evidence is in `project/evidence/scu-ylu35`.
+
+This milestone concerns Lu Yu's account only. Han's hosting and the remaining
+personal/Blackboard/OneDrive submission steps are still pending. Earlier pending
+status statements above describe their dated checkpoints, not the current state.

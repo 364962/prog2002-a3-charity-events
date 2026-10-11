@@ -45,7 +45,9 @@ Rebuilding overwrites generated files; keep completed personal links separately.
 
 - Confirm both students are in the same cohort; supply Team ID for required
   administration and peer evaluation subjects. These are not runtime code inputs.
-- Deploy independently to both SCU cPanel accounts; verify the live URLs.
+- Lu Yu's SCU site is deployed and verified: https://24832520.it.scu.edu.au/
+  and https://24832520.it.scu.edu.au/admin/ (11 October 2026).
+  Complete Han's separate cPanel deployment and verify his live URLs.
 - Grant marker access to https://github.com/364962/prog2002-a3-charity-events;
   source milestones and their actual dates are recorded in `DELIVERY_PLAN.md`.
 - Review and personalise individual contribution explanations. The maximum
@@ -67,4 +69,5 @@ Rebuilding overwrites generated files; keep completed personal links separately.
 The source packages omit credentials, node_modules, A2 report PDFs, browser
 profiles, source assessment files and unrelated local media. Install from the
 lockfile after extracting. The separate SQL is identical to the one in the API
-archive. Live hosting and personal peer evaluation are not marked complete.
+archive. Only Lu Yu's hosting is complete; Han's hosting and personal submission
+steps remain pending. See `project/deployments.json` for the current URL record.
