@@ -158,8 +158,10 @@ files and databases were preserved.
 Both hosting deployments are complete; account-specific maintenance instructions
 are in project/DEPLOYMENT.md. Cohort/Team ID, marker access to the private
 repository, final SCU OneDrive sharing, individual confidential peer evaluations
-and Blackboard submission remain pending. The local demonstration recorded on 6 October
-predates hosting and needs a final hosted/individual explanation before submission.
+and Blackboard submission remain pending. Separate presentation sets were prepared
+for both students on 11 October, with hosted evidence, English and Mandarin scripts,
+and English, Chinese and bilingual captions. These use generic synthetic narration;
+each student must review their actual contribution and the permitted narration format.
 
 The four source milestones are recorded in project/DELIVERY_PLAN.md and the
 remote Git history. Account attribution records authorised delegated operations;
