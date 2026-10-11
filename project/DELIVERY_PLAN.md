@@ -13,7 +13,7 @@ These identify the intended team. They are not evidence that either member has
 completed or reviewed a particular feature. Both members must record their actual
 work, review decisions and individual explanation of the implementation.
 
-## Milestones and remaining hosting work
+## Milestones and remaining submission work
 
 | Target date | Scope | Verification before submission |
 | --- | --- | --- |
@@ -21,7 +21,8 @@ work, review decisions and individual explanation of the implementation.
 | 7 October 2026 | Registration, event and category APIs; public registration flow and forecast | API integration tests, duplicate/deletion races and public browser workflows |
 | 7 October 2026 (second round) | Staff event/category pages; complete browser verification; deployment startup preparation | Staff CRUD, deletion-dialog cancellation, responsive layouts and root-startup checks |
 | 7 October 2026 (third round) | Technical report, local evidence, demonstration text and delivery packaging | PDF page review, archive contents, clean dependency install and extracted application smoke checks |
-| Pending SCU account availability | Both students' live deployments and final submission evidence | Each cPanel site, marker access, OneDrive link and personal peer evaluation |
+| 11 October 2026 | Both students' independent SCU deployments | 14 HTTPS checks and 9 browser checks per site; private configuration and source checksum verification |
+| Before assessed submission | Remaining individual and external evidence | Cohort/Team ID, marker access, final explanations, OneDrive link, peer evaluation and Blackboard upload |
 
 These are target dates, not claims of completed work. Commits use their actual
 timestamps. Later milestones may be prepared locally before they are reviewed
@@ -155,3 +156,18 @@ the local SHA-256 manifest. Evidence is in `project/evidence/scu-ylu35`.
 This milestone concerns Lu Yu's account only. Han's hosting and the remaining
 personal/Blackboard/OneDrive submission steps are still pending. Earlier pending
 status statements above describe their dated checkpoints, not the current state.
+
+## SCU hosting milestone - Zhuolin Han - 11 October 2026
+
+Zhuolin Han's supplied SCU account now hosts https://24832119.it.scu.edu.au/
+and https://24832119.it.scu.edu.au/admin/. The separate production application
+uses Node.js 18.20.8, MySQL 5.7.44 and a new dedicated database. Existing course
+files and both earlier databases were preserved.
+
+Fourteen HTTPS checks passed at 08:40 UTC; nine external-browser checks verified
+search, registration, refresh persistence and staff workflows. Browser registration
+15 and API fixtures were removed, restoring the original seed counts. All 40
+deployed source hashes match. Evidence is in `project/evidence/scu-zhan15`.
+This hosting record uses the authorised `drilinghan-stack` account with actual
+commit time. Both SCU deployments are complete; the remaining individual and
+external submission steps are listed in `SUBMISSION_CHECKLIST.md`.

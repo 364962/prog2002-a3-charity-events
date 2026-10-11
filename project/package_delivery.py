@@ -121,9 +121,9 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
 具体提交及实际日期见源码 project/DELIVERY_PLAN.md 和 GitHub 历史。
 使用实际提交时间，没有设置自动推送或倒填日期。
 
-测试日期、范围和结果见源码 project/evidence/summary.json，包含本地测试与鲁彧的线上验收。
-鲁彧的 SCU 网站已上线，地址见其 LINKS.txt 和源码 project/deployments.json。
-正式提交尚需：教学组和 Team ID、韩卓林的 SCU cPanel 部署、
+测试日期、范围和结果见源码 project/evidence/summary.json，包含本地测试与两人各自网站的线上验收。
+两人的 SCU 网站均已上线并通过验收，地址见各自 LINKS.txt 和源码 project/deployments.json。
+正式提交尚需：教学组和 Team ID、个人实际贡献和线上演示说明、
 教师对私有仓库的访问权限、SCU OneDrive 视频分享链接，以及各自的保密互评表。
 现有视频为本地技术演示，最终还需补充个人实际贡献与线上部署说明。
 如果 username 指 SCU 登录名而非学号，请在提交前改源码 ZIP 的前缀。
@@ -131,7 +131,7 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
 """)
     manifest = {
         'prepared_at': datetime.now(timezone.utc).isoformat(),
-        'status': 'Lu Yu SCU deployment verified; Han hosting and personal submission evidence pending',
+        'status': 'Both SCU deployments verified; individual and external submission steps pending',
         'deployments': deployments,
         'source_head': git('rev-parse', 'HEAD').decode().strip(),
         'source_changes': git('diff', '--name-only', 'HEAD', '--', *SCOPES).decode().splitlines(),

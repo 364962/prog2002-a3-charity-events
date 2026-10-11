@@ -3,7 +3,7 @@
 Prepared 11 October 2026. Team: Lu Yu (24832520); Zhuolin Han (24832119).
 Repository: https://github.com/364962/prog2002-a3-charity-events (private).
 Cohort and Team ID: awaiting confirmation. Hosting status: local verification
-complete; Lu Yu SCU hosting verified, Han deployment pending account availability.
+complete; both students' independent SCU sites deployed and verified.
 
 ## 1. Scope and architecture
 
@@ -129,32 +129,36 @@ milestone-3-startup-smoke.json. The evidence index records the actual dates of
 each run, including the 6 October baseline archive checks and live forecast.
 Historical A2 results in report/ are separate. On 11 October, all 71 backend
 tests also passed on Node.js 18.20.8, the runtime supplied by SCU. Fourteen
-HTTPS checks and nine external-browser checks passed on Lu Yu's deployed site;
-see project/evidence/scu-ylu35. Repeat archive smoke checks before each release.
+HTTPS checks and nine external-browser checks passed on each student's deployed
+site; see project/evidence/scu-ylu35 and project/evidence/scu-zhan15. Archive
+contents and checksums are verified when packaging each release.
 A synthetic local walkthrough may help rehearse; the assessed explanation must
 also cover each student's actual contribution and deployed destinations.
 
 ## 7. Deployment and submission status
 
 Lu Yu's public site is https://24832520.it.scu.edu.au/ and its staff site is
-https://24832520.it.scu.edu.au/admin/. Deployment was verified on 11 October
-2026 at 07:18 UTC. SCU supplies Node.js 18.20.8, MySQL 5.7.44 and Passenger;
-the application runs in production mode from a private directory using app.js.
-A dedicated database holds the complete schema and all four integrity triggers.
-Credentials are stored only on the server, with owner-only file permissions.
+https://24832520.it.scu.edu.au/admin/. Zhuolin Han's public site is
+https://24832119.it.scu.edu.au/ and staff site is
+https://24832119.it.scu.edu.au/admin/. Both were verified on 11 October 2026:
+Lu at 07:18 UTC and Han at 08:40 UTC. Each uses Node.js 18.20.8, MySQL 5.7.44
+and Passenger production mode, a private application directory and app.js.
+Each dedicated database holds the complete schema and four integrity triggers.
+Credentials stay on the corresponding server with owner-only file permissions.
 
 HTTPS checks covered pages/assets, database health, search, contacts, event and
 category mutations, registration persistence, duplicate protection, protected
 and eligible deletion, forecast fallback and blocked private paths. An external
 browser also completed a registration and confirmed persistence after refresh.
-All 40 deployed source files matched the local checksums. Temporary test records
-were removed, leaving the original 2 organisations, 6 categories, 12 events and
-12 registrations. The existing course files and databases were preserved.
+All 40 deployed source files on each account matched the local checksums.
+Temporary test records were removed on both sites, leaving each with the original
+2 organisations, 6 categories, 12 events and 12 registrations. Existing course
+files and databases were preserved.
 
-Zhuolin Han's separate SCU deployment still awaits account availability. Follow
-project/DEPLOYMENT.md for that procedure. Cohort/Team ID, marker access to the
-private repository, final SCU OneDrive sharing and individual confidential peer
-evaluations remain pending. The local demonstration recorded on 6 October
+Both hosting deployments are complete; account-specific maintenance instructions
+are in project/DEPLOYMENT.md. Cohort/Team ID, marker access to the private
+repository, final SCU OneDrive sharing, individual confidential peer evaluations
+and Blackboard submission remain pending. The local demonstration recorded on 6 October
 predates hosting and needs a final hosted/individual explanation before submission.
 
 The four source milestones are recorded in project/DELIVERY_PLAN.md and the

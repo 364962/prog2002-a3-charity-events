@@ -9,8 +9,10 @@
   },
   "24832119": {
     "name": "Zhuolin Han",
-    "status": "pending account availability",
-    "public_url": null,
-    "staff_url": null
+    "status": "deployed and verified",
+    "public_url": "https://24832119.it.scu.edu.au/",
+    "staff_url": "https://24832119.it.scu.edu.au/admin/",
+    "checked_at": "2026-10-11T08:40:21.331Z",
+    "evidence": "project/evidence/scu-zhan15/hosted-checks.json"
   }
 }

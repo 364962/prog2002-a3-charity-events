@@ -157,15 +157,20 @@ files. `project/demo` contains the English transcript, captions and recording
 metadata. To include the existing local MP4, add `--include-video` when packaging.
 The MP4 and generated deliverables are local artifacts, not files stored in Git.
 The report and six-minute local walkthrough still require the remaining
-hosting and individual submission evidence described in the checklist.
+hosted walkthrough and individual submission evidence described in the checklist.
 
 Lu Yu's site was deployed on 11 October 2026: https://24832520.it.scu.edu.au/
 and https://24832520.it.scu.edu.au/admin/. Its 14 HTTPS checks passed, and browser
 registration/persistence was verified. The university provides Node.js 18.20.8;
 all 71 backend tests also pass on this version. Hosting evidence and source
 checksums are in `project/evidence/scu-ylu35`.
-Han's separate cPanel deployment, cohort/Team ID, marker repository access,
-SCU OneDrive sharing and confidential peer evaluations remain pending.
+Zhuolin Han's independent site was also deployed and verified on 11 October:
+https://24832119.it.scu.edu.au/ and https://24832119.it.scu.edu.au/admin/.
+Its 14 HTTPS checks and 9 browser checks passed; evidence and 40 matching source
+checksums are in `project/evidence/scu-zhan15`. Both deployments retain their
+original seed counts after test cleanup. Cohort/Team ID, marker repository access,
+final individual explanations, SCU OneDrive sharing, confidential peer evaluations
+and Blackboard submission remain pending.
 No AngularJS bonus is claimed; this implementation follows the permitted DOM
 and JavaScript route. Marks remain subject to the assessor's rubric.
 

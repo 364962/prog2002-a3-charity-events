@@ -21,7 +21,7 @@ def clean(t):
     t=t.replace('–','-').replace('—','-').replace('“','"').replace('”','"').replace('’',"'").replace('->',' > ')
     t=escape(t);t=re.sub(r'`([^`]+)`',r'<font face="Courier">\1</font>',t);t=re.sub(r'\*\*([^*]+)\*\*',r'<b>\1</b>',t)
     return t
-story=[Spacer(1,40),Paragraph('GOOD TOGETHER / PROG2002',styles['SmallGT']),Paragraph('Charity events.<br/>Connected communities.',styles['TitleGT']),Paragraph('Assessment 3 - project documentation',styles['H1GT']),Paragraph('Lu Yu | 24832520<br/>Zhuolin Han | 24832119',styles['BodyGT']),Spacer(1,15),Paragraph('Prepared '+prepared,styles['BodyGT']),Paragraph('Lu Yu SCU hosting verified on 11 October. Han hosting and final individual submission evidence remain pending.',styles['BodyGT']),Spacer(1,18)]
+story=[Spacer(1,40),Paragraph('GOOD TOGETHER / PROG2002',styles['SmallGT']),Paragraph('Charity events.<br/>Connected communities.',styles['TitleGT']),Paragraph('Assessment 3 - project documentation',styles['H1GT']),Paragraph('Lu Yu | 24832520<br/>Zhuolin Han | 24832119',styles['BodyGT']),Spacer(1,15),Paragraph('Prepared '+prepared,styles['BodyGT']),Paragraph('Both SCU sites deployed and verified on 11 October. Final individual and external submission steps remain pending.',styles['BodyGT']),Spacer(1,18)]
 if (ROOT/'project/figures/home.png').exists():story.append(Image(str(ROOT/'project/figures/home.png'),width=479,height=359))
 story.append(PageBreak())
 lines=source.splitlines();i=0;buffer=[]

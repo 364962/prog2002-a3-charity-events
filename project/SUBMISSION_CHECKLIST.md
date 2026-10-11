@@ -41,13 +41,18 @@ student's three source ZIPs into one folder, install production dependencies,
 import into a new database, then verify startup, registration and protected deletion.
 Rebuilding overwrites generated files; keep completed personal links separately.
 
+## Completed SCU deployments
+
+Both accounts were independently deployed and verified on 11 October 2026.
+Each passed 14 HTTPS checks and 9 browser checks; all 40 source checksums matched.
+
+- Lu Yu: https://24832520.it.scu.edu.au/ and https://24832520.it.scu.edu.au/admin/
+- Zhuolin Han: https://24832119.it.scu.edu.au/ and https://24832119.it.scu.edu.au/admin/
+
 ## Still required before an assessed submission is complete
 
 - Confirm both students are in the same cohort; supply Team ID for required
   administration and peer evaluation subjects. These are not runtime code inputs.
-- Lu Yu's SCU site is deployed and verified: https://24832520.it.scu.edu.au/
-  and https://24832520.it.scu.edu.au/admin/ (11 October 2026).
-  Complete Han's separate cPanel deployment and verify his live URLs.
 - Grant marker access to https://github.com/364962/prog2002-a3-charity-events;
   source milestones and their actual dates are recorded in `DELIVERY_PLAN.md`.
 - Review and personalise individual contribution explanations. The maximum
@@ -69,5 +74,5 @@ Rebuilding overwrites generated files; keep completed personal links separately.
 The source packages omit credentials, node_modules, A2 report PDFs, browser
 profiles, source assessment files and unrelated local media. Install from the
 lockfile after extracting. The separate SQL is identical to the one in the API
-archive. Only Lu Yu's hosting is complete; Han's hosting and personal submission
-steps remain pending. See `project/deployments.json` for the current URL record.
+archive. Both SCU deployments are complete; the personal and external submission
+steps above remain pending. See `project/deployments.json` for the current URL record.

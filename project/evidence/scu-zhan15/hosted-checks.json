@@ -1,0 +1,251 @@
+{
+  "checked_at": "2026-10-11T08:40:21.331Z",
+  "public_url": "https://24832119.it.scu.edu.au/",
+  "staff_url": "https://24832119.it.scu.edu.au/admin/",
+  "request_origin": "SCU hosting server; requests use the public HTTPS hostname with certificate validation",
+  "runtime": "v18.20.8",
+  "passed": 14,
+  "checks": [
+    {
+      "name": "HTTPS health endpoint connects to the deployed database",
+      "status": "passed"
+    },
+    {
+      "name": "Public pages, staff pages and their assets are served",
+      "status": "passed"
+    },
+    {
+      "name": "Private configuration, source SQL and dependencies are inaccessible",
+      "status": "passed"
+    },
+    {
+      "name": "Public filtering and all-status staff listing work",
+      "status": "passed"
+    },
+    {
+      "name": "Public registrations omit contact data; staff sees contacts",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid filters are rejected and suspended events stay private",
+      "status": "passed"
+    },
+    {
+      "name": "Create and update a temporary category through HTTPS",
+      "status": "passed"
+    },
+    {
+      "name": "Create a temporary event through HTTPS",
+      "status": "passed"
+    },
+    {
+      "name": "Update and suspend an event; public detail is hidden",
+      "status": "passed"
+    },
+    {
+      "name": "Registration saves the server price and persists in MySQL",
+      "status": "passed"
+    },
+    {
+      "name": "Case-insensitive duplicate registration is rejected",
+      "status": "passed"
+    },
+    {
+      "name": "Registered events and used categories cannot be deleted",
+      "status": "passed"
+    },
+    {
+      "name": "Eligible temporary event and category delete successfully",
+      "status": "passed"
+    },
+    {
+      "name": "Weather has a valid result and distant dates have a fallback",
+      "status": "passed"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "adminside/categories.html",
+      "sha256": "74c055456ab39b7d2b9e95b7511b806963cbcfa03ad7b13bc8d31ac784df976f"
+    },
+    {
+      "path": "adminside/event.html",
+      "sha256": "0867d53d2d2de7dcf640a681511d027c53c14bec8005253afa1cb94d8a8f1cc0"
+    },
+    {
+      "path": "adminside/index.html",
+      "sha256": "cc83e6e014797592ebb536f17c5b49581a61bd18f8e23d8360733bfb3c15c31c"
+    },
+    {
+      "path": "adminside/js/categories.js",
+      "sha256": "6a67bd98dd3a7f1f7164b4dcf5e055c7fa97188a86bdcb616fddf56829d9ecc1"
+    },
+    {
+      "path": "adminside/js/event.js",
+      "sha256": "7d31f49c3124462d314fc1a3a165af57cd2c8deac1cab10c91c3be2c06b6b31b"
+    },
+    {
+      "path": "adminside/js/events.js",
+      "sha256": "dffb5c1140f5a71c285d63a682943ed192fcae2dd031f138a1cfd40fd056f74c"
+    },
+    {
+      "path": "api/.env.example",
+      "sha256": "dd94df557f157aabdb2153a1ad62a50c30c25a4dda79dff9087d474ca5e30314"
+    },
+    {
+      "path": "api/README.md",
+      "sha256": "eacbd2f473d7b9642da3ce8131f716cdbb8b2c402e84db457fc8d540fb3c4238"
+    },
+    {
+      "path": "api/app.js",
+      "sha256": "511bf58cfd92a27345893285a955b54fcadf577c848dd8db86c287fb48ac89fe"
+    },
+    {
+      "path": "api/database/charityevents_db.sql",
+      "sha256": "7317727fee5e8d410b4286c32b9e2055092a29fbd5809a36e963816c5726f67e"
+    },
+    {
+      "path": "api/event_db.js",
+      "sha256": "c64f7a920de23f5f3f69bb34cb618c73221eac56e82c6601a65e2c1a866fab12"
+    },
+    {
+      "path": "api/management.js",
+      "sha256": "9d8aef02eb4accc31fa90326577e88b0bea708c06d488a0e01ef97070f53299b"
+    },
+    {
+      "path": "api/package-lock.json",
+      "sha256": "94d46ceb41d953264e250c093427a0157a5171abfa2129377e2f70542c4ab276"
+    },
+    {
+      "path": "api/package.json",
+      "sha256": "122e5b916176d0c4fc68abc490f0746953f49591fd81de11104c498ca548e255"
+    },
+    {
+      "path": "api/server.js",
+      "sha256": "3f26509d6486c8a3ab9e1b59efacece1e8284aea957ce37060803beb0a4933ea"
+    },
+    {
+      "path": "api/validation.js",
+      "sha256": "0b454c67e4b443260607e4b23faad5c66aa2befc5590b7b913befe3b5256b34b"
+    },
+    {
+      "path": "api/weather.js",
+      "sha256": "b62d1923c90a8e63857918733b67a779fb0566a4fdd468c313d02de33569cce2"
+    },
+    {
+      "path": "api/write-validation.js",
+      "sha256": "c849a3e52d8d73912eea5fc44d8b38218cad8366668c50ec18a0ca9662c4be07"
+    },
+    {
+      "path": "app.js",
+      "sha256": "e414de603797772b81e895ace6af184075b8d07a716fa7f38c582da6e15a7c95"
+    },
+    {
+      "path": "clientside/404.html",
+      "sha256": "1c7ca4cbee3d26cb7bdddc9b7ff535171f35e03f7b55007907c0214eab06f7f3"
+    },
+    {
+      "path": "clientside/README.md",
+      "sha256": "eb3a9063e5c065282493c9b3ab4c43f865d2ad4d744f8ea34c86b1491dda7504"
+    },
+    {
+      "path": "clientside/assets/CREDITS.md",
+      "sha256": "7f904554baefabaa9e82496a4f7931af192edc49815602e4200b10ca33f12ebf"
+    },
+    {
+      "path": "clientside/assets/auction.jpg",
+      "sha256": "93bd0a2843b6c03f275c939f285e71db2510a3ffcb83aca681ff35e90670926a"
+    },
+    {
+      "path": "clientside/assets/coast.jpg",
+      "sha256": "bb261e722a5c8eeaf87830f39f3a6b052339f178bd7240b2a8c224a6b0790102"
+    },
+    {
+      "path": "clientside/assets/concert.jpg",
+      "sha256": "104f1a1a3a9182d2f71aa1d9e041e92bd1c47607457099807e3d0c7244b56731"
+    },
+    {
+      "path": "clientside/assets/gala.jpg",
+      "sha256": "0967974a496c21a73c430d49dd045db6450d91e2dd4f23d8528d15703cde8fef"
+    },
+    {
+      "path": "clientside/assets/garden.jpg",
+      "sha256": "ccbc8212a0dfa1aae2c02b5749ce073703206dac52138bfb5756569050d19cd1"
+    },
+    {
+      "path": "clientside/assets/mark.svg",
+      "sha256": "bf1ebcffc713c64f3275c17f80630681689d2a405bef57e1ffeac9f07e0d1ded"
+    },
+    {
+      "path": "clientside/assets/run.jpg",
+      "sha256": "3f790f714007f08c28d2610b811ecee23984bd2072520423d42366a428fbbf2a"
+    },
+    {
+      "path": "clientside/assets/table.jpg",
+      "sha256": "4ca725bc86d0f03c45bdaaeaedc1c8c2a6f273cc95d77295d014da6ddef826f2"
+    },
+    {
+      "path": "clientside/css/styles.css",
+      "sha256": "bab5591ee8c69dbeb47766d1c2748527af116a7c402950a690727acdfcf27736"
+    },
+    {
+      "path": "clientside/event.html",
+      "sha256": "e9286860b47de8c2e2543ec605727bd4f508b5aecf3e698be4ea9e1b76316aa8"
+    },
+    {
+      "path": "clientside/index.html",
+      "sha256": "1cc73ca3d42e7f8434a41b1d0f93385c28e77d841e6320951f79d232fc19b26a"
+    },
+    {
+      "path": "clientside/js/common.js",
+      "sha256": "e2133b55339b385b0b521900fa0cadd5a409aa7efdfb72d0ccc82009f6aafca4"
+    },
+    {
+      "path": "clientside/js/event.js",
+      "sha256": "c507ad9b424e6abca45dde5e75b251756dc7e08c77647fa4771302ae10358021"
+    },
+    {
+      "path": "clientside/js/home.js",
+      "sha256": "12e9e33d693253167a75c8db4581df0eabc3823c61441f829d40f45580e42dca"
+    },
+    {
+      "path": "clientside/js/registration.js",
+      "sha256": "29ce6ce834739190341cc7d67e8b61a0dafa81e39c1efbd7603a7eb1ca3055a3"
+    },
+    {
+      "path": "clientside/js/search.js",
+      "sha256": "dbdaf9d9ff57dd79e558ce41c9c1a26673450d7fecb7feea18bbaa64080e9611"
+    },
+    {
+      "path": "clientside/registration.html",
+      "sha256": "c10259fa0fba5dd7d5fa1a4bc88d1859fb3c7cd55f776f3cff79e9fa547cd2e8"
+    },
+    {
+      "path": "clientside/search.html",
+      "sha256": "db927c45e654c38f1d03c6ed1d9743b6d2df25505b1136bb8bf78b995c06af09"
+    }
+  ],
+  "source_integrity": {
+    "files": 40,
+    "passed": true
+  },
+  "cleanup": {
+    "completed_at": "2026-10-11T08:42:01.989Z",
+    "temporary_records_removed": true,
+    "remaining": {
+      "organisations": 2,
+      "categories": 6,
+      "events": 12,
+      "registrations": 12
+    }
+  },
+  "hosting": {
+    "node": "v18.20.8",
+    "mysql": "5.7.44-cll-lve",
+    "mode": "production",
+    "app_root": "/home/zhan15/good-together-a3",
+    "startup": "app.js",
+    "database": "zhan15_good_a3",
+    "env_permissions": "600"
+  }
+}

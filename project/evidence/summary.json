@@ -83,13 +83,21 @@
     "directory": "../figures",
     "scope": "Running local application; no SCU hosting claim"
   },
-  "hosting": "Lu Yu deployed and verified on 11 October; Han account pending",
-  "hosted_checks": {
-    "student": "24832520",
-    "passed": 14,
-    "source": "scu-ylu35/hosted-checks.json",
-    "browser_evidence": "scu-ylu35/browser-checks.json"
-  },
+  "hosting": "Both students deployed and independently verified on their SCU accounts on 11 October 2026",
+  "hosted_checks": [
+    {
+      "student": "24832520",
+      "passed": 14,
+      "source": "scu-ylu35/hosted-checks.json",
+      "browser_evidence": "scu-ylu35/browser-checks.json"
+    },
+    {
+      "student": "24832119",
+      "passed": 14,
+      "source": "scu-zhan15/hosted-checks.json",
+      "browser_evidence": "scu-zhan15/browser-checks.json"
+    }
+  ],
   "runtime_compatibility": {
     "node": "18.20.8",
     "date": "2026-10-11",

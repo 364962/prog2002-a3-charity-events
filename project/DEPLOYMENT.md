@@ -1,9 +1,9 @@
 # Deploy Good Together to each student's SCU cPanel
 
-Status on 11 October 2026: Lu Yu's SCU deployment is live and verified at
-https://24832520.it.scu.edu.au/ (staff: https://24832520.it.scu.edu.au/admin/).
-Zhuolin Han's deployment still awaits account access. Repeat the procedure for
-that account separately; use the unit's tutorial if its environment differs.
+Status on 11 October 2026: both students' SCU deployments are live and verified.
+Lu Yu: https://24832520.it.scu.edu.au/ (staff: /admin/).
+Zhuolin Han: https://24832119.it.scu.edu.au/ (staff: /admin/).
+Each account has its own application, database and private configuration.
 
 1. Upload the source checkout, or extract the three final archives into one
    application directory under your hosting home directory. It must contain `app.js`, `api/`, `clientside/`, `adminside/`.
@@ -15,7 +15,7 @@ that account separately; use the unit's tutorial if its environment differs.
    phpMyAdmin. Verify 2 organisations, 6 categories, 12 events, 12 registrations.
    The SQL includes triggers. If trigger creation is forbidden, contact the
    tutor/hosting administrator rather than silently omitting integrity rules.
-3. Use the available Node.js application manager. Lu Yu's SCU account offers
+3. Use the available Node.js application manager. Both SCU accounts offer
    Node.js 18.20.8; all 71 backend tests also pass on that exact version.
    The package accepts Node.js 18.20.8 or newer. Use a supported newer runtime
    where available; the university controls the installed hosting versions.
@@ -49,7 +49,7 @@ full automated suite locally, then perform the live acceptance checks above.
 | Student | Public URL | Staff URL | Live check | Status |
 | --- | --- | --- | --- | --- |
 | Lu Yu / 24832520 | https://24832520.it.scu.edu.au/ | https://24832520.it.scu.edu.au/admin/ | 11 October 2026, 07:18 UTC | 14 HTTPS checks passed; browser registration verified |
-| Zhuolin Han / 24832119 | Pending | Pending | Pending | cPanel not yet available |
+| Zhuolin Han / 24832119 | https://24832119.it.scu.edu.au/ | https://24832119.it.scu.edu.au/admin/ | 11 October 2026, 08:40 UTC | 14 HTTPS checks passed; browser registration verified |
 
 Official startup and restart guidance:
 https://docs.cpanel.net/knowledge-base/web-services/how-to-install-a-node.js-application/
@@ -75,3 +75,14 @@ To restart, use **Setup Node.js App > good-together-a3 > Restart**, or touch
 `source /home/ylu35/nodevenv/good-together-a3/18/bin/activate` for its Node environment.
 Install API dependencies with `npm ci --omit=dev --prefix api` from the app root.
 Do not re-import the seed SQL into the live database during an ordinary update.
+
+Zhuolin Han uses the same verified runtime and production configuration in
+`/home/zhan15/good-together-a3`, with the dedicated database `zhan15_good_a3`.
+His server-only `api/.env` has mode 600. The two original course databases and
+original public `.htaccess` were preserved, with a private backup of that file.
+His 14 HTTPS checks, 9 browser checks and screenshots are recorded separately
+in `project/evidence/scu-zhan15`. All 40 deployed source checksums match; temporary
+records were removed, leaving the original seed counts and four triggers.
+For his account, the restart file is
+`/home/zhan15/good-together-a3/tmp/restart.txt`, and the Node environment command is
+`source /home/zhan15/nodevenv/good-together-a3/18/bin/activate`.
