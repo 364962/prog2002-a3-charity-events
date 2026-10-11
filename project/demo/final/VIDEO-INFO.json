@@ -1,0 +1,338 @@
+{
+  "prepared": "2026-10-11",
+  "source_revision": "b6f519be50c6570145535d66a890230a9039d43a",
+  "narration": "Synthetic system voices: Daniel and Karen for English; Tingting for Mandarin. Not recordings of either student.",
+  "footage": "Recorded local workflows from 6 October, hosted screenshots and verification from 11 October, and current source excerpts. Provenance labels appear on each scene.",
+  "videos": [
+    {
+      "student": "24832520",
+      "variant": "en",
+      "file": "24832520/24832520-A3-English-EN-Subtitles.mp4",
+      "subtitles": "24832520/24832520-A3-English-EN-Subtitles.srt",
+      "duration_seconds": 413.951333,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "Project scope and presentation focus",
+          "start": 0,
+          "duration": 49.933
+        },
+        {
+          "title": "Database relationships and constraints",
+          "start": 49.933,
+          "duration": 53.466
+        },
+        {
+          "title": "Search API and parameter binding",
+          "start": 103.399,
+          "duration": 48.266
+        },
+        {
+          "title": "Registration transaction and concurrency",
+          "start": 151.665,
+          "duration": 48.466
+        },
+        {
+          "title": "From API response to page content",
+          "start": 200.131,
+          "duration": 53.4
+        },
+        {
+          "title": "Management rules and deletion protection",
+          "start": 253.531,
+          "duration": 52.133
+        },
+        {
+          "title": "Weather and verification evidence",
+          "start": 305.664,
+          "duration": 52.533
+        },
+        {
+          "title": "SCU deployment and technical conclusion",
+          "start": 358.197,
+          "duration": 55.733
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    },
+    {
+      "student": "24832520",
+      "variant": "zh",
+      "file": "24832520/24832520-A3-Chinese-ZH-Subtitles.mp4",
+      "subtitles": "24832520/24832520-A3-Chinese-ZH-Subtitles.srt",
+      "duration_seconds": 357.751333,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "项目范围与个人讲解重点",
+          "start": 0,
+          "duration": 39.066
+        },
+        {
+          "title": "数据库关系与约束",
+          "start": 39.066,
+          "duration": 43.933
+        },
+        {
+          "title": "搜索接口与参数绑定",
+          "start": 82.999,
+          "duration": 42.6
+        },
+        {
+          "title": "报名事务与并发控制",
+          "start": 125.599,
+          "duration": 42.866
+        },
+        {
+          "title": "从接口响应到页面内容",
+          "start": 168.465,
+          "duration": 49.133
+        },
+        {
+          "title": "管理规则与删除保护",
+          "start": 217.598,
+          "duration": 45.266
+        },
+        {
+          "title": "天气功能与验证证据",
+          "start": 262.864,
+          "duration": 44.533
+        },
+        {
+          "title": "SCU 部署与技术总结",
+          "start": 307.397,
+          "duration": 50.333
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    },
+    {
+      "student": "24832520",
+      "variant": "bi",
+      "file": "24832520/24832520-A3-English-Bilingual-Subtitles.mp4",
+      "subtitles": "24832520/24832520-A3-English-Bilingual-Subtitles.srt",
+      "duration_seconds": 413.951333,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "Project scope and presentation focus",
+          "start": 0,
+          "duration": 49.933
+        },
+        {
+          "title": "Database relationships and constraints",
+          "start": 49.933,
+          "duration": 53.466
+        },
+        {
+          "title": "Search API and parameter binding",
+          "start": 103.399,
+          "duration": 48.266
+        },
+        {
+          "title": "Registration transaction and concurrency",
+          "start": 151.665,
+          "duration": 48.466
+        },
+        {
+          "title": "From API response to page content",
+          "start": 200.131,
+          "duration": 53.4
+        },
+        {
+          "title": "Management rules and deletion protection",
+          "start": 253.531,
+          "duration": 52.133
+        },
+        {
+          "title": "Weather and verification evidence",
+          "start": 305.664,
+          "duration": 52.533
+        },
+        {
+          "title": "SCU deployment and technical conclusion",
+          "start": 358.197,
+          "duration": 55.733
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    },
+    {
+      "student": "24832119",
+      "variant": "en",
+      "file": "24832119/24832119-A3-English-EN-Subtitles.mp4",
+      "subtitles": "24832119/24832119-A3-English-EN-Subtitles.srt",
+      "duration_seconds": 416.084667,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "Project scope and presentation focus",
+          "start": 0,
+          "duration": 55.933
+        },
+        {
+          "title": "Architecture behind the interface",
+          "start": 55.933,
+          "duration": 52.533
+        },
+        {
+          "title": "Search and DOM data flow",
+          "start": 108.466,
+          "duration": 46.733
+        },
+        {
+          "title": "Registration page and form validation",
+          "start": 155.199,
+          "duration": 50.8
+        },
+        {
+          "title": "Confirmation and persistent registrations",
+          "start": 205.999,
+          "duration": 50.066
+        },
+        {
+          "title": "Staff event management",
+          "start": 256.065,
+          "duration": 52.066
+        },
+        {
+          "title": "Categories weather and browser quality",
+          "start": 308.131,
+          "duration": 53.866
+        },
+        {
+          "title": "Independent SCU deployment and conclusion",
+          "start": 361.997,
+          "duration": 54.066
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    },
+    {
+      "student": "24832119",
+      "variant": "zh",
+      "file": "24832119/24832119-A3-Chinese-ZH-Subtitles.mp4",
+      "subtitles": "24832119/24832119-A3-Chinese-ZH-Subtitles.srt",
+      "duration_seconds": 370.485333,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "项目范围与个人讲解重点",
+          "start": 0,
+          "duration": 45.533
+        },
+        {
+          "title": "界面背后的架构",
+          "start": 45.533,
+          "duration": 46.266
+        },
+        {
+          "title": "搜索与 DOM 数据流",
+          "start": 91.799,
+          "duration": 48.666
+        },
+        {
+          "title": "报名页面与表单验证",
+          "start": 140.465,
+          "duration": 44.533
+        },
+        {
+          "title": "确认页面与报名持久化",
+          "start": 184.998,
+          "duration": 44.333
+        },
+        {
+          "title": "后台活动管理",
+          "start": 229.331,
+          "duration": 44.8
+        },
+        {
+          "title": "分类天气与浏览器质量",
+          "start": 274.131,
+          "duration": 46.533
+        },
+        {
+          "title": "独立 SCU 部署与总结",
+          "start": 320.664,
+          "duration": 49.8
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    },
+    {
+      "student": "24832119",
+      "variant": "bi",
+      "file": "24832119/24832119-A3-English-Bilingual-Subtitles.mp4",
+      "subtitles": "24832119/24832119-A3-English-Bilingual-Subtitles.srt",
+      "duration_seconds": 416.084667,
+      "captions": 48,
+      "chapters": [
+        {
+          "title": "Project scope and presentation focus",
+          "start": 0,
+          "duration": 55.933
+        },
+        {
+          "title": "Architecture behind the interface",
+          "start": 55.933,
+          "duration": 52.533
+        },
+        {
+          "title": "Search and DOM data flow",
+          "start": 108.466,
+          "duration": 46.733
+        },
+        {
+          "title": "Registration page and form validation",
+          "start": 155.199,
+          "duration": 50.8
+        },
+        {
+          "title": "Confirmation and persistent registrations",
+          "start": 205.999,
+          "duration": 50.066
+        },
+        {
+          "title": "Staff event management",
+          "start": 256.065,
+          "duration": 52.066
+        },
+        {
+          "title": "Categories weather and browser quality",
+          "start": 308.131,
+          "duration": 53.866
+        },
+        {
+          "title": "Independent SCU deployment and conclusion",
+          "start": 361.997,
+          "duration": 54.066
+        }
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 15
+    }
+  ]
+}

@@ -53,6 +53,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--include-video', action='store_true',
                         help='Include the existing local MP4; fail if it is missing.')
+    parser.add_argument('--include-final-media', action='store_true',
+                        help='Include both individual bilingual media sets; fail if incomplete.')
     args = parser.parse_args()
     paths = source_files()
     deployments = json.loads((ROOT / 'project/deployments.json').read_text())
@@ -66,6 +68,20 @@ def main():
     video = ROOT / 'output/video/a3' / VIDEO
     if args.include_video and not video.is_file():
         raise FileNotFoundError(f'Local demonstration video is missing: {video}')
+    final_root = ROOT / 'output/video/a3-final'
+    final_files = []
+    if args.include_final_media:
+        final_files = [final_root / name for name in ('README-交付说明.txt', 'VIDEO-INFO.json', 'MANIFEST.json')]
+        for student in ('24832520', '24832119'):
+            for variant in ('English-EN-Subtitles', 'Chinese-ZH-Subtitles', 'English-Bilingual-Subtitles'):
+                final_files.extend(final_root / student / f'{student}-A3-{variant}.{extension}'
+                                   for extension in ('mp4', 'srt'))
+            final_files.extend(final_root / student / f'{student}-{suffix}' for suffix in (
+                'A3-Transcript-EN-ZH.docx', 'Transcript-EN.txt', 'Transcript-ZH.txt',
+                'Personal-Explanation-EN-ZH.txt'))
+        for path in final_files:
+            if not path.is_file():
+                raise FileNotFoundError(f'Individual media artifact is missing: {path}')
 
     components = {
         'clientside': [p for p in paths if p.relative_to(ROOT).parts[0] == 'clientside'],
@@ -105,11 +121,20 @@ def main():
         copy(ROOT / 'project/demo' / name, OUT / 'shared' / name)
     if args.include_video:
         copy(video, OUT / 'shared' / VIDEO)
+    for path in final_files:
+        relative = path.relative_to(final_root)
+        if relative.parts[0] in {'24832520', '24832119'}:
+            destination = OUT / relative.parts[0] / 'individual-media' / relative.name
+        else:
+            destination = OUT / 'individual-media-info' / relative.name
+        copy(path, destination)
     write(OUT / 'README-交付说明.txt', """Good Together / A3 本地交付包
 
 24832520：鲁彧的三个源码 ZIP、单一 SQL、项目说明 PDF、清单和链接状态。
 24832119：韩卓林的三个源码 ZIP、单一 SQL、项目说明 PDF、清单和链接状态。
 shared：英文演示逐字稿、84 条字幕和视频信息；包含 MP4 与否以 MANIFEST 为准。
+各自 individual-media：启用 --include-final-media 时包含个人英文、中文、双语字幕视频，
+以及对应 SRT、Word、逐字稿和个人说明；individual-media-info 包含来源、时长和校验清单。
 MANIFEST.json：生成时间、Git 基准、源码校验值和交付文件 SHA-256。
 
 将 clientside、adminside、api 三个 ZIP 解压至同一目录，保留三个同级目录。
@@ -123,9 +148,10 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
 
 测试日期、范围和结果见源码 project/evidence/summary.json，包含本地测试与两人各自网站的线上验收。
 两人的 SCU 网站均已上线并通过验收，地址见各自 LINKS.txt 和源码 project/deployments.json。
-正式提交尚需：教学组和 Team ID、个人实际贡献和线上演示说明、
+正式提交尚需：教学组和 Team ID、个人实际贡献确认和配音形式核对、
 教师对私有仓库的访问权限、SCU OneDrive 视频分享链接，以及各自的保密互评表。
-现有视频为本地技术演示，最终还需补充个人实际贡献与线上部署说明。
+shared 是早期本地演示。个人新版加入两人的讲解范围与线上部署证据，使用通用合成配音。
+逐字稿按 Git 记录安排讲解重点，仍需每人核对实际贡献，并确认最终提交版本符合课程要求。
 如果 username 指 SCU 登录名而非学号，请在提交前改源码 ZIP 的前缀。
 重新打包会覆盖生成的同名文件；个人填写的最终链接请另行保存。
 """)
@@ -137,6 +163,7 @@ GitHub：https://github.com/364962/prog2002-a3-charity-events
         'source_changes': git('diff', '--name-only', 'HEAD', '--', *SCOPES).decode().splitlines(),
         'source_note': 'Bytes come from tracked/staged working files; hashes identify the exact content.',
         'video_included': args.include_video,
+        'individual_media_included': args.include_final_media,
         'source_files': [record(p, ROOT) for p in paths],
         'files': [record(p, OUT) for p in sorted(generated)],
     }

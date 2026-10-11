@@ -171,3 +171,22 @@ deployed source hashes match. Evidence is in `project/evidence/scu-zhan15`.
 This hosting record uses the authorised `drilinghan-stack` account with actual
 commit time. Both SCU deployments are complete; the remaining individual and
 external submission steps are listed in `SUBMISSION_CHECKLIST.md`.
+
+## Individual media and transcripts - 11 October 2026
+
+Separate presentation materials now exist for both student IDs, with English,
+Mandarin and bilingual-caption variants. Each recording has eight chapters and
+48 timed captions; all six are below seven minutes. The source narration, plain
+text scripts, SRTs, timing record and media checks are in `project/demo/final`.
+Two bilingual Word documents and six MP4 files are local delivery artifacts.
+
+The explanations map presentation topics to the existing Git record, with generic
+system narration and explicitly dated local and hosted footage. They do not verify
+personal authorship. Each student still needs to review their actual contribution
+and the permitted narration format before assessed submission. All six MP4s passed
+full decoding, audio-presence, caption-order and duration checks. Both seven-page
+Word documents were rendered and visually checked. Packaging now supports including
+both individual sets alongside the source and project documentation.
+
+These materials have not been uploaded to SCU OneDrive or submitted to Blackboard.
+The remaining administrative, access and personal steps in the checklist still apply.

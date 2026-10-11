@@ -1,5 +1,9 @@
 # Local English demonstration
 
+The two individual presentation sets prepared on 11 October are documented
+in `final/README.md`. Use those sets for the separate scripts requested for
+Lu Yu and Zhuolin Han. The material below describes the earlier shared recording.
+
 The technical walkthrough was captured on 6 October 2026. Its duration is
 6 minutes 19 seconds, with eight chapters and 84 English subtitle cues.
 The MP4 has English narration and burned-in subtitles; the SRT is also supplied

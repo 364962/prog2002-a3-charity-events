@@ -1,0 +1,14 @@
+鲁彧 / Lu Yu / 24832520
+
+English
+My presentation focus is database, api, consistency and hosting. The repository records the commits below under the project account associated with my name. My explanation connects those changes to the current source and the verified hosting evidence. The public website is https://24832520.it.scu.edu.au/ and the staff website is https://24832520.it.scu.edu.au/admin/. Both the browser interface and the server-side rules are demonstrated, including their limitations.
+
+中文
+我的个人讲解重点是数据库结构、接口验证、事务与并发、部署和后端验证。仓库在与本人姓名关联的项目账户下记录了以下提交。讲解将这些变更与当前源码、已验证的部署证据对应起来。公开网站为 https://24832520.it.scu.edu.au/，管理网站为 https://24832520.it.scu.edu.au/admin/。说明同时覆盖浏览器界面、服务端规则及其限制。
+
+Git records
+6a0a39d Registration schema and integrity constraints
+e1b27e3 Registration and management APIs
+f523a36 cPanel startup entry
+cb59dd0 Architecture and verification documentation
+86f63c5 Lu Yu SCU deployment

@@ -1,0 +1,191 @@
+1
+00:00:00,350 --> 00:00:10,622
+This is the Good Together Assessment Three presentation prepared for Zhuolin Han, student number 24832119.
+
+2
+00:00:10,842 --> 00:00:20,215
+My presentation focuses on the public registration flow, staff pages, browser interaction, and the independent SCU website.
+
+3
+00:00:20,436 --> 00:00:29,342
+These topics follow the workflow planning, registration, staff management, and hosting commits recorded under my project account.
+
+4
+00:00:29,562 --> 00:00:38,276
+I will show how the interface turns user actions into API requests and renders the database results back into useful page content.
+
+5
+00:00:38,496 --> 00:00:47,402
+The public journey moves from discovery to search, event details, registration, confirmation, and the updated attendee list.
+
+6
+00:00:47,622 --> 00:00:55,330
+All attendee information used in the demonstration is fictional, and a confirmed reservation does not mean payment has been collected.
+
+7
+00:00:56,283 --> 00:01:04,643
+The public pages and staff pages use plain HTML, CSS, JavaScript modules, and DOM operations.
+
+8
+00:01:04,863 --> 00:01:13,608
+Both websites call the same Express API on their own hosting domain, and the API communicates with MySQL through a connection pool.
+
+9
+00:01:13,828 --> 00:01:22,003
+Organisations and categories describe each event, while registrations link attendee records to the selected event identifier.
+
+10
+00:01:22,223 --> 00:01:30,583
+The event and email unique key blocks duplicate registration, and the restricted foreign key protects events that already have attendees.
+
+11
+00:01:30,803 --> 00:01:39,802
+Public endpoints return only the fields needed by visitors; staff endpoints provide all event statuses and registration contact fields.
+
+12
+00:01:40,022 --> 00:01:47,861
+Keeping these rules on the server makes the interface consistent even if someone changes the browser form or sends a request directly.
+
+13
+00:01:48,816 --> 00:01:54,406
+On the search page, I combine Southport with the Fun run category to narrow the event list.
+
+14
+00:01:54,626 --> 00:02:03,682
+The form serialises nonempty values into URL search parameters, so the active filters can survive navigation and be shared in a link.
+
+15
+00:02:03,902 --> 00:02:11,589
+The search function aborts an earlier request before starting another, preventing a slow response from replacing newer results.
+
+16
+00:02:11,809 --> 00:02:19,217
+The JSON helper calls fetch, checks the response, and returns data for renderEvents to turn into cards.
+
+17
+00:02:19,437 --> 00:02:27,808
+The page updates its loading message, result count, empty state, and retry button through the DOM rather than reloading the whole site.
+
+18
+00:02:28,028 --> 00:02:34,567
+Clearing the filters resets the form and URL; invalid input is checked in the browser and again by the server.
+
+19
+00:02:35,549 --> 00:02:42,876
+Selecting a ticket quantity on the event page updates the total and opens a dedicated registration page for that event.
+
+20
+00:02:43,096 --> 00:02:52,188
+The registration page reloads the event from the API and checks the identifier and quantity from the URL before displaying the booking details.
+
+21
+00:02:52,408 --> 00:02:59,711
+The form requires a trimmed name, a valid email, a usable contact number, and between one and ten tickets.
+
+22
+00:02:59,931 --> 00:03:08,528
+While saving, the confirmation button is disabled to reduce accidental repeat clicks, and the interface displays progress feedback.
+
+23
+00:03:08,748 --> 00:03:17,572
+The request contains attendee fields and ticket quantity; the server supplies the final unit price, total, and registration time.
+
+24
+00:03:17,792 --> 00:03:25,336
+If saving fails, the page displays the server error and restores the button so the user can correct the problem and try again.
+
+25
+00:03:26,349 --> 00:03:35,250
+A successful response hides the form and displays the saved registration number, ticket count, total, and Brisbane registration time.
+
+26
+00:03:35,470 --> 00:03:43,017
+The confirmation link returns to the event, where the newest registration appears first and remains after a page refresh.
+
+27
+00:03:43,237 --> 00:03:50,993
+The public table includes the attendee name, ticket quantity, and registration date, but excludes email and phone.
+
+28
+00:03:51,213 --> 00:03:59,144
+Submitting the same event and email combination again produces a conflict, including when the email uses different letter case.
+
+29
+00:03:59,364 --> 00:04:06,946
+The same attendee can join another event because the uniqueness rule applies to the event and email pair, not the email alone.
+
+30
+00:04:07,166 --> 00:04:15,457
+The hosted verification separately completed this workflow and removed its temporary test registration after confirming persistence.
+
+31
+00:04:16,415 --> 00:04:25,181
+The staff desk shows twelve initial events, including active, past, and suspended examples, with filters for each status.
+
+32
+00:04:25,401 --> 00:04:32,674
+Editing loads the existing values and the associated registration contacts, instead of starting with an empty form.
+
+33
+00:04:32,894 --> 00:04:40,907
+Category and organisation choices are loaded from the API, and the editor uses the same form for creating and updating events.
+
+34
+00:04:41,127 --> 00:04:49,092
+The save handler sends POST for a new event and PUT for an existing event, and presents the returned success or validation message.
+
+35
+00:04:49,312 --> 00:04:58,484
+The recorded management workflow creates a temporary event, changes its publication status, and deletes it once it has no registrations.
+
+36
+00:04:58,704 --> 00:05:07,523
+Deleting an event with registrations is refused, and the interface explains that suspension keeps the records while hiding public visibility.
+
+37
+00:05:08,481 --> 00:05:17,469
+Category management supports adding, editing, and deleting an unused category, with API feedback for a category that is still referenced.
+
+38
+00:05:17,689 --> 00:05:26,246
+Event information is inserted using textContent, and status messages and labelled form controls make errors easier to understand.
+
+39
+00:05:26,466 --> 00:05:34,250
+Weather is optional: the interface shows the forecast when available and an explanation when the event is outside the forecast window.
+
+40
+00:05:34,470 --> 00:05:42,256
+A weather failure does not block the main registration flow, which keeps this extra feature separate from the essential task.
+
+41
+00:05:42,476 --> 00:05:53,720
+Forty-six local browser checks passed in Chromium and WebKit, with layouts checked at three hundred ninety, seven hundred sixty-eight, and fourteen hundred forty pixels.
+
+42
+00:05:53,940 --> 00:06:01,336
+The checks include real API submissions and database persistence, rather than only comparing static screenshots.
+
+43
+00:06:02,347 --> 00:06:08,710
+The domain shown here is my independent SCU deployment, and the staff pages are under the admin path.
+
+44
+00:06:08,930 --> 00:06:17,189
+It runs the same application source with its own database and private configuration, separate from the other student's hosting account.
+
+45
+00:06:17,409 --> 00:06:28,131
+On eleven October, fourteen HTTPS checks and nine external browser checks passed on this site, including search, booking, and staff details.
+
+46
+00:06:28,351 --> 00:06:36,096
+The hosted source matched all forty checksums, and temporary records were cleaned up without changing the original example data.
+
+47
+00:06:36,316 --> 00:06:45,960
+This teaching version intentionally omits staff authentication, so a real service would need access control before accepting real contact information.
+
+48
+00:06:46,180 --> 00:06:55,433
+The interface design keeps the user's next action clear, while the API and database remain responsible for validation and persistent state.

@@ -16,6 +16,11 @@ rename the archive prefix to that login before upload.
 - English local walkthrough: 6 minutes 19 seconds with 84 subtitle cues.
   Transcript, captions and metadata are in `project/demo`; the MP4 is a local
   artifact copied to the shared delivery folder when explicitly included.
+- Two individual presentation sets, with separate English and Chinese scripts,
+  personal explanations, bilingual Word documents, and three captioned video
+  variants per person. See `project/demo/final` for the source text and media
+  record. These include hosted evidence and generic synthetic narration;
+  contribution statements still need each student's review.
 
 ## Generate and check the local delivery
 
@@ -26,6 +31,11 @@ python3 -m pip install -r project/requirements.txt
 python3 project/build_documentation.py
 python3 project/package_delivery.py --include-video
 ```
+
+On the prepared local workstation, add `--include-final-media` to include the
+six individual videos and their transcripts from `output/video/a3-final`.
+The command fails if any expected media file is missing. The two flags are
+independent: `--include-video` includes only the earlier shared walkthrough.
 
 Omit `--include-video` on a fresh clone without the local recording. The script
 then packages sources, report, transcript and captions only. It never substitutes

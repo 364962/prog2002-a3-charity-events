@@ -1,0 +1,73 @@
+Zhuolin Han / 24832119 / A3 English transcript
+
+1. Project scope and presentation focus [00:00]
+
+This is the Good Together Assessment Three presentation prepared for Zhuolin Han, student number 24832119.
+My presentation focuses on the public registration flow, staff pages, browser interaction, and the independent SCU website.
+These topics follow the workflow planning, registration, staff management, and hosting commits recorded under my project account.
+I will show how the interface turns user actions into API requests and renders the database results back into useful page content.
+The public journey moves from discovery to search, event details, registration, confirmation, and the updated attendee list.
+All attendee information used in the demonstration is fictional, and a confirmed reservation does not mean payment has been collected.
+
+2. Architecture behind the interface [00:55]
+
+The public pages and staff pages use plain HTML, CSS, JavaScript modules, and DOM operations.
+Both websites call the same Express API on their own hosting domain, and the API communicates with MySQL through a connection pool.
+Organisations and categories describe each event, while registrations link attendee records to the selected event identifier.
+The event and email unique key blocks duplicate registration, and the restricted foreign key protects events that already have attendees.
+Public endpoints return only the fields needed by visitors; staff endpoints provide all event statuses and registration contact fields.
+Keeping these rules on the server makes the interface consistent even if someone changes the browser form or sends a request directly.
+
+3. Search and DOM data flow [01:48]
+
+On the search page, I combine Southport with the Fun run category to narrow the event list.
+The form serialises nonempty values into URL search parameters, so the active filters can survive navigation and be shared in a link.
+The search function aborts an earlier request before starting another, preventing a slow response from replacing newer results.
+The JSON helper calls fetch, checks the response, and returns data for renderEvents to turn into cards.
+The page updates its loading message, result count, empty state, and retry button through the DOM rather than reloading the whole site.
+Clearing the filters resets the form and URL; invalid input is checked in the browser and again by the server.
+
+4. Registration page and form validation [02:35]
+
+Selecting a ticket quantity on the event page updates the total and opens a dedicated registration page for that event.
+The registration page reloads the event from the API and checks the identifier and quantity from the URL before displaying the booking details.
+The form requires a trimmed name, a valid email, a usable contact number, and between one and ten tickets.
+While saving, the confirmation button is disabled to reduce accidental repeat clicks, and the interface displays progress feedback.
+The request contains attendee fields and ticket quantity; the server supplies the final unit price, total, and registration time.
+If saving fails, the page displays the server error and restores the button so the user can correct the problem and try again.
+
+5. Confirmation and persistent registrations [03:25]
+
+A successful response hides the form and displays the saved registration number, ticket count, total, and Brisbane registration time.
+The confirmation link returns to the event, where the newest registration appears first and remains after a page refresh.
+The public table includes the attendee name, ticket quantity, and registration date, but excludes email and phone.
+Submitting the same event and email combination again produces a conflict, including when the email uses different letter case.
+The same attendee can join another event because the uniqueness rule applies to the event and email pair, not the email alone.
+The hosted verification separately completed this workflow and removed its temporary test registration after confirming persistence.
+
+6. Staff event management [04:15]
+
+The staff desk shows twelve initial events, including active, past, and suspended examples, with filters for each status.
+Editing loads the existing values and the associated registration contacts, instead of starting with an empty form.
+Category and organisation choices are loaded from the API, and the editor uses the same form for creating and updating events.
+The save handler sends POST for a new event and PUT for an existing event, and presents the returned success or validation message.
+The recorded management workflow creates a temporary event, changes its publication status, and deletes it once it has no registrations.
+Deleting an event with registrations is refused, and the interface explains that suspension keeps the records while hiding public visibility.
+
+7. Categories weather and browser quality [05:08]
+
+Category management supports adding, editing, and deleting an unused category, with API feedback for a category that is still referenced.
+Event information is inserted using textContent, and status messages and labelled form controls make errors easier to understand.
+Weather is optional: the interface shows the forecast when available and an explanation when the event is outside the forecast window.
+A weather failure does not block the main registration flow, which keeps this extra feature separate from the essential task.
+Forty-six local browser checks passed in Chromium and WebKit, with layouts checked at three hundred ninety, seven hundred sixty-eight, and fourteen hundred forty pixels.
+The checks include real API submissions and database persistence, rather than only comparing static screenshots.
+
+8. Independent SCU deployment and conclusion [06:01]
+
+The domain shown here is my independent SCU deployment, and the staff pages are under the admin path.
+It runs the same application source with its own database and private configuration, separate from the other student's hosting account.
+On eleven October, fourteen HTTPS checks and nine external browser checks passed on this site, including search, booking, and staff details.
+The hosted source matched all forty checksums, and temporary records were cleaned up without changing the original example data.
+This teaching version intentionally omits staff authentication, so a real service would need access control before accepting real contact information.
+The interface design keeps the user's next action clear, while the API and database remain responsible for validation and persistent state.

@@ -1,0 +1,68 @@
+[
+  {
+    "file": "24832520/24832520-A3-English-EN-Subtitles.mp4",
+    "duration": 413.951333,
+    "audio_video_difference": 0.020999999999958163,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -19.3,
+    "peak_db": -4.2
+  },
+  {
+    "file": "24832520/24832520-A3-Chinese-ZH-Subtitles.mp4",
+    "duration": 357.751333,
+    "audio_video_difference": 0.021000000000015007,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -18.7,
+    "peak_db": -4.3
+  },
+  {
+    "file": "24832520/24832520-A3-English-Bilingual-Subtitles.mp4",
+    "duration": 413.951333,
+    "audio_video_difference": 0.020999999999958163,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -19.3,
+    "peak_db": -4.2
+  },
+  {
+    "file": "24832119/24832119-A3-English-EN-Subtitles.mp4",
+    "duration": 416.084667,
+    "audio_video_difference": 0.020666000000005624,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -18.7,
+    "peak_db": -4.3
+  },
+  {
+    "file": "24832119/24832119-A3-Chinese-ZH-Subtitles.mp4",
+    "duration": 370.485333,
+    "audio_video_difference": 0.021333000000026914,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -18.8,
+    "peak_db": -4.0
+  },
+  {
+    "file": "24832119/24832119-A3-English-Bilingual-Subtitles.mp4",
+    "duration": 416.084667,
+    "audio_video_difference": 0.020666000000005624,
+    "subtitle_cues": 48,
+    "chapters": 8,
+    "decoded_without_errors": true,
+    "black_intervals": 0,
+    "mean_db": -18.7,
+    "peak_db": -4.3
+  }
+]

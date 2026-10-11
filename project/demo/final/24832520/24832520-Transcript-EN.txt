@@ -1,0 +1,73 @@
+Lu Yu / 24832520 / A3 English transcript
+
+1. Project scope and presentation focus [00:00]
+
+This is the Good Together Assessment Three presentation prepared for Lu Yu, student number 24832520.
+My presentation focuses on the database, the API, data consistency, and deployment.
+These topics correspond to the schema, backend, startup, and hosting changes recorded under my project account.
+The application connects a public charity event website and a separate staff website to the same Express server and MySQL database.
+I will connect the implementation to the visible search, registration, and management workflows, then show the verified SCU deployment.
+The demonstration uses fictional attendees and does not process online payments.
+
+2. Database relationships and constraints [00:49]
+
+The schema has four tables: organisations, categories, events, and registrations.
+An organisation can host many events, a category can classify many events, and each registration belongs to one event.
+The registration table stores contact details, ticket quantity, the booking time, and a snapshot of the unit price.
+The combined event and email key prevents duplicate bookings for one event while allowing the same person to join another event.
+The restricted foreign key prevents deletion of an event that still has registrations; database triggers also enforce valid values.
+The initial dataset contains two organisations, six categories, twelve events, and twelve registrations, including past and suspended examples.
+
+3. Search API and parameter binding [01:43]
+
+The public event endpoint returns active events that have not ended, sorted by their start time and identifier.
+Search accepts a start date, a suburb, and a category; supplied filters are combined with AND conditions.
+For example, Southport and the Fun run category produce the matching coastal run in the deployed website.
+The API validates the query first, then passes user values separately from the SQL statement through parameter placeholders.
+The location filter also escapes wildcard characters, so a literal search term is not accidentally treated as a wildcard pattern.
+Invalid identifiers or dates return a validation error, while a valid search without matches returns an empty list.
+
+4. Registration transaction and concurrency [02:31]
+
+The registration endpoint validates the event identifier and request body before starting a database transaction.
+It selects the event row with FOR UPDATE, then checks that the event is active and has not ended.
+The server reads the ticket price from that locked row and generates the registration time itself; it never trusts a price sent by the browser.
+Updating and deleting an event use the same row lock, which coordinates bookings with price changes, suspension, and deletion.
+A successful transaction returns the saved record with status 201, and any failure rolls back before the connection is released.
+The unique key remains the final duplicate safeguard even if two matching requests arrive at almost the same time.
+
+5. From API response to page content [03:20]
+
+In the browser, the search form creates URL parameters and calls the shared JSON request helper with fetch.
+The server returns a data array, and renderEvents creates the visible event cards from that array.
+Database text is assigned with textContent rather than inserted as executable HTML, and event images are restricted to local asset paths.
+During a request, the page shows loading feedback; failures produce an error and retry action instead of a silent blank result.
+Registration uses the same pattern in reverse: the form sends JSON, then displays the identifier and total returned by the server.
+Refreshing the event page retrieves the stored registration again, demonstrating database persistence rather than a temporary browser-only change.
+
+6. Management rules and deletion protection [04:13]
+
+The staff event list includes active, past, and suspended records, unlike the public discovery list.
+Creating an event uses POST, editing uses PUT, and deletion uses DELETE, with server validation applied to every write.
+The recorded workflow creates a temporary event, saves a suspension change, and deletes the unused record after confirmation.
+When an event already has registrations, deletion returns a conflict and the interface explains that it can be suspended instead.
+Category deletion is similarly restricted when an event still references that category, preserving the database relationships.
+The public registration list omits email and phone; the staff view includes them, but this teaching version has no staff authentication.
+
+7. Weather and verification evidence [05:05]
+
+The optional weather service requests a forecast from Open Meteo using the event coordinates and Brisbane time.
+It uses a timeout and cache, and gives a clear fallback for missing coordinates, network failures, or dates outside the forecast window.
+Seventy-one backend tests passed locally, including duplicate submissions, protected deletion, concurrent operations, and database constraints.
+Forty-six browser checks passed with Chromium and WebKit, including mobile, tablet, and desktop layouts.
+The local backend suite also passed on Node eighteen point twenty point eight, matching the runtime supplied by SCU.
+These logs document specific checks and dates; they are not a guarantee that every possible production scenario has been tested.
+
+8. SCU deployment and technical conclusion [05:58]
+
+My SCU destination uses the domain shown here, with the staff website available at the admin path.
+The private application starts through app dot J S in Passenger production mode and uses a dedicated MySQL database.
+Database credentials stay only on the host; configuration files, SQL, and dependencies are not exposed as public website files.
+On eleven October, this site passed fourteen HTTPS checks and nine external browser checks, including a real fictional registration and refresh.
+All forty deployed source checksums matched, and temporary verification records were removed while the original seed records were preserved.
+The main design decision is to keep integrity in the database and API, while the browser provides a clear, responsive explanation of each result.

@@ -1,0 +1,239 @@
+1
+00:00:00,350 --> 00:00:10,622
+This is the Good Together Assessment Three presentation prepared for Zhuolin Han, student number 24832119.
+这是韩卓林的 Good Together 第三次作业讲解，学号为 24832119。
+
+2
+00:00:10,842 --> 00:00:20,215
+My presentation focuses on the public registration flow, staff pages, browser interaction, and the independent SCU website.
+我的讲解重点是公开报名流程、管理页面、浏览器交互，以及独立的 SCU 网站。
+
+3
+00:00:20,436 --> 00:00:29,342
+These topics follow the workflow planning, registration, staff management, and hosting commits recorded under my project account.
+这些主题对应项目账户下记录的流程规划、报名、后台管理和部署提交。
+
+4
+00:00:29,562 --> 00:00:38,276
+I will show how the interface turns user actions into API requests and renders the database results back into useful page content.
+接下来我会解释界面如何把用户操作变成接口请求，并把数据库结果转换为可用的页面内容。
+
+5
+00:00:38,496 --> 00:00:47,402
+The public journey moves from discovery to search, event details, registration, confirmation, and the updated attendee list.
+公开网站的流程依次经过活动发现、搜索、活动详情、报名、确认，以及更新后的报名列表。
+
+6
+00:00:47,622 --> 00:00:55,330
+All attendee information used in the demonstration is fictional, and a confirmed reservation does not mean payment has been collected.
+演示中的报名信息全部为虚构，报名确认也不代表已经收取费用。
+
+7
+00:00:56,283 --> 00:01:04,643
+The public pages and staff pages use plain HTML, CSS, JavaScript modules, and DOM operations.
+公开页面和管理页面使用普通 HTML、CSS、JavaScript 模块和 DOM 操作。
+
+8
+00:01:04,863 --> 00:01:13,608
+Both websites call the same Express API on their own hosting domain, and the API communicates with MySQL through a connection pool.
+两个网站都调用当前域名下的同一个 Express 接口，接口再通过连接池访问 MySQL。
+
+9
+00:01:13,828 --> 00:01:22,003
+Organisations and categories describe each event, while registrations link attendee records to the selected event identifier.
+组织和分类用于描述活动，报名表通过活动编号把参与者记录关联到所选活动。
+
+10
+00:01:22,223 --> 00:01:30,583
+The event and email unique key blocks duplicate registration, and the restricted foreign key protects events that already have attendees.
+活动与邮箱的唯一键阻止重复报名，限制删除的外键保护已经有报名者的活动。
+
+11
+00:01:30,803 --> 00:01:39,802
+Public endpoints return only the fields needed by visitors; staff endpoints provide all event statuses and registration contact fields.
+公开接口只返回访客需要的字段，管理接口提供所有活动状态以及报名联系方式。
+
+12
+00:01:40,022 --> 00:01:47,861
+Keeping these rules on the server makes the interface consistent even if someone changes the browser form or sends a request directly.
+将规则保留在服务端，可以在有人修改浏览器表单或直接发送请求时，仍然保持系统行为一致。
+
+13
+00:01:48,816 --> 00:01:54,406
+On the search page, I combine Southport with the Fun run category to narrow the event list.
+在搜索页面中，我组合 Southport 地区和趣味跑分类，缩小活动范围。
+
+14
+00:01:54,626 --> 00:02:03,682
+The form serialises nonempty values into URL search parameters, so the active filters can survive navigation and be shared in a link.
+表单把非空值序列化为网址查询参数，使筛选条件能够随页面导航保留，也能通过链接分享。
+
+15
+00:02:03,902 --> 00:02:11,589
+The search function aborts an earlier request before starting another, preventing a slow response from replacing newer results.
+搜索函数会先取消上一次请求，再发起新请求，防止较慢的旧响应覆盖新结果。
+
+16
+00:02:11,809 --> 00:02:19,217
+The JSON helper calls fetch, checks the response, and returns data for renderEvents to turn into cards.
+JSON 辅助函数调用 fetch、检查响应，并把数据交给 renderEvents 生成卡片。
+
+17
+00:02:19,437 --> 00:02:27,808
+The page updates its loading message, result count, empty state, and retry button through the DOM rather than reloading the whole site.
+页面通过 DOM 更新加载提示、结果数量、空状态和重试按钮，而不需要重新加载整个网站。
+
+18
+00:02:28,028 --> 00:02:34,567
+Clearing the filters resets the form and URL; invalid input is checked in the browser and again by the server.
+清除筛选会重置表单和网址，非法输入会先在浏览器检查，再由服务端再次检查。
+
+19
+00:02:35,549 --> 00:02:42,876
+Selecting a ticket quantity on the event page updates the total and opens a dedicated registration page for that event.
+在活动详情页选择票数后，总金额会更新，并打开该活动专用的报名页面。
+
+20
+00:02:43,096 --> 00:02:52,188
+The registration page reloads the event from the API and checks the identifier and quantity from the URL before displaying the booking details.
+报名页面重新从接口读取活动，并检查网址中的编号和票数，再显示报名详情。
+
+21
+00:02:52,408 --> 00:02:59,711
+The form requires a trimmed name, a valid email, a usable contact number, and between one and ten tickets.
+表单要求去除首尾空格后的姓名、合法邮箱、有效联系电话，以及一至十张票。
+
+22
+00:02:59,931 --> 00:03:08,528
+While saving, the confirmation button is disabled to reduce accidental repeat clicks, and the interface displays progress feedback.
+保存期间，确认按钮会被禁用以减少误重复点击，界面也会显示处理进度。
+
+23
+00:03:08,748 --> 00:03:17,572
+The request contains attendee fields and ticket quantity; the server supplies the final unit price, total, and registration time.
+请求包含报名者字段和票数，最终单价、总金额和报名时间由服务端提供。
+
+24
+00:03:17,792 --> 00:03:25,336
+If saving fails, the page displays the server error and restores the button so the user can correct the problem and try again.
+如果保存失败，页面会显示服务端错误并恢复按钮，让用户修正问题后重试。
+
+25
+00:03:26,349 --> 00:03:35,250
+A successful response hides the form and displays the saved registration number, ticket count, total, and Brisbane registration time.
+成功响应会隐藏表单，显示保存的报名编号、票数、总金额和布里斯班时间。
+
+26
+00:03:35,470 --> 00:03:43,017
+The confirmation link returns to the event, where the newest registration appears first and remains after a page refresh.
+确认页面的链接返回活动详情，最新报名排在首位，并且刷新后仍然存在。
+
+27
+00:03:43,237 --> 00:03:50,993
+The public table includes the attendee name, ticket quantity, and registration date, but excludes email and phone.
+公开表格包含报名者姓名、票数和报名日期，不包含邮箱和电话。
+
+28
+00:03:51,213 --> 00:03:59,144
+Submitting the same event and email combination again produces a conflict, including when the email uses different letter case.
+再次提交相同活动和邮箱的组合会产生冲突，即使邮箱的字母大小写不同也一样。
+
+29
+00:03:59,364 --> 00:04:06,946
+The same attendee can join another event because the uniqueness rule applies to the event and email pair, not the email alone.
+同一报名者仍可参加其他活动，因为唯一性约束针对活动与邮箱组合，而不是只针对邮箱。
+
+30
+00:04:07,166 --> 00:04:15,457
+The hosted verification separately completed this workflow and removed its temporary test registration after confirming persistence.
+线上验收也单独完成了这一流程，并在确认持久化之后清理了临时测试报名。
+
+31
+00:04:16,415 --> 00:04:25,181
+The staff desk shows twelve initial events, including active, past, and suspended examples, with filters for each status.
+管理首页展示十二个初始活动，包括正常发布、已结束和暂停发布的示例，并提供状态筛选。
+
+32
+00:04:25,401 --> 00:04:32,674
+Editing loads the existing values and the associated registration contacts, instead of starting with an empty form.
+编辑页面会加载现有字段值及相关报名联系方式，而不是显示空表单。
+
+33
+00:04:32,894 --> 00:04:40,907
+Category and organisation choices are loaded from the API, and the editor uses the same form for creating and updating events.
+分类和组织选项从接口加载，编辑器使用同一表单处理创建和修改。
+
+34
+00:04:41,127 --> 00:04:49,092
+The save handler sends POST for a new event and PUT for an existing event, and presents the returned success or validation message.
+保存函数对新活动发送 POST，对已有活动发送 PUT，并展示返回的成功或验证信息。
+
+35
+00:04:49,312 --> 00:04:58,484
+The recorded management workflow creates a temporary event, changes its publication status, and deletes it once it has no registrations.
+录制的管理流程会创建临时活动、修改发布状态，并在没有报名时删除它。
+
+36
+00:04:58,704 --> 00:05:07,523
+Deleting an event with registrations is refused, and the interface explains that suspension keeps the records while hiding public visibility.
+删除已有报名的活动会被拒绝，界面说明可以通过暂停发布保留记录并隐藏公开展示。
+
+37
+00:05:08,481 --> 00:05:17,469
+Category management supports adding, editing, and deleting an unused category, with API feedback for a category that is still referenced.
+分类管理支持新增、编辑和删除未使用的分类，对于仍被引用的分类会显示接口反馈。
+
+38
+00:05:17,689 --> 00:05:26,246
+Event information is inserted using textContent, and status messages and labelled form controls make errors easier to understand.
+活动信息通过 textContent 插入，状态提示和带标签的表单控件让错误更容易理解。
+
+39
+00:05:26,466 --> 00:05:34,250
+Weather is optional: the interface shows the forecast when available and an explanation when the event is outside the forecast window.
+天气是可选功能，有预报时界面显示天气，活动日期超出预报范围时则解释原因。
+
+40
+00:05:34,470 --> 00:05:42,256
+A weather failure does not block the main registration flow, which keeps this extra feature separate from the essential task.
+天气请求失败不会阻止主要报名流程，使附加功能与核心任务相互独立。
+
+41
+00:05:42,476 --> 00:05:53,720
+Forty-six local browser checks passed in Chromium and WebKit, with layouts checked at three hundred ninety, seven hundred sixty-eight, and fourteen hundred forty pixels.
+本地在 Chromium 和 WebKit 中通过四十六项浏览器检查，覆盖三百九十、七百六十八和一千四百四十像素宽度。
+
+42
+00:05:53,940 --> 00:06:01,336
+The checks include real API submissions and database persistence, rather than only comparing static screenshots.
+这些检查包含真实接口提交和数据库持久化，而不仅仅是比较静态截图。
+
+43
+00:06:02,347 --> 00:06:08,710
+The domain shown here is my independent SCU deployment, and the staff pages are under the admin path.
+画面上的域名是我的独立 SCU 部署地址，管理页面位于 admin 路径。
+
+44
+00:06:08,930 --> 00:06:17,189
+It runs the same application source with its own database and private configuration, separate from the other student's hosting account.
+该站点运行相同的应用源码，但拥有自己的数据库和私有配置，与另一位成员的主机账户分开。
+
+45
+00:06:17,409 --> 00:06:28,131
+On eleven October, fourteen HTTPS checks and nine external browser checks passed on this site, including search, booking, and staff details.
+十月十一日，该站点通过十四项 HTTPS 检查和九项外部浏览器检查，包含搜索、报名和后台详情。
+
+46
+00:06:28,351 --> 00:06:36,096
+The hosted source matched all forty checksums, and temporary records were cleaned up without changing the original example data.
+线上源码的四十个校验值全部匹配，临时记录已清理，原有示例数据保持不变。
+
+47
+00:06:36,316 --> 00:06:45,960
+This teaching version intentionally omits staff authentication, so a real service would need access control before accepting real contact information.
+此教学版本没有管理端身份验证，因此实际服务在接收真实联系方式之前，需要加入访问控制。
+
+48
+00:06:46,180 --> 00:06:55,433
+The interface design keeps the user's next action clear, while the API and database remain responsible for validation and persistent state.
+界面设计负责让用户清楚下一步操作，接口和数据库则负责验证规则与保存持久状态。

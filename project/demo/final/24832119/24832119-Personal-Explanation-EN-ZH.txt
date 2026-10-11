@@ -1,0 +1,14 @@
+韩卓林 / Zhuolin Han / 24832119
+
+English
+My presentation focus is public registration, staff workflows and browser behaviour. The repository records the commits below under the project account associated with my name. My explanation connects those changes to the current source and the verified hosting evidence. The public website is https://24832119.it.scu.edu.au/ and the staff website is https://24832119.it.scu.edu.au/admin/. Both the browser interface and the server-side rules are demonstrated, including their limitations.
+
+中文
+我的个人讲解重点是公开报名与确认、管理端流程、DOM 交互、浏览器验证和个人站点。仓库在与本人姓名关联的项目账户下记录了以下提交。讲解将这些变更与当前源码、已验证的部署证据对应起来。公开网站为 https://24832119.it.scu.edu.au/，管理网站为 https://24832119.it.scu.edu.au/admin/。说明同时覆盖浏览器界面、服务端规则及其限制。
+
+Git records
+99e73dc Visitor and staff workflow plan
+c4368f8 Public registration and confirmation
+a086d5e Staff event and category pages
+556006c Delivery packaging and demonstration materials
+b6f519b Zhuolin Han SCU deployment

@@ -1,0 +1,2044 @@
+{
+  "prepared": "2026-10-11",
+  "source_revision": "b6f519be50c6570145535d66a890230a9039d43a",
+  "people": [
+    {
+      "id": "24832520",
+      "name_en": "Lu Yu",
+      "name_zh": "鲁彧",
+      "scope": "Database, API, consistency and hosting",
+      "commits": [
+        "6a0a39d",
+        "e1b27e3",
+        "f523a36",
+        "cb59dd0",
+        "86f63c5"
+      ],
+      "chapters": [
+        {
+          "title_en": "Project scope and presentation focus",
+          "title_zh": "项目范围与个人讲解重点",
+          "visual": "lu_intro",
+          "lines": [
+            {
+              "en": "This is the Good Together Assessment Three presentation prepared for Lu Yu, student number 24832520.",
+              "zh": "这是鲁彧的 Good Together 第三次作业讲解，学号为 24832520。",
+              "duration": {
+                "en": 10.238520833333334,
+                "zh": 6.944083333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 10.589
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.294
+                }
+              }
+            },
+            {
+              "en": "My presentation focuses on the database, the API, data consistency, and deployment.",
+              "zh": "我的讲解重点是数据库、接口、数据一致性和部署。",
+              "duration": {
+                "en": 6.909541666666667,
+                "zh": 4.522375
+              },
+              "timing": {
+                "en": {
+                  "start": 10.809,
+                  "end": 17.718
+                },
+                "zh": {
+                  "start": 7.514,
+                  "end": 12.036
+                }
+              }
+            },
+            {
+              "en": "These topics correspond to the schema, backend, startup, and hosting changes recorded under my project account.",
+              "zh": "这些主题对应项目账户下记录的数据库结构、后端、启动入口和部署提交。",
+              "duration": {
+                "en": 7.823875,
+                "zh": 6.549354166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 17.938,
+                  "end": 25.762
+                },
+                "zh": {
+                  "start": 12.256,
+                  "end": 18.806
+                }
+              }
+            },
+            {
+              "en": "The application connects a public charity event website and a separate staff website to the same Express server and MySQL database.",
+              "zh": "应用把公开的慈善活动网站和独立的管理网站，连接到同一个 Express 服务和 MySQL 数据库。",
+              "duration": {
+                "en": 8.425270833333334,
+                "zh": 7.238833333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 25.982,
+                  "end": 34.407
+                },
+                "zh": {
+                  "start": 19.026,
+                  "end": 26.265
+                }
+              }
+            },
+            {
+              "en": "I will connect the implementation to the visible search, registration, and management workflows, then show the verified SCU deployment.",
+              "zh": "接下来我会结合搜索、报名和后台管理流程解释实现方式，再展示已验证的 SCU 部署。",
+              "duration": {
+                "en": 9.350125,
+                "zh": 7.600291666666666
+              },
+              "timing": {
+                "en": {
+                  "start": 34.627,
+                  "end": 43.977
+                },
+                "zh": {
+                  "start": 26.485,
+                  "end": 34.085
+                }
+              }
+            },
+            {
+              "en": "The demonstration uses fictional attendees and does not process online payments.",
+              "zh": "演示使用虚构的报名者信息，不处理在线支付。",
+              "duration": {
+                "en": 5.130125,
+                "zh": 4.1042708333333335
+              },
+              "timing": {
+                "en": {
+                  "start": 44.197,
+                  "end": 49.327
+                },
+                "zh": {
+                  "start": 34.305,
+                  "end": 38.409
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 0,
+              "duration": 49.927
+            },
+            "zh": {
+              "start": 0,
+              "duration": 39.009
+            }
+          }
+        },
+        {
+          "title_en": "Database relationships and constraints",
+          "title_zh": "数据库关系与约束",
+          "visual": "database",
+          "lines": [
+            {
+              "en": "The schema has four tables: organisations, categories, events, and registrations.",
+              "zh": "数据库包含四张表：组织、分类、活动和报名。",
+              "duration": {
+                "en": 7.080916666666667,
+                "zh": 4.485416666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.431
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 4.835
+                }
+              }
+            },
+            {
+              "en": "An organisation can host many events, a category can classify many events, and each registration belongs to one event.",
+              "zh": "一个组织可以举办多个活动，一个分类可以关联多个活动，每条报名记录只属于一个活动。",
+              "duration": {
+                "en": 8.4426875,
+                "zh": 7.262145833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 7.651,
+                  "end": 16.094
+                },
+                "zh": {
+                  "start": 5.055,
+                  "end": 12.318
+                }
+              }
+            },
+            {
+              "en": "The registration table stores contact details, ticket quantity, the booking time, and a snapshot of the unit price.",
+              "zh": "报名表保存联系方式、票数、报名时间，以及报名时的单价快照。",
+              "duration": {
+                "en": 8.567,
+                "zh": 6.157520833333334
+              },
+              "timing": {
+                "en": {
+                  "start": 16.314,
+                  "end": 24.881
+                },
+                "zh": {
+                  "start": 12.538,
+                  "end": 18.695
+                }
+              }
+            },
+            {
+              "en": "The combined event and email key prevents duplicate bookings for one event while allowing the same person to join another event.",
+              "zh": "活动编号和邮箱组成的联合唯一键，防止同一活动重复报名，同时允许同一人参加其他活动。",
+              "duration": {
+                "en": 7.452125,
+                "zh": 8.304270833333334
+              },
+              "timing": {
+                "en": {
+                  "start": 25.101,
+                  "end": 32.553
+                },
+                "zh": {
+                  "start": 18.915,
+                  "end": 27.219
+                }
+              }
+            },
+            {
+              "en": "The restricted foreign key prevents deletion of an event that still has registrations; database triggers also enforce valid values.",
+              "zh": "限制删除的外键防止删除已有报名的活动，数据库触发器还会检查数值是否合法。",
+              "duration": {
+                "en": 8.567,
+                "zh": 7.2041458333333335
+              },
+              "timing": {
+                "en": {
+                  "start": 32.773,
+                  "end": 41.34
+                },
+                "zh": {
+                  "start": 27.439,
+                  "end": 34.644
+                }
+              }
+            },
+            {
+              "en": "The initial dataset contains two organisations, six categories, twelve events, and twelve registrations, including past and suspended examples.",
+              "zh": "初始数据包含两个组织、六个分类、十二个活动和十二条报名，并包含已结束及暂停发布的示例。",
+              "duration": {
+                "en": 11.246458333333333,
+                "zh": 8.415708333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 41.56,
+                  "end": 52.806
+                },
+                "zh": {
+                  "start": 34.864,
+                  "end": 43.279
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 49.927,
+              "duration": 53.406
+            },
+            "zh": {
+              "start": 39.009,
+              "duration": 43.879
+            }
+          }
+        },
+        {
+          "title_en": "Search API and parameter binding",
+          "title_zh": "搜索接口与参数绑定",
+          "visual": "lu_search",
+          "lines": [
+            {
+              "en": "The public event endpoint returns active events that have not ended, sorted by their start time and identifier.",
+              "zh": "公开活动接口返回尚未结束且正常发布的活动，并按开始时间和编号排序。",
+              "duration": {
+                "en": 6.9415,
+                "zh": 6.735375
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.291
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.085
+                }
+              }
+            },
+            {
+              "en": "Search accepts a start date, a suburb, and a category; supplied filters are combined with AND conditions.",
+              "zh": "搜索支持开始日期、地区和分类，提交的筛选条件通过 AND 组合。",
+              "duration": {
+                "en": 7.4878125,
+                "zh": 6.030208333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 7.511,
+                  "end": 14.999
+                },
+                "zh": {
+                  "start": 7.305,
+                  "end": 13.336
+                }
+              }
+            },
+            {
+              "en": "For example, Southport and the Fun run category produce the matching coastal run in the deployed website.",
+              "zh": "例如，在已部署的网站中选择 Southport 和趣味跑分类，会得到对应的海岸跑步活动。",
+              "duration": {
+                "en": 6.841729166666667,
+                "zh": 7.076479166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 15.219,
+                  "end": 22.061
+                },
+                "zh": {
+                  "start": 13.556,
+                  "end": 20.632
+                }
+              }
+            },
+            {
+              "en": "The API validates the query first, then passes user values separately from the SQL statement through parameter placeholders.",
+              "zh": "接口先验证查询参数，再通过参数占位符把用户输入与 SQL 语句分开传入。",
+              "duration": {
+                "en": 8.854791666666667,
+                "zh": 8.029854166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 22.281,
+                  "end": 31.136
+                },
+                "zh": {
+                  "start": 20.852,
+                  "end": 28.882
+                }
+              }
+            },
+            {
+              "en": "The location filter also escapes wildcard characters, so a literal search term is not accidentally treated as a wildcard pattern.",
+              "zh": "地区筛选还会转义通配符，避免把用户输入误当作通配模式。",
+              "duration": {
+                "en": 8.903583333333334,
+                "zh": 5.67375
+              },
+              "timing": {
+                "en": {
+                  "start": 31.356,
+                  "end": 40.259
+                },
+                "zh": {
+                  "start": 29.102,
+                  "end": 34.776
+                }
+              }
+            },
+            {
+              "en": "Invalid identifiers or dates return a validation error, while a valid search without matches returns an empty list.",
+              "zh": "非法编号或日期会返回验证错误，合法但没有匹配结果的搜索则返回空列表。",
+              "duration": {
+                "en": 7.165541666666667,
+                "zh": 6.961333333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 40.479,
+                  "end": 47.645
+                },
+                "zh": {
+                  "start": 34.996,
+                  "end": 41.957
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 103.334,
+              "duration": 48.245
+            },
+            "zh": {
+              "start": 82.888,
+              "duration": 42.557
+            }
+          }
+        },
+        {
+          "title_en": "Registration transaction and concurrency",
+          "title_zh": "报名事务与并发控制",
+          "visual": "transaction",
+          "lines": [
+            {
+              "en": "The registration endpoint validates the event identifier and request body before starting a database transaction.",
+              "zh": "报名接口先验证活动编号和请求内容，然后开启数据库事务。",
+              "duration": {
+                "en": 7.243041666666667,
+                "zh": 5.623458333333334
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.593
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 5.973
+                }
+              }
+            },
+            {
+              "en": "It selects the event row with FOR UPDATE, then checks that the event is active and has not ended.",
+              "zh": "它使用 FOR UPDATE 锁定活动行，再检查活动是否正常发布且尚未结束。",
+              "duration": {
+                "en": 5.842,
+                "zh": 6.135479166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 7.813,
+                  "end": 13.655
+                },
+                "zh": {
+                  "start": 6.193,
+                  "end": 12.329
+                }
+              }
+            },
+            {
+              "en": "The server reads the ticket price from that locked row and generates the registration time itself; it never trusts a price sent by the browser.",
+              "zh": "服务端从被锁定的活动行读取票价，并自行生成报名时间，不信任浏览器传来的价格。",
+              "duration": {
+                "en": 8.671395833333333,
+                "zh": 7.7205
+              },
+              "timing": {
+                "en": {
+                  "start": 13.875,
+                  "end": 22.546
+                },
+                "zh": {
+                  "start": 12.549,
+                  "end": 20.269
+                }
+              }
+            },
+            {
+              "en": "Updating and deleting an event use the same row lock, which coordinates bookings with price changes, suspension, and deletion.",
+              "zh": "活动修改和删除使用同一行锁，使报名与改价、暂停发布和删除操作保持一致。",
+              "duration": {
+                "en": 8.55875,
+                "zh": 7.282604166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 22.766,
+                  "end": 31.325
+                },
+                "zh": {
+                  "start": 20.489,
+                  "end": 27.772
+                }
+              }
+            },
+            {
+              "en": "A successful transaction returns the saved record with status 201, and any failure rolls back before the connection is released.",
+              "zh": "事务成功后返回保存的记录和 201 状态码，失败时先回滚，再释放数据库连接。",
+              "duration": {
+                "en": 8.988354166666667,
+                "zh": 7.515604166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 31.545,
+                  "end": 40.534
+                },
+                "zh": {
+                  "start": 27.992,
+                  "end": 35.508
+                }
+              }
+            },
+            {
+              "en": "The unique key remains the final duplicate safeguard even if two matching requests arrive at almost the same time.",
+              "zh": "即使两个相同的请求几乎同时到达，唯一键仍是阻止重复报名的最终保障。",
+              "duration": {
+                "en": 7.101375,
+                "zh": 6.497333333333334
+              },
+              "timing": {
+                "en": {
+                  "start": 40.754,
+                  "end": 47.855
+                },
+                "zh": {
+                  "start": 35.728,
+                  "end": 42.225
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 151.579,
+              "duration": 48.455
+            },
+            "zh": {
+              "start": 125.445,
+              "duration": 42.825
+            }
+          }
+        },
+        {
+          "title_en": "From API response to page content",
+          "title_zh": "从接口响应到页面内容",
+          "visual": "lu_flow",
+          "lines": [
+            {
+              "en": "In the browser, the search form creates URL parameters and calls the shared JSON request helper with fetch.",
+              "zh": "在浏览器中，搜索表单生成网址参数，再通过共享的 JSON 请求函数调用 fetch。",
+              "duration": {
+                "en": 7.7228125,
+                "zh": 8.69675
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 8.073
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 9.047
+                }
+              }
+            },
+            {
+              "en": "The server returns a data array, and renderEvents creates the visible event cards from that array.",
+              "zh": "服务端返回 data 数组，renderEvents 根据数组生成可见的活动卡片。",
+              "duration": {
+                "en": 6.1288125,
+                "zh": 5.7352083333333335
+              },
+              "timing": {
+                "en": {
+                  "start": 8.293,
+                  "end": 14.422
+                },
+                "zh": {
+                  "start": 9.267,
+                  "end": 15.002
+                }
+              }
+            },
+            {
+              "en": "Database text is assigned with textContent rather than inserted as executable HTML, and event images are restricted to local asset paths.",
+              "zh": "数据库文本通过 textContent 写入，而不是作为可执行的 HTML 插入，活动图片也限制为本地资源路径。",
+              "duration": {
+                "en": 9.834979166666667,
+                "zh": 8.920416666666666
+              },
+              "timing": {
+                "en": {
+                  "start": 14.642,
+                  "end": 24.477
+                },
+                "zh": {
+                  "start": 15.222,
+                  "end": 24.142
+                }
+              }
+            },
+            {
+              "en": "During a request, the page shows loading feedback; failures produce an error and retry action instead of a silent blank result.",
+              "zh": "请求期间页面显示加载状态，失败时给出错误和重试操作，避免只留下空白结果。",
+              "duration": {
+                "en": 8.5698125,
+                "zh": 7.716375
+              },
+              "timing": {
+                "en": {
+                  "start": 24.697,
+                  "end": 33.266
+                },
+                "zh": {
+                  "start": 24.362,
+                  "end": 32.079
+                }
+              }
+            },
+            {
+              "en": "Registration uses the same pattern in reverse: the form sends JSON, then displays the identifier and total returned by the server.",
+              "zh": "报名使用相反方向的数据流：表单发送 JSON，再显示服务端返回的编号和总金额。",
+              "duration": {
+                "en": 9.568354166666667,
+                "zh": 7.2836875
+              },
+              "timing": {
+                "en": {
+                  "start": 33.486,
+                  "end": 43.055
+                },
+                "zh": {
+                  "start": 32.299,
+                  "end": 39.582
+                }
+              }
+            },
+            {
+              "en": "Refreshing the event page retrieves the stored registration again, demonstrating database persistence rather than a temporary browser-only change.",
+              "zh": "刷新活动页面后会重新取得已保存的报名，这证明数据存在数据库中，而不是浏览器里的临时变化。",
+              "duration": {
+                "en": 9.522041666666667,
+                "zh": 8.7114375
+              },
+              "timing": {
+                "en": {
+                  "start": 43.275,
+                  "end": 52.797
+                },
+                "zh": {
+                  "start": 39.802,
+                  "end": 48.514
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 200.034,
+              "duration": 53.397
+            },
+            "zh": {
+              "start": 168.27,
+              "duration": 49.114
+            }
+          }
+        },
+        {
+          "title_en": "Management rules and deletion protection",
+          "title_zh": "管理规则与删除保护",
+          "visual": "crud",
+          "lines": [
+            {
+              "en": "The staff event list includes active, past, and suspended records, unlike the public discovery list.",
+              "zh": "管理端活动列表包含正常发布、已结束和暂停发布的记录，与公开列表的范围不同。",
+              "duration": {
+                "en": 7.498875,
+                "zh": 7.176479166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.849
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.526
+                }
+              }
+            },
+            {
+              "en": "Creating an event uses POST, editing uses PUT, and deletion uses DELETE, with server validation applied to every write.",
+              "zh": "创建活动使用 POST，修改使用 PUT，删除使用 DELETE，每次写入都经过服务端验证。",
+              "duration": {
+                "en": 8.584416666666666,
+                "zh": 7.335979166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 8.069,
+                  "end": 16.653
+                },
+                "zh": {
+                  "start": 7.746,
+                  "end": 15.082
+                }
+              }
+            },
+            {
+              "en": "The recorded workflow creates a temporary event, saves a suspension change, and deletes the unused record after confirmation.",
+              "zh": "录制的操作流程创建一个临时活动，保存暂停发布的修改，再经确认删除没有报名的记录。",
+              "duration": {
+                "en": 8.834020833333334,
+                "zh": 7.794791666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 16.873,
+                  "end": 25.707
+                },
+                "zh": {
+                  "start": 15.302,
+                  "end": 23.097
+                }
+              }
+            },
+            {
+              "en": "When an event already has registrations, deletion returns a conflict and the interface explains that it can be suspended instead.",
+              "zh": "当活动已有报名时，删除会返回冲突，界面提示可以改为暂停发布。",
+              "duration": {
+                "en": 8.302145833333332,
+                "zh": 6.242458333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 25.927,
+                  "end": 34.229
+                },
+                "zh": {
+                  "start": 23.317,
+                  "end": 29.56
+                }
+              }
+            },
+            {
+              "en": "Category deletion is similarly restricted when an event still references that category, preserving the database relationships.",
+              "zh": "当活动仍引用某个分类时，该分类同样不能删除，以保护数据库关系。",
+              "duration": {
+                "en": 7.876104166666667,
+                "zh": 6.091520833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 34.449,
+                  "end": 42.326
+                },
+                "zh": {
+                  "start": 29.78,
+                  "end": 35.871
+                }
+              }
+            },
+            {
+              "en": "The public registration list omits email and phone; the staff view includes them, but this teaching version has no staff authentication.",
+              "zh": "公开报名列表不显示邮箱和电话，管理端会显示这些信息，但此教学版本没有管理端身份验证。",
+              "duration": {
+                "en": 8.950041666666667,
+                "zh": 8.546541666666666
+              },
+              "timing": {
+                "en": {
+                  "start": 42.546,
+                  "end": 51.496
+                },
+                "zh": {
+                  "start": 36.091,
+                  "end": 44.638
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 253.43,
+              "duration": 52.096
+            },
+            "zh": {
+              "start": 217.384,
+              "duration": 45.238
+            }
+          }
+        },
+        {
+          "title_en": "Weather and verification evidence",
+          "title_zh": "天气功能与验证证据",
+          "visual": "lu_checks",
+          "lines": [
+            {
+              "en": "The optional weather service requests a forecast from Open Meteo using the event coordinates and Brisbane time.",
+              "zh": "可选的天气服务根据活动坐标和布里斯班时区，向 Open Meteo 请求预报。",
+              "duration": {
+                "en": 6.834666666666666,
+                "zh": 6.252020833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.185
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 6.602
+                }
+              }
+            },
+            {
+              "en": "It uses a timeout and cache, and gives a clear fallback for missing coordinates, network failures, or dates outside the forecast window.",
+              "zh": "它设置了超时和缓存，并在缺少坐标、网络失败或日期超出预报范围时给出清晰说明。",
+              "duration": {
+                "en": 9.394666666666666,
+                "zh": 8.155604166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 7.405,
+                  "end": 16.799
+                },
+                "zh": {
+                  "start": 6.822,
+                  "end": 14.978
+                }
+              }
+            },
+            {
+              "en": "Seventy-one backend tests passed locally, including duplicate submissions, protected deletion, concurrent operations, and database constraints.",
+              "zh": "本地通过了七十一项后端测试，覆盖重复报名、受保护的删除、并发操作和数据库约束。",
+              "duration": {
+                "en": 11.0636875,
+                "zh": 8.096375
+              },
+              "timing": {
+                "en": {
+                  "start": 17.019,
+                  "end": 28.083
+                },
+                "zh": {
+                  "start": 15.198,
+                  "end": 23.294
+                }
+              }
+            },
+            {
+              "en": "Forty-six browser checks passed with Chromium and WebKit, including mobile, tablet, and desktop layouts.",
+              "zh": "Chromium 和 WebKit 中通过了四十六项浏览器检查，包含手机、平板和桌面布局。",
+              "duration": {
+                "en": 7.7515833333333335,
+                "zh": 6.776645833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 28.303,
+                  "end": 36.055
+                },
+                "zh": {
+                  "start": 23.514,
+                  "end": 30.291
+                }
+              }
+            },
+            {
+              "en": "The local backend suite also passed on Node eighteen point twenty point eight, matching the runtime supplied by SCU.",
+              "zh": "本地后端测试也在 Node 十八点二十点八版本通过，与 SCU 提供的运行环境一致。",
+              "duration": {
+                "en": 7.266666666666667,
+                "zh": 6.6219166666666665
+              },
+              "timing": {
+                "en": {
+                  "start": 36.275,
+                  "end": 43.541
+                },
+                "zh": {
+                  "start": 30.511,
+                  "end": 37.133
+                }
+              }
+            },
+            {
+              "en": "These logs document specific checks and dates; they are not a guarantee that every possible production scenario has been tested.",
+              "zh": "这些日志记录了具体检查及日期，并不表示已经测试了所有可能的生产场景。",
+              "duration": {
+                "en": 8.172166666666667,
+                "zh": 6.526125
+              },
+              "timing": {
+                "en": {
+                  "start": 43.761,
+                  "end": 51.933
+                },
+                "zh": {
+                  "start": 37.353,
+                  "end": 43.879
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 305.526,
+              "duration": 52.533
+            },
+            "zh": {
+              "start": 262.622,
+              "duration": 44.479
+            }
+          }
+        },
+        {
+          "title_en": "SCU deployment and technical conclusion",
+          "title_zh": "SCU 部署与技术总结",
+          "visual": "lu_host",
+          "lines": [
+            {
+              "en": "My SCU destination uses the domain shown here, with the staff website available at the admin path.",
+              "zh": "我的 SCU 部署地址显示在画面上，管理网站位于 admin 路径。",
+              "duration": {
+                "en": 6.805,
+                "zh": 4.917104166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.155
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 5.267
+                }
+              }
+            },
+            {
+              "en": "The private application starts through app dot J S in Passenger production mode and uses a dedicated MySQL database.",
+              "zh": "应用位于私有目录，通过 app.js 在 Passenger 生产模式下启动，并使用专用 MySQL 数据库。",
+              "duration": {
+                "en": 7.475333333333333,
+                "zh": 8.1443125
+              },
+              "timing": {
+                "en": {
+                  "start": 7.375,
+                  "end": 14.85
+                },
+                "zh": {
+                  "start": 5.487,
+                  "end": 13.631
+                }
+              }
+            },
+            {
+              "en": "Database credentials stay only on the host; configuration files, SQL, and dependencies are not exposed as public website files.",
+              "zh": "数据库凭据只保存在主机中，配置文件、SQL 和依赖不会作为网站文件公开。",
+              "duration": {
+                "en": 10.39225,
+                "zh": 7.910354166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 15.07,
+                  "end": 25.463
+                },
+                "zh": {
+                  "start": 13.851,
+                  "end": 21.762
+                }
+              }
+            },
+            {
+              "en": "On eleven October, this site passed fourteen HTTPS checks and nine external browser checks, including a real fictional registration and refresh.",
+              "zh": "十月十一日，该站点通过十四项 HTTPS 检查和九项外部浏览器检查，包括使用虚构信息实际报名并刷新确认。",
+              "duration": {
+                "en": 10.7298125,
+                "zh": 12.008666666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 25.683,
+                  "end": 36.412
+                },
+                "zh": {
+                  "start": 21.982,
+                  "end": 33.99
+                }
+              }
+            },
+            {
+              "en": "All forty deployed source checksums matched, and temporary verification records were removed while the original seed records were preserved.",
+              "zh": "四十个部署文件的校验值全部匹配，临时验收记录已经清理，原始示例数据得到保留。",
+              "duration": {
+                "en": 8.593520833333333,
+                "zh": 7.481
+              },
+              "timing": {
+                "en": {
+                  "start": 36.632,
+                  "end": 45.226
+                },
+                "zh": {
+                  "start": 34.21,
+                  "end": 41.691
+                }
+              }
+            },
+            {
+              "en": "The main design decision is to keep integrity in the database and API, while the browser provides a clear, responsive explanation of each result.",
+              "zh": "核心设计是由数据库和接口保证数据完整性，再由浏览器清晰、及时地展示每一步结果。",
+              "duration": {
+                "en": 9.646729166666667,
+                "zh": 7.800916666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 45.446,
+                  "end": 55.093
+                },
+                "zh": {
+                  "start": 41.911,
+                  "end": 49.712
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 358.059,
+              "duration": 55.693
+            },
+            "zh": {
+              "start": 307.101,
+              "duration": 50.312
+            }
+          }
+        }
+      ],
+      "personal_explanation": {
+        "en": "My presentation focus is database, api, consistency and hosting. The repository records the commits below under the project account associated with my name. My explanation connects those changes to the current source and the verified hosting evidence. The public website is https://24832520.it.scu.edu.au/ and the staff website is https://24832520.it.scu.edu.au/admin/. Both the browser interface and the server-side rules are demonstrated, including their limitations.",
+        "zh": "我的个人讲解重点是数据库结构、接口验证、事务与并发、部署和后端验证。仓库在与本人姓名关联的项目账户下记录了以下提交。讲解将这些变更与当前源码、已验证的部署证据对应起来。公开网站为 https://24832520.it.scu.edu.au/，管理网站为 https://24832520.it.scu.edu.au/admin/。说明同时覆盖浏览器界面、服务端规则及其限制。"
+      }
+    },
+    {
+      "id": "24832119",
+      "name_en": "Zhuolin Han",
+      "name_zh": "韩卓林",
+      "scope": "Public registration, staff workflows and browser behaviour",
+      "commits": [
+        "99e73dc",
+        "c4368f8",
+        "a086d5e",
+        "556006c",
+        "b6f519b"
+      ],
+      "chapters": [
+        {
+          "title_en": "Project scope and presentation focus",
+          "title_zh": "项目范围与个人讲解重点",
+          "visual": "han_intro",
+          "lines": [
+            {
+              "en": "This is the Good Together Assessment Three presentation prepared for Zhuolin Han, student number 24832119.",
+              "zh": "这是韩卓林的 Good Together 第三次作业讲解，学号为 24832119。",
+              "duration": {
+                "en": 10.271708333333333,
+                "zh": 7.315604166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 10.622
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.666
+                }
+              }
+            },
+            {
+              "en": "My presentation focuses on the public registration flow, staff pages, browser interaction, and the independent SCU website.",
+              "zh": "我的讲解重点是公开报名流程、管理页面、浏览器交互，以及独立的 SCU 网站。",
+              "duration": {
+                "en": 9.373791666666667,
+                "zh": 6.8791875
+              },
+              "timing": {
+                "en": {
+                  "start": 10.842,
+                  "end": 20.215
+                },
+                "zh": {
+                  "start": 7.886,
+                  "end": 14.765
+                }
+              }
+            },
+            {
+              "en": "These topics follow the workflow planning, registration, staff management, and hosting commits recorded under my project account.",
+              "zh": "这些主题对应项目账户下记录的流程规划、报名、后台管理和部署提交。",
+              "duration": {
+                "en": 8.906125,
+                "zh": 6.375208333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 20.436,
+                  "end": 29.342
+                },
+                "zh": {
+                  "start": 14.985,
+                  "end": 21.36
+                }
+              }
+            },
+            {
+              "en": "I will show how the interface turns user actions into API requests and renders the database results back into useful page content.",
+              "zh": "接下来我会解释界面如何把用户操作变成接口请求，并把数据库结果转换为可用的页面内容。",
+              "duration": {
+                "en": 8.714708333333334,
+                "zh": 8.436208333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 29.562,
+                  "end": 38.276
+                },
+                "zh": {
+                  "start": 21.58,
+                  "end": 30.016
+                }
+              }
+            },
+            {
+              "en": "The public journey moves from discovery to search, event details, registration, confirmation, and the updated attendee list.",
+              "zh": "公开网站的流程依次经过活动发现、搜索、活动详情、报名、确认，以及更新后的报名列表。",
+              "duration": {
+                "en": 8.905625,
+                "zh": 8.697479166666668
+              },
+              "timing": {
+                "en": {
+                  "start": 38.496,
+                  "end": 47.402
+                },
+                "zh": {
+                  "start": 30.236,
+                  "end": 38.934
+                }
+              }
+            },
+            {
+              "en": "All attendee information used in the demonstration is fictional, and a confirmed reservation does not mean payment has been collected.",
+              "zh": "演示中的报名信息全部为虚构，报名确认也不代表已经收取费用。",
+              "duration": {
+                "en": 7.7079375,
+                "zh": 5.729666666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 47.622,
+                  "end": 55.33
+                },
+                "zh": {
+                  "start": 39.154,
+                  "end": 44.883
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 0,
+              "duration": 55.93
+            },
+            "zh": {
+              "start": 0,
+              "duration": 45.483
+            }
+          }
+        },
+        {
+          "title_en": "Architecture behind the interface",
+          "title_zh": "界面背后的架构",
+          "visual": "architecture",
+          "lines": [
+            {
+              "en": "The public pages and staff pages use plain HTML, CSS, JavaScript modules, and DOM operations.",
+              "zh": "公开页面和管理页面使用普通 HTML、CSS、JavaScript 模块和 DOM 操作。",
+              "duration": {
+                "en": 8.359875,
+                "zh": 7.5480833333333335
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 8.71
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.898
+                }
+              }
+            },
+            {
+              "en": "Both websites call the same Express API on their own hosting domain, and the API communicates with MySQL through a connection pool.",
+              "zh": "两个网站都调用当前域名下的同一个 Express 接口，接口再通过连接池访问 MySQL。",
+              "duration": {
+                "en": 8.745416666666667,
+                "zh": 7.0534791666666665
+              },
+              "timing": {
+                "en": {
+                  "start": 8.93,
+                  "end": 17.675
+                },
+                "zh": {
+                  "start": 8.118,
+                  "end": 15.172
+                }
+              }
+            },
+            {
+              "en": "Organisations and categories describe each event, while registrations link attendee records to the selected event identifier.",
+              "zh": "组织和分类用于描述活动，报名表通过活动编号把参与者记录关联到所选活动。",
+              "duration": {
+                "en": 8.175104166666667,
+                "zh": 7.008708333333334
+              },
+              "timing": {
+                "en": {
+                  "start": 17.895,
+                  "end": 26.07
+                },
+                "zh": {
+                  "start": 15.392,
+                  "end": 22.4
+                }
+              }
+            },
+            {
+              "en": "The event and email unique key blocks duplicate registration, and the restricted foreign key protects events that already have attendees.",
+              "zh": "活动与邮箱的唯一键阻止重复报名，限制删除的外键保护已经有报名者的活动。",
+              "duration": {
+                "en": 8.359375,
+                "zh": 6.736916666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 26.29,
+                  "end": 34.65
+                },
+                "zh": {
+                  "start": 22.62,
+                  "end": 29.357
+                }
+              }
+            },
+            {
+              "en": "Public endpoints return only the fields needed by visitors; staff endpoints provide all event statuses and registration contact fields.",
+              "zh": "公开接口只返回访客需要的字段，管理接口提供所有活动状态以及报名联系方式。",
+              "duration": {
+                "en": 8.999458333333333,
+                "zh": 7.164958333333334
+              },
+              "timing": {
+                "en": {
+                  "start": 34.87,
+                  "end": 43.869
+                },
+                "zh": {
+                  "start": 29.577,
+                  "end": 36.742
+                }
+              }
+            },
+            {
+              "en": "Keeping these rules on the server makes the interface consistent even if someone changes the browser form or sends a request directly.",
+              "zh": "将规则保留在服务端，可以在有人修改浏览器表单或直接发送请求时，仍然保持系统行为一致。",
+              "duration": {
+                "en": 7.8384583333333335,
+                "zh": 8.68
+              },
+              "timing": {
+                "en": {
+                  "start": 44.089,
+                  "end": 51.928
+                },
+                "zh": {
+                  "start": 36.962,
+                  "end": 45.642
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 55.93,
+              "duration": 52.528
+            },
+            "zh": {
+              "start": 45.483,
+              "duration": 46.242
+            }
+          }
+        },
+        {
+          "title_en": "Search and DOM data flow",
+          "title_zh": "搜索与 DOM 数据流",
+          "visual": "han_search",
+          "lines": [
+            {
+              "en": "On the search page, I combine Southport with the Fun run category to narrow the event list.",
+              "zh": "在搜索页面中，我组合 Southport 地区和趣味跑分类，缩小活动范围。",
+              "duration": {
+                "en": 5.589979166666667,
+                "zh": 6.247041666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 5.94
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 6.597
+                }
+              }
+            },
+            {
+              "en": "The form serialises nonempty values into URL search parameters, so the active filters can survive navigation and be shared in a link.",
+              "zh": "表单把非空值序列化为网址查询参数，使筛选条件能够随页面导航保留，也能通过链接分享。",
+              "duration": {
+                "en": 9.056479166666668,
+                "zh": 8.781458333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 6.16,
+                  "end": 15.216
+                },
+                "zh": {
+                  "start": 6.817,
+                  "end": 15.598
+                }
+              }
+            },
+            {
+              "en": "The search function aborts an earlier request before starting another, preventing a slow response from replacing newer results.",
+              "zh": "搜索函数会先取消上一次请求，再发起新请求，防止较慢的旧响应覆盖新结果。",
+              "duration": {
+                "en": 7.6865,
+                "zh": 7.713666666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 15.436,
+                  "end": 23.123
+                },
+                "zh": {
+                  "start": 15.819,
+                  "end": 23.532
+                }
+              }
+            },
+            {
+              "en": "The JSON helper calls fetch, checks the response, and returns data for renderEvents to turn into cards.",
+              "zh": "JSON 辅助函数调用 fetch、检查响应，并把数据交给 renderEvents 生成卡片。",
+              "duration": {
+                "en": 7.407854166666667,
+                "zh": 7.942916666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 23.343,
+                  "end": 30.751
+                },
+                "zh": {
+                  "start": 23.752,
+                  "end": 31.695
+                }
+              }
+            },
+            {
+              "en": "The page updates its loading message, result count, empty state, and retry button through the DOM rather than reloading the whole site.",
+              "zh": "页面通过 DOM 更新加载提示、结果数量、空状态和重试按钮，而不需要重新加载整个网站。",
+              "duration": {
+                "en": 8.371479166666667,
+                "zh": 8.2605
+              },
+              "timing": {
+                "en": {
+                  "start": 30.971,
+                  "end": 39.342
+                },
+                "zh": {
+                  "start": 31.915,
+                  "end": 40.176
+                }
+              }
+            },
+            {
+              "en": "Clearing the filters resets the form and URL; invalid input is checked in the browser and again by the server.",
+              "zh": "清除筛选会重置表单和网址，非法输入会先在浏览器检查，再由服务端再次检查。",
+              "duration": {
+                "en": 6.538520833333333,
+                "zh": 7.6235
+              },
+              "timing": {
+                "en": {
+                  "start": 39.562,
+                  "end": 46.101
+                },
+                "zh": {
+                  "start": 40.396,
+                  "end": 48.019
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 108.458,
+              "duration": 46.701
+            },
+            "zh": {
+              "start": 91.725,
+              "duration": 48.619
+            }
+          }
+        },
+        {
+          "title_en": "Registration page and form validation",
+          "title_zh": "报名页面与表单验证",
+          "visual": "registration",
+          "lines": [
+            {
+              "en": "Selecting a ticket quantity on the event page updates the total and opens a dedicated registration page for that event.",
+              "zh": "在活动详情页选择票数后，总金额会更新，并打开该活动专用的报名页面。",
+              "duration": {
+                "en": 7.327458333333333,
+                "zh": 6.943645833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 7.677
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.294
+                }
+              }
+            },
+            {
+              "en": "The registration page reloads the event from the API and checks the identifier and quantity from the URL before displaying the booking details.",
+              "zh": "报名页面重新从接口读取活动，并检查网址中的编号和票数，再显示报名详情。",
+              "duration": {
+                "en": 9.091395833333333,
+                "zh": 7.4694375
+              },
+              "timing": {
+                "en": {
+                  "start": 7.897,
+                  "end": 16.989
+                },
+                "zh": {
+                  "start": 7.514,
+                  "end": 14.983
+                }
+              }
+            },
+            {
+              "en": "The form requires a trimmed name, a valid email, a usable contact number, and between one and ten tickets.",
+              "zh": "表单要求去除首尾空格后的姓名、合法邮箱、有效联系电话，以及一至十张票。",
+              "duration": {
+                "en": 7.303375,
+                "zh": 7.2837708333333335
+              },
+              "timing": {
+                "en": {
+                  "start": 17.209,
+                  "end": 24.512
+                },
+                "zh": {
+                  "start": 15.203,
+                  "end": 22.487
+                }
+              }
+            },
+            {
+              "en": "While saving, the confirmation button is disabled to reduce accidental repeat clicks, and the interface displays progress feedback.",
+              "zh": "保存期间，确认按钮会被禁用以减少误重复点击，界面也会显示处理进度。",
+              "duration": {
+                "en": 8.596479166666667,
+                "zh": 6.830895833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 24.732,
+                  "end": 33.329
+                },
+                "zh": {
+                  "start": 22.707,
+                  "end": 29.538
+                }
+              }
+            },
+            {
+              "en": "The request contains attendee fields and ticket quantity; the server supplies the final unit price, total, and registration time.",
+              "zh": "请求包含报名者字段和票数，最终单价、总金额和报名时间由服务端提供。",
+              "duration": {
+                "en": 8.824354166666666,
+                "zh": 6.868854166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 33.549,
+                  "end": 42.373
+                },
+                "zh": {
+                  "start": 29.758,
+                  "end": 36.627
+                }
+              }
+            },
+            {
+              "en": "If saving fails, the page displays the server error and restores the button so the user can correct the problem and try again.",
+              "zh": "如果保存失败，页面会显示服务端错误并恢复按钮，让用户修正问题后重试。",
+              "duration": {
+                "en": 7.544083333333333,
+                "zh": 7.032208333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 42.593,
+                  "end": 50.137
+                },
+                "zh": {
+                  "start": 36.847,
+                  "end": 43.879
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 155.158,
+              "duration": 50.737
+            },
+            "zh": {
+              "start": 140.345,
+              "duration": 44.479
+            }
+          }
+        },
+        {
+          "title_en": "Confirmation and persistent registrations",
+          "title_zh": "确认页面与报名持久化",
+          "visual": "confirmation",
+          "lines": [
+            {
+              "en": "A successful response hides the form and displays the saved registration number, ticket count, total, and Brisbane registration time.",
+              "zh": "成功响应会隐藏表单，显示保存的报名编号、票数、总金额和布里斯班时间。",
+              "duration": {
+                "en": 8.900791666666667,
+                "zh": 7.243104166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 9.251
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.593
+                }
+              }
+            },
+            {
+              "en": "The confirmation link returns to the event, where the newest registration appears first and remains after a page refresh.",
+              "zh": "确认页面的链接返回活动详情，最新报名排在首位，并且刷新后仍然存在。",
+              "duration": {
+                "en": 7.547270833333333,
+                "zh": 6.997916666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 9.471,
+                  "end": 17.018
+                },
+                "zh": {
+                  "start": 7.813,
+                  "end": 14.811
+                }
+              }
+            },
+            {
+              "en": "The public table includes the attendee name, ticket quantity, and registration date, but excludes email and phone.",
+              "zh": "公开表格包含报名者姓名、票数和报名日期，不包含邮箱和电话。",
+              "duration": {
+                "en": 7.75625,
+                "zh": 6.073625
+              },
+              "timing": {
+                "en": {
+                  "start": 17.238,
+                  "end": 24.994
+                },
+                "zh": {
+                  "start": 15.031,
+                  "end": 21.105
+                }
+              }
+            },
+            {
+              "en": "Submitting the same event and email combination again produces a conflict, including when the email uses different letter case.",
+              "zh": "再次提交相同活动和邮箱的组合会产生冲突，即使邮箱的字母大小写不同也一样。",
+              "duration": {
+                "en": 7.931166666666667,
+                "zh": 7.117791666666666
+              },
+              "timing": {
+                "en": {
+                  "start": 25.214,
+                  "end": 33.145
+                },
+                "zh": {
+                  "start": 21.325,
+                  "end": 28.442
+                }
+              }
+            },
+            {
+              "en": "The same attendee can join another event because the uniqueness rule applies to the event and email pair, not the email alone.",
+              "zh": "同一报名者仍可参加其他活动，因为唯一性约束针对活动与邮箱组合，而不是只针对邮箱。",
+              "duration": {
+                "en": 7.582,
+                "zh": 8.004854166666666
+              },
+              "timing": {
+                "en": {
+                  "start": 33.365,
+                  "end": 40.947
+                },
+                "zh": {
+                  "start": 28.662,
+                  "end": 36.667
+                }
+              }
+            },
+            {
+              "en": "The hosted verification separately completed this workflow and removed its temporary test registration after confirming persistence.",
+              "zh": "线上验收也单独完成了这一流程，并在确认持久化之后清理了临时测试报名。",
+              "duration": {
+                "en": 8.290208333333334,
+                "zh": 6.809395833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 41.167,
+                  "end": 49.458
+                },
+                "zh": {
+                  "start": 36.887,
+                  "end": 43.697
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 205.896,
+              "duration": 50.058
+            },
+            "zh": {
+              "start": 184.823,
+              "duration": 44.297
+            }
+          }
+        },
+        {
+          "title_en": "Staff event management",
+          "title_zh": "后台活动管理",
+          "visual": "han_staff",
+          "lines": [
+            {
+              "en": "The staff desk shows twelve initial events, including active, past, and suspended examples, with filters for each status.",
+              "zh": "管理首页展示十二个初始活动，包括正常发布、已结束和暂停发布的示例，并提供状态筛选。",
+              "duration": {
+                "en": 8.766125,
+                "zh": 8.291020833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 9.116
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 8.641
+                }
+              }
+            },
+            {
+              "en": "Editing loads the existing values and the associated registration contacts, instead of starting with an empty form.",
+              "zh": "编辑页面会加载现有字段值及相关报名联系方式，而不是显示空表单。",
+              "duration": {
+                "en": 7.2727916666666665,
+                "zh": 6.424645833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 9.336,
+                  "end": 16.609
+                },
+                "zh": {
+                  "start": 8.861,
+                  "end": 15.286
+                }
+              }
+            },
+            {
+              "en": "Category and organisation choices are loaded from the API, and the editor uses the same form for creating and updating events.",
+              "zh": "分类和组织选项从接口加载，编辑器使用同一表单处理创建和修改。",
+              "duration": {
+                "en": 8.012625,
+                "zh": 6.229895833333333
+              },
+              "timing": {
+                "en": {
+                  "start": 16.829,
+                  "end": 24.842
+                },
+                "zh": {
+                  "start": 15.506,
+                  "end": 21.736
+                }
+              }
+            },
+            {
+              "en": "The save handler sends POST for a new event and PUT for an existing event, and presents the returned success or validation message.",
+              "zh": "保存函数对新活动发送 POST，对已有活动发送 PUT，并展示返回的成功或验证信息。",
+              "duration": {
+                "en": 7.965125,
+                "zh": 7.399791666666666
+              },
+              "timing": {
+                "en": {
+                  "start": 25.062,
+                  "end": 33.027
+                },
+                "zh": {
+                  "start": 21.956,
+                  "end": 29.355
+                }
+              }
+            },
+            {
+              "en": "The recorded management workflow creates a temporary event, changes its publication status, and deletes it once it has no registrations.",
+              "zh": "录制的管理流程会创建临时活动、修改发布状态，并在没有报名时删除它。",
+              "duration": {
+                "en": 9.172666666666666,
+                "zh": 6.738291666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 33.247,
+                  "end": 42.419
+                },
+                "zh": {
+                  "start": 29.575,
+                  "end": 36.314
+                }
+              }
+            },
+            {
+              "en": "Deleting an event with registrations is refused, and the interface explains that suspension keeps the records while hiding public visibility.",
+              "zh": "删除已有报名的活动会被拒绝，界面说明可以通过暂停发布保留记录并隐藏公开展示。",
+              "duration": {
+                "en": 8.818333333333333,
+                "zh": 7.6085
+              },
+              "timing": {
+                "en": {
+                  "start": 42.639,
+                  "end": 51.458
+                },
+                "zh": {
+                  "start": 36.534,
+                  "end": 44.142
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 255.953,
+              "duration": 52.058
+            },
+            "zh": {
+              "start": 229.12,
+              "duration": 44.742
+            }
+          }
+        },
+        {
+          "title_en": "Categories weather and browser quality",
+          "title_zh": "分类天气与浏览器质量",
+          "visual": "han_quality",
+          "lines": [
+            {
+              "en": "Category management supports adding, editing, and deleting an unused category, with API feedback for a category that is still referenced.",
+              "zh": "分类管理支持新增、编辑和删除未使用的分类，对于仍被引用的分类会显示接口反馈。",
+              "duration": {
+                "en": 8.987854166666667,
+                "zh": 7.4489375
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 9.338
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 7.799
+                }
+              }
+            },
+            {
+              "en": "Event information is inserted using textContent, and status messages and labelled form controls make errors easier to understand.",
+              "zh": "活动信息通过 textContent 插入，状态提示和带标签的表单控件让错误更容易理解。",
+              "duration": {
+                "en": 8.557291666666666,
+                "zh": 7.062
+              },
+              "timing": {
+                "en": {
+                  "start": 9.558,
+                  "end": 18.115
+                },
+                "zh": {
+                  "start": 8.019,
+                  "end": 15.081
+                }
+              }
+            },
+            {
+              "en": "Weather is optional: the interface shows the forecast when available and an explanation when the event is outside the forecast window.",
+              "zh": "天气是可选功能，有预报时界面显示天气，活动日期超出预报范围时则解释原因。",
+              "duration": {
+                "en": 7.783729166666666,
+                "zh": 7.575666666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 18.335,
+                  "end": 26.119
+                },
+                "zh": {
+                  "start": 15.301,
+                  "end": 22.877
+                }
+              }
+            },
+            {
+              "en": "A weather failure does not block the main registration flow, which keeps this extra feature separate from the essential task.",
+              "zh": "天气请求失败不会阻止主要报名流程，使附加功能与核心任务相互独立。",
+              "duration": {
+                "en": 7.786083333333333,
+                "zh": 6.437875
+              },
+              "timing": {
+                "en": {
+                  "start": 26.339,
+                  "end": 34.125
+                },
+                "zh": {
+                  "start": 23.097,
+                  "end": 29.534
+                }
+              }
+            },
+            {
+              "en": "Forty-six local browser checks passed in Chromium and WebKit, with layouts checked at three hundred ninety, seven hundred sixty-eight, and fourteen hundred forty pixels.",
+              "zh": "本地在 Chromium 和 WebKit 中通过四十六项浏览器检查，覆盖三百九十、七百六十八和一千四百四十像素宽度。",
+              "duration": {
+                "en": 11.244083333333334,
+                "zh": 9.477979166666668
+              },
+              "timing": {
+                "en": {
+                  "start": 34.345,
+                  "end": 45.589
+                },
+                "zh": {
+                  "start": 29.754,
+                  "end": 39.232
+                }
+              }
+            },
+            {
+              "en": "The checks include real API submissions and database persistence, rather than only comparing static screenshots.",
+              "zh": "这些检查包含真实接口提交和数据库持久化，而不仅仅是比较静态截图。",
+              "duration": {
+                "en": 7.39625,
+                "zh": 6.456479166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 45.809,
+                  "end": 53.205
+                },
+                "zh": {
+                  "start": 39.452,
+                  "end": 45.909
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 308.011,
+              "duration": 53.805
+            },
+            "zh": {
+              "start": 273.862,
+              "duration": 46.509
+            }
+          }
+        },
+        {
+          "title_en": "Independent SCU deployment and conclusion",
+          "title_zh": "独立 SCU 部署与总结",
+          "visual": "han_host",
+          "lines": [
+            {
+              "en": "The domain shown here is my independent SCU deployment, and the staff pages are under the admin path.",
+              "zh": "画面上的域名是我的独立 SCU 部署地址，管理页面位于 admin 路径。",
+              "duration": {
+                "en": 6.362958333333333,
+                "zh": 5.343729166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 0.35,
+                  "end": 6.713
+                },
+                "zh": {
+                  "start": 0.35,
+                  "end": 5.694
+                }
+              }
+            },
+            {
+              "en": "It runs the same application source with its own database and private configuration, separate from the other student's hosting account.",
+              "zh": "该站点运行相同的应用源码，但拥有自己的数据库和私有配置，与另一位成员的主机账户分开。",
+              "duration": {
+                "en": 8.259416666666667,
+                "zh": 8.1283125
+              },
+              "timing": {
+                "en": {
+                  "start": 6.933,
+                  "end": 15.192
+                },
+                "zh": {
+                  "start": 5.914,
+                  "end": 14.042
+                }
+              }
+            },
+            {
+              "en": "On eleven October, fourteen HTTPS checks and nine external browser checks passed on this site, including search, booking, and staff details.",
+              "zh": "十月十一日，该站点通过十四项 HTTPS 检查和九项外部浏览器检查，包含搜索、报名和后台详情。",
+              "duration": {
+                "en": 10.721604166666667,
+                "zh": 11.2308125
+              },
+              "timing": {
+                "en": {
+                  "start": 15.412,
+                  "end": 26.134
+                },
+                "zh": {
+                  "start": 14.262,
+                  "end": 25.493
+                }
+              }
+            },
+            {
+              "en": "The hosted source matched all forty checksums, and temporary records were cleaned up without changing the original example data.",
+              "zh": "线上源码的四十个校验值全部匹配，临时记录已清理，原有示例数据保持不变。",
+              "duration": {
+                "en": 7.744541666666667,
+                "zh": 6.948708333333333
+              },
+              "timing": {
+                "en": {
+                  "start": 26.354,
+                  "end": 34.099
+                },
+                "zh": {
+                  "start": 25.713,
+                  "end": 32.662
+                }
+              }
+            },
+            {
+              "en": "This teaching version intentionally omits staff authentication, so a real service would need access control before accepting real contact information.",
+              "zh": "此教学版本没有管理端身份验证，因此实际服务在接收真实联系方式之前，需要加入访问控制。",
+              "duration": {
+                "en": 9.644583333333333,
+                "zh": 8.449166666666667
+              },
+              "timing": {
+                "en": {
+                  "start": 34.319,
+                  "end": 43.963
+                },
+                "zh": {
+                  "start": 32.882,
+                  "end": 41.331
+                }
+              }
+            },
+            {
+              "en": "The interface design keeps the user's next action clear, while the API and database remain responsible for validation and persistent state.",
+              "zh": "界面设计负责让用户清楚下一步操作，接口和数据库则负责验证规则与保存持久状态。",
+              "duration": {
+                "en": 9.253333333333334,
+                "zh": 7.646729166666667
+              },
+              "timing": {
+                "en": {
+                  "start": 44.183,
+                  "end": 53.436
+                },
+                "zh": {
+                  "start": 41.551,
+                  "end": 49.197
+                }
+              }
+            }
+          ],
+          "timing": {
+            "en": {
+              "start": 361.816,
+              "duration": 54.036
+            },
+            "zh": {
+              "start": 320.371,
+              "duration": 49.797
+            }
+          }
+        }
+      ],
+      "personal_explanation": {
+        "en": "My presentation focus is public registration, staff workflows and browser behaviour. The repository records the commits below under the project account associated with my name. My explanation connects those changes to the current source and the verified hosting evidence. The public website is https://24832119.it.scu.edu.au/ and the staff website is https://24832119.it.scu.edu.au/admin/. Both the browser interface and the server-side rules are demonstrated, including their limitations.",
+        "zh": "我的个人讲解重点是公开报名与确认、管理端流程、DOM 交互、浏览器验证和个人站点。仓库在与本人姓名关联的项目账户下记录了以下提交。讲解将这些变更与当前源码、已验证的部署证据对应起来。公开网站为 https://24832119.it.scu.edu.au/，管理网站为 https://24832119.it.scu.edu.au/admin/。说明同时覆盖浏览器界面、服务端规则及其限制。"
+      }
+    }
+  ]
+}
